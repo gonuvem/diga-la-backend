@@ -120,3 +120,17 @@ temp/
 .history
 
 # End of https://www.gitignore.io/api/node,visualstudiocode
+
+### Docker ###
+# docker-compose file
+docker-compose.yml
+
+### MongoDB data ###
+data
+
+### Own ###
+# Scripts
+scripts
+
+### Build files ###
+dist/**/*
