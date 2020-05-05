@@ -14,3 +14,10 @@ export const INVALID_AUTH_HEADER = createError({
   statusCode: 401,
   internalCode: 611
 })
+
+/** Middleware de autorização 620 - 629 */
+export const USER_NOT_ALLOWED = createError({
+  message: 'Este usuário não possui permissão para esta ação',
+  statusCode: 403,
+  internalCode: 620
+})
