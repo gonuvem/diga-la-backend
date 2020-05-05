@@ -5,7 +5,7 @@ import { Role } from '../enums'
 export interface UserInterface {
   /** Nome completo */
   name: string,
-  /** Papéis */
+  email: string,
   roles: Role[]
 }
 
