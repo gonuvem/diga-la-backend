@@ -21,3 +21,10 @@ export const USER_NOT_ALLOWED = createError({
   statusCode: 403,
   internalCode: 620
 })
+
+/** Middleware de validação 630 - 639 */
+export const VALIDATION_ERROR = (message: string): object => (createError({
+  message: message,
+  statusCode: 400,
+  internalCode: 630
+}))
