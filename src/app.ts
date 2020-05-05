@@ -6,8 +6,11 @@ import './env'
 import './sentry'
 import { gqlServer, gqlCors } from './graphql'
 import handleError from './middlewares/errorHandling'
+import logger from './middlewares/logging'
 
 const app = express()
+
+app.use(logger)
 
 app.use(cors())
 
