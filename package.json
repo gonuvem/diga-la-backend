@@ -13,6 +13,7 @@
     "test": "jest --forceExit --detectOpenHandles --runInBand --config ./src/__tests__/jest.config.js"
   },
   "devDependencies": {
+    "@types/app-root-path": "^1.2.4",
     "@types/bcrypt": "^3.0.0",
     "@types/compression": "^1.7.0",
     "@types/cors": "^2.8.6",
@@ -23,6 +24,7 @@
     "@types/jest": "^25.2.1",
     "@types/jsonwebtoken": "^8.3.9",
     "@types/mongoose": "^5.7.14",
+    "@types/morgan": "^1.9.0",
     "@types/rosie": "^0.0.37",
     "@types/supertest": "^2.0.9",
     "@typescript-eslint/eslint-plugin": "^2.31.0",
@@ -55,6 +57,7 @@
     "@hapi/joi": "^17.1.1",
     "@sentry/node": "^5.15.5",
     "apollo-server-express": "^2.13.0",
+    "app-root-path": "^3.0.0",
     "bcrypt": "^4.0.1",
     "compression": "^1.7.4",
     "cors": "^2.8.5",
@@ -62,6 +65,8 @@
     "express": "^4.17.1",
     "graphql": "^15.0.0",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.9.11"
+    "mongoose": "^5.9.11",
+    "morgan": "^1.10.0",
+    "winston": "^3.2.1"
   }
 }
