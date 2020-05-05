@@ -8,8 +8,8 @@ const gqlServer = new ApolloServer({
   typeDefs,
   resolvers: resolvers as IResolvers,
   context: ({ req, res }): object => ({ req, res }),
-  playground: IS_NOT_PRODUCTION,
-  introspection: IS_NOT_PRODUCTION
+  playground: IS_NOT_PRODUCTION === true,
+  introspection: IS_NOT_PRODUCTION === true
 })
 
 export default gqlServer

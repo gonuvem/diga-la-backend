@@ -1,4 +1,5 @@
 import mongoose from 'mongoose'
+
 import dbConfig from '../db/config'
 
 beforeAll(async () => {
