@@ -6,3 +6,6 @@ export * from './middlewaresErrors'
 
 /** Models 700 - 899 */
 export * from './modelsErrors'
+
+/** Services 900 - 999 */
+export * from './servicesErrors'
