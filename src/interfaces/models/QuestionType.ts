@@ -1,6 +1,6 @@
 import { Document } from 'mongoose'
 
-import { QuestionTypeAlias, QuestionTypeKind } from '../../enums'
+import { QuestionTypeAlias, QuestionTypeKind } from 'src/enums'
 
 export interface QuestionTypeInterface {
   kind: QuestionTypeKind,
