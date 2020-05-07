@@ -68,10 +68,15 @@ export interface NumberConfig {
   incValue?: number
 }
 
+export interface AnswerOption {
+  text: string,
+  image?: string
+}
+
 export interface CheckBoxConfig {
   hasHorizontalAlignment: boolean,
   hasRandomResponsesOrder: boolean,
-  options: string[]
+  answerOptions: AnswerOption[]
 }
 
 export interface EmailConfig {
@@ -86,16 +91,11 @@ export interface LinkConfig {
   hasValidation: boolean
 }
 
-export interface ImageChoiceOptions {
-  name: string,
-  image: string
-}
-
 export interface ImageChoiceConfig {
   isMultipleChoice: boolean,
   maxChoices?: number,
   hasRandomResponsesOrder: boolean,
-  options: ImageChoiceOptions[]
+  answerOptions: AnswerOption[]
 }
 
 export interface ShortTextConfig {
@@ -122,12 +122,14 @@ export interface DateConfig {
 
 export interface DropDownConfig {
   hasRandomResponsesOrder: boolean,
-  options: string[]
+  answerOptions: AnswerOption[]
 }
 
 export interface MatrixConfig {
   isMultipleChoice: boolean,
-  options: string[][]
+  rowsLabels: string[],
+  colsLabels: string[],
+  answerOptions: AnswerOption[][]
 }
 
 export interface SliderConfig {
@@ -148,7 +150,7 @@ export interface LongTextConfig {
 export interface RadioButtonConfig {
   hasHorizontalAlignment: boolean,
   hasRandomResponsesOrder: boolean,
-  options: string[]
+  answerOptions: AnswerOption[]
 }
 
 export interface QuestionConfig {
