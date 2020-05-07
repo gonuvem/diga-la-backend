@@ -5,7 +5,8 @@ import {
   basicStringSchema,
   dateSchema,
   booleanSchema,
-  integerSchema
+  integerSchema,
+  urlSchema
 } from '../baseSchemas'
 
 export const FormConfig = {
@@ -23,7 +24,7 @@ export const FormConfig = {
 
 export const FormStyle = {
   background: basicStringSchema,
-  logo: basicStringSchema,
+  logo: urlSchema,
   headerText: basicStringSchema,
   hasLogoInHeader: booleanSchema,
   headerBackground: basicStringSchema,

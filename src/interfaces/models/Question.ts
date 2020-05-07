@@ -1,6 +1,6 @@
 import { Document } from 'mongoose'
 
-import { QuestionTypeAlias } from '../../enums'
+import { QuestionTypeAlias } from 'src/enums'
 import { FormDocument } from './Form'
 import { QuestionTypeDocument } from './QuestionType'
 

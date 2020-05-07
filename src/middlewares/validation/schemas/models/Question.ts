@@ -1,12 +1,13 @@
 import Joi from '@hapi/joi'
 
-import { QuestionTypeAlias } from '../../../../enums'
+import { QuestionTypeAlias } from 'src/enums'
 import {
   arraySchema,
   idSchema,
   basicStringSchema,
   booleanSchema,
-  integerSchema
+  integerSchema,
+  urlSchema
 } from '../baseSchemas'
 
 export const NumberConfig = {
@@ -18,7 +19,7 @@ export const NumberConfig = {
 
 export const AnswerOption = {
   text: basicStringSchema,
-  image: basicStringSchema
+  image: urlSchema
 }
 
 const answerOptionsSchema = arraySchema(Joi.object(AnswerOption).required())
