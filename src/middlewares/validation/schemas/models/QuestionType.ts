@@ -1,10 +1,10 @@
-import { QuestionTypeAlias, QuestionTypeKind } from '../../../../enums'
-import { stringEnumSchema, basicStringSchema } from '../baseSchemas'
+import { QuestionTypeAlias, QuestionTypeKind } from 'src/enums'
+import { stringEnumSchema, basicStringSchema, urlSchema } from '../baseSchemas'
 
 export const QuestionType = {
   kind: stringEnumSchema(QuestionTypeKind),
   alias: stringEnumSchema(QuestionTypeAlias),
   name: basicStringSchema,
-  cover: basicStringSchema,
+  cover: urlSchema,
   description: basicStringSchema
 }
