@@ -5,7 +5,7 @@ export * from './serverErrors'
 export * from './middlewaresErrors'
 
 /** Models 700 - 899 */
-export * from './modelsErrors'
+export * from './models'
 
 /** Services 900 - 999 */
 export * from './servicesErrors'
