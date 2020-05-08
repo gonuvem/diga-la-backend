@@ -42,7 +42,7 @@ export interface ImageChoiceConfig {
 }
 
 export interface ShortTextConfig {
-  placeholder: string,
+  placeholder?: string,
   hasLimitedChars: boolean,
   maxChars?: number
 }
@@ -85,7 +85,7 @@ export interface SliderConfig {
 }
 
 export interface LongTextConfig {
-  placeholder: string,
+  placeholder?: string,
   hasLimitedChars: boolean,
   maxChars?: number
 }
@@ -98,7 +98,7 @@ export interface RadioButtonConfig {
 
 export interface QuestionConfig {
   name: string,
-  description: string,
+  description?: string,
   isRequired: boolean,
   [QuestionTypeAlias.CheckBox]?: CheckBoxConfig,
   [QuestionTypeAlias.Date]?: DateConfig,

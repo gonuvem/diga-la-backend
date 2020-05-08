@@ -14,13 +14,21 @@ const UserSchema = new mongoose.Schema({
     required: true,
     unique: true
   },
+  password: {
+    type: String,
+    required: true
+  },
   roles: [
     {
       type: String,
       enum: Object.values(Role),
       required: true
     }
-  ]
+  ],
+  renewPasswordCode: {
+    type: String,
+    default: ''
+  }
 }, { timestamps: true })
 
 const User = mongoose.model<UserDocument>('User', UserSchema)
