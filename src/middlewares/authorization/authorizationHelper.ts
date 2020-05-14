@@ -8,7 +8,6 @@ import { MyContext } from '../../types'
 export const getRoleWithTheHighestPermission = async (roles: Role[])
 : Promise<Role> => {
   if (roles.includes(Role.Dev)) return Role.Dev
-  if (roles.includes(Role.Admin)) return Role.Admin
   if (roles.includes(Role.Client)) return Role.Client
   throw USER_NOT_ALLOWED
 }
