@@ -1,2 +1,5 @@
+import AuthResolversSchemas from './resolversSchemas/AuthResolversSchemas'
 
-export default {}
+export default {
+  ...AuthResolversSchemas
+}
