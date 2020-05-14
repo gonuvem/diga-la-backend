@@ -1,4 +1,4 @@
-import { QuestionTypeAlias } from 'src/enums'
+import { QuestionTypeAlias } from '../../enums'
 import {
   fakeBoolean,
   fakeRandomInt,

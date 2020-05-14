@@ -1,6 +1,6 @@
 import { Document } from 'mongoose'
 
-import { Role } from 'src/enums'
+import { Role } from '../../enums'
 
 export interface UserInterface {
   /** Nome completo */

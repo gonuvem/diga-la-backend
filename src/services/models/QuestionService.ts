@@ -1,5 +1,5 @@
-import Question from 'src/models/Question'
-import Response from 'src/models/Response'
+import Question from '../../models/Question'
+import Response from '../../models/Response'
 import {
   createOne,
   fetchOneWithPopulate,
@@ -7,12 +7,12 @@ import {
   deleteOne,
   checkInUse,
   listPaginatedWithPopulate
-} from 'src/utils/mongoose'
+} from '../../utils/mongoose'
 import {
   QUESTIONS_EMPTY_LIST,
   QUESTION_NOT_FOUND,
   QUESTION_IN_USE
-} from 'src/middlewares/errorHandling/errors'
+} from '../../middlewares/errorHandling/errors'
 
 const populate = [
   {

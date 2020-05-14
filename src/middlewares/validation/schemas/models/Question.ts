@@ -1,6 +1,6 @@
 import Joi from '@hapi/joi'
 
-import { QuestionTypeAlias } from 'src/enums'
+import { QuestionTypeAlias } from '../../../../enums'
 import {
   arraySchema,
   idSchema,

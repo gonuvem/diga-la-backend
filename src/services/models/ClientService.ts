@@ -1,5 +1,5 @@
-import Client from 'src/models/Client'
-import Form from 'src/models/Form'
+import Client from '../../models/Client'
+import Form from '../../models/Form'
 import {
   createOne,
   createOneObject,
@@ -8,12 +8,12 @@ import {
   deleteOne,
   checkInUse,
   listPaginatedWithPopulate
-} from 'src/utils/mongoose'
+} from '../../utils/mongoose'
 import {
   CLIENTS_EMPTY_LIST,
   CLIENT_NOT_FOUND,
   CLIENT_IN_USE
-} from 'src/middlewares/errorHandling/errors'
+} from '../../middlewares/errorHandling/errors'
 
 const populate = 'user'
 

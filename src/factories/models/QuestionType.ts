@@ -1,4 +1,4 @@
-import { QuestionTypeAlias, QuestionTypeKind } from 'src/enums'
+import { QuestionTypeAlias, QuestionTypeKind } from '../../enums'
 import {
   fakeRandomArrayElement,
   fakeWord,

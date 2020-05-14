@@ -1,5 +1,5 @@
-import QuestionType from 'src/models/QuestionType'
-import Question from 'src/models/Question'
+import QuestionType from '../../models/QuestionType'
+import Question from '../../models/Question'
 import {
   createOne,
   fetchOne,
@@ -7,12 +7,12 @@ import {
   deleteOne,
   checkInUse,
   listPaginated
-} from 'src/utils/mongoose'
+} from '../../utils/mongoose'
 import {
   QUESTION_TYPES_EMPTY_LIST,
   QUESTION_TYPE_NOT_FOUND,
   QUESTION_TYPE_IN_USE
-} from 'src/middlewares/errorHandling/errors'
+} from '../../middlewares/errorHandling/errors'
 
 export const createOneQuestionType = createOne(QuestionType)
 

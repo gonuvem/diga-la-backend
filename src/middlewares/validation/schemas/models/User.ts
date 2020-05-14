@@ -1,4 +1,4 @@
-import { Role } from 'src/enums'
+import { Role } from '../../../../enums'
 import {
   fullNameSchema,
   cpfSchema,
