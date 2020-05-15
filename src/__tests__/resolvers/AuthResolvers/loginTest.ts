@@ -79,7 +79,7 @@ export default (): void => {
       test(`200 Login OK for ${role} with ${loginMethod}`, () => {
         const expected = ents[role]
 
-        const { password, email } = expected.user
+        const { password, email } = expected.user as UserDocument
 
         return baseRequest({ email, password })
           .then(response => {
@@ -90,7 +90,7 @@ export default (): void => {
             role === Role.Dev
               ? expect(info._id).toBeNull()
               : expect(info._id.toString()).toBe(ents.client._id.toString())
-            checkResponse(expected.user, info.user)
+            checkResponse(expected.user as UserDocument, info.user)
           })
       })
     }
