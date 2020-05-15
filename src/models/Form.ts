@@ -1,9 +1,15 @@
 import mongoose from 'mongoose'
 
-import { FormDocument } from '../interfaces'
+import {
+  FormDocument,
+  FormConfig,
+  FormStyle,
+  FormInterface
+} from '../interfaces'
+import { MongooseDefinition } from '../types'
 import './Client'
 
-const FormConfigSchema = new mongoose.Schema({
+const formConfigDefinition: MongooseDefinition<FormConfig> = {
   name: {
     type: String,
     required: true
@@ -36,9 +42,11 @@ const FormConfigSchema = new mongoose.Schema({
     required: true,
     default: false
   }
-}, { _id: false })
+}
+const FormConfigSchema = new mongoose.Schema(formConfigDefinition,
+  { _id: false })
 
-const FormStyleSchema = new mongoose.Schema({
+const formStyleDefinition: MongooseDefinition<FormStyle> = {
   background: String,
   logo: String,
   headerText: String,
@@ -50,9 +58,11 @@ const FormStyleSchema = new mongoose.Schema({
   headerBackground: String,
   footerText: String,
   footerBackground: String
-}, { _id: false })
+}
 
-const FormSchema = new mongoose.Schema({
+const FormStyleSchema = new mongoose.Schema(formStyleDefinition, { _id: false })
+
+const formDefinition: MongooseDefinition<FormInterface> = {
   client: {
     type: mongoose.Types.ObjectId,
     ref: 'Client',
@@ -71,7 +81,9 @@ const FormSchema = new mongoose.Schema({
     type: FormStyleSchema,
     required: true
   }
-}, { timestamps: true })
+}
+
+const FormSchema = new mongoose.Schema(formDefinition, { timestamps: true })
 
 const Form = mongoose.model<FormDocument>('Form', FormSchema)
 

@@ -1,9 +1,10 @@
 import mongoose from 'mongoose'
 
-import { QuestionTypeDocument } from '../interfaces'
+import { QuestionTypeDocument, QuestionTypeInterface } from '../interfaces'
 import { QuestionTypeKind, QuestionTypeAlias } from '../enums'
+import { MongooseDefinition } from '../types'
 
-const QuestionTypeSchema = new mongoose.Schema({
+const definition: MongooseDefinition<QuestionTypeInterface> = {
   kind: {
     type: String,
     enum: Object.values(QuestionTypeKind),
@@ -26,7 +27,9 @@ const QuestionTypeSchema = new mongoose.Schema({
     type: String,
     required: true
   }
-}, { timestamps: true })
+}
+
+const QuestionTypeSchema = new mongoose.Schema(definition, { timestamps: true })
 
 const QuestionType = mongoose
   .model<QuestionTypeDocument>('QuestionType', QuestionTypeSchema)

@@ -1,11 +1,31 @@
 /* eslint-disable max-lines */
 import mongoose from 'mongoose'
 
-import { QuestionDocument } from '../interfaces'
+import {
+  QuestionDocument,
+  NumberConfig,
+  AnswerOption,
+  CheckBoxConfig,
+  EmailConfig,
+  PhoneConfig,
+  LinkConfig,
+  ImageChoiceConfig,
+  ShortTextConfig,
+  NPSConfig,
+  DateConfig,
+  DropDownConfig,
+  MatrixConfig,
+  SliderConfig,
+  LongTextConfig,
+  RadioButtonConfig,
+  QuestionConfig,
+  QuestionInterface
+} from '../interfaces'
+import { MongooseDefinition } from '../types'
 import './Form'
 import './QuestionType'
 
-const NumberConfigSchema = new mongoose.Schema({
+const numberConfigDefinition: MongooseDefinition<NumberConfig> = {
   hasMaxMinLimit: {
     type: Boolean,
     required: true,
@@ -23,17 +43,23 @@ const NumberConfigSchema = new mongoose.Schema({
     type: Number,
     validate: Number.isInteger
   }
-}, { _id: false })
+}
 
-const AnswerOptionSchema = new mongoose.Schema({
+const NumberConfigSchema = new mongoose.Schema(numberConfigDefinition,
+  { _id: false })
+
+const answerOptionDefinition: MongooseDefinition<AnswerOption> = {
   text: {
     type: String,
     required: true
   },
   image: String
-}, { _id: false })
+}
 
-const CheckBoxConfigSchema = new mongoose.Schema({
+const AnswerOptionSchema = new mongoose.Schema(answerOptionDefinition,
+  { _id: false })
+
+const checkBoxDefinition: MongooseDefinition<CheckBoxConfig> = {
   hasHorizontalAlignment: {
     type: Boolean,
     required: true,
@@ -48,33 +74,42 @@ const CheckBoxConfigSchema = new mongoose.Schema({
     type: AnswerOptionSchema,
     required: true
   }]
-}, { _id: false })
+}
 
-const EmailConfigSchema = new mongoose.Schema({
+const CheckBoxConfigSchema = new mongoose.Schema(checkBoxDefinition,
+  { _id: false })
+
+const emailDefinition: MongooseDefinition<EmailConfig> = {
   hasValidation: {
     type: Boolean,
     required: true,
     default: false
   }
-}, { _id: false })
+}
 
-const PhoneConfigSchema = new mongoose.Schema({
+const EmailConfigSchema = new mongoose.Schema(emailDefinition, { _id: false })
+
+const phoneDefinition: MongooseDefinition<PhoneConfig> = {
   hasValidation: {
     type: Boolean,
     required: true,
     default: false
   }
-}, { _id: false })
+}
 
-const LinkConfigSchema = new mongoose.Schema({
+const PhoneConfigSchema = new mongoose.Schema(phoneDefinition, { _id: false })
+
+const linkDefinition: MongooseDefinition<LinkConfig> = {
   hasValidation: {
     type: Boolean,
     required: true,
     default: false
   }
-}, { _id: false })
+}
 
-const ImageChoiceConfigSchema = new mongoose.Schema({
+const LinkConfigSchema = new mongoose.Schema(linkDefinition, { _id: false })
+
+const imageChoiceDefinition: MongooseDefinition<ImageChoiceConfig> = {
   isMultipleChoice: {
     type: Boolean,
     required: true,
@@ -93,9 +128,12 @@ const ImageChoiceConfigSchema = new mongoose.Schema({
     type: AnswerOptionSchema,
     required: true
   }]
-}, { _id: false })
+}
 
-const ShortTextConfigSchema = new mongoose.Schema({
+const ImageChoiceConfigSchema = new mongoose.Schema(imageChoiceDefinition,
+  { _id: false })
+
+const shortTextDefinition: MongooseDefinition<ShortTextConfig> = {
   placeholder: String,
   hasLimitedChars: {
     type: Boolean,
@@ -106,9 +144,11 @@ const ShortTextConfigSchema = new mongoose.Schema({
     type: Number,
     validate: Number.isInteger
   }
-}, { _id: false })
+}
+const ShortTextConfigSchema = new mongoose.Schema(shortTextDefinition,
+  { _id: false })
 
-const NPSConfigSchema = new mongoose.Schema({
+const NPSDefinition: MongooseDefinition<NPSConfig> = {
   canDisplayLabels: {
     type: Boolean,
     required: true,
@@ -125,9 +165,11 @@ const NPSConfigSchema = new mongoose.Schema({
     type: String,
     required: true
   }
-}, { _id: false })
+}
 
-const DateConfigSchema = new mongoose.Schema({
+const NPSConfigSchema = new mongoose.Schema(NPSDefinition, { _id: false })
+
+const dateDefinition: MongooseDefinition<DateConfig> = {
   isDateRequired: {
     type: Boolean,
     required: true,
@@ -145,9 +187,11 @@ const DateConfigSchema = new mongoose.Schema({
     required: true,
     default: false
   }
-}, { _id: false })
+}
 
-const DropDownConfigSchema = new mongoose.Schema({
+const DateConfigSchema = new mongoose.Schema(dateDefinition, { _id: false })
+
+const dropDownDefinition: MongooseDefinition<DropDownConfig> = {
   hasRandomResponsesOrder: {
     type: Boolean,
     required: true,
@@ -157,9 +201,12 @@ const DropDownConfigSchema = new mongoose.Schema({
     type: AnswerOptionSchema,
     required: true
   }]
-}, { _id: false })
+}
 
-const MatrixConfigSchema = new mongoose.Schema({
+const DropDownConfigSchema = new mongoose.Schema(dropDownDefinition,
+  { _id: false })
+
+const matrixConfigDefinition: MongooseDefinition<MatrixConfig> = {
   isMultipleChoice: {
     type: Boolean,
     required: true,
@@ -177,9 +224,12 @@ const MatrixConfigSchema = new mongoose.Schema({
     type: AnswerOptionSchema,
     required: true
   }]]
-}, { _id: false })
+}
 
-const SliderConfigSchema = new mongoose.Schema({
+const MatrixConfigSchema = new mongoose.Schema(matrixConfigDefinition,
+  { _id: false })
+
+const sliderDefinition: MongooseDefinition<SliderConfig> = {
   minValue: {
     type: Number,
     validate: Number.isInteger,
@@ -202,9 +252,11 @@ const SliderConfigSchema = new mongoose.Schema({
     required: true,
     default: false
   }
-}, { _id: false })
+}
 
-const LongTextConfigSchema = new mongoose.Schema({
+const SliderConfigSchema = new mongoose.Schema(sliderDefinition, { _id: false })
+
+const longTextDefinition: MongooseDefinition<LongTextConfig> = {
   placeholder: String,
   hasLimitedChars: {
     type: Boolean,
@@ -215,9 +267,12 @@ const LongTextConfigSchema = new mongoose.Schema({
     type: Number,
     validate: Number.isInteger
   }
-}, { _id: false })
+}
 
-const RadioButtonConfigSchema = new mongoose.Schema({
+const LongTextConfigSchema = new mongoose.Schema(longTextDefinition,
+  { _id: false })
+
+const radioButtonDefinition: MongooseDefinition<RadioButtonConfig> = {
   hasHorizontalAlignment: {
     type: Boolean,
     required: true,
@@ -232,9 +287,12 @@ const RadioButtonConfigSchema = new mongoose.Schema({
     type: AnswerOptionSchema,
     required: true
   }]
-}, { _id: false })
+}
 
-const QuestionConfigSchema = new mongoose.Schema({
+const RadioButtonConfigSchema = new mongoose.Schema(radioButtonDefinition,
+  { _id: false })
+
+const questionConfigDefinition: MongooseDefinition<QuestionConfig> = {
   name: {
     type: String,
     required: true
@@ -259,9 +317,12 @@ const QuestionConfigSchema = new mongoose.Schema({
   radioButton: RadioButtonConfigSchema,
   shortText: ShortTextConfigSchema,
   slider: SliderConfigSchema
-}, { _id: false })
+}
 
-const QuestionSchema = new mongoose.Schema({
+const QuestionConfigSchema = new mongoose.Schema(questionConfigDefinition,
+  { _id: false })
+
+const questionDefinition: MongooseDefinition<QuestionInterface> = {
   form: {
     type: mongoose.Types.ObjectId,
     ref: 'Form',
@@ -281,7 +342,10 @@ const QuestionSchema = new mongoose.Schema({
     type: QuestionConfigSchema,
     required: true
   }
-}, { timestamps: true })
+}
+
+const QuestionSchema = new mongoose.Schema(questionDefinition,
+  { timestamps: true })
 
 const Question = mongoose.model<QuestionDocument>('Question', QuestionSchema)
 
