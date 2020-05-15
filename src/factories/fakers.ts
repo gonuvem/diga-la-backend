@@ -42,11 +42,11 @@ const fakeDigitsString = (len: number) => (): string => {
   return Faker.address.zipCode('#'.repeat(len))
 }
 
-export const fakeRecentDate = (): string => Faker.date.recent().toISOString()
+export const fakeRecentDate = (): Date => Faker.date.recent()
 
-export const fakePastDate = (): string => Faker.date.past().toISOString()
+export const fakePastDate = (): Date => Faker.date.past()
 
-export const fakeFutureDate = (): string => Faker.date.future().toISOString()
+export const fakeFutureDate = (): Date => Faker.date.future()
 
 export const fakeEmail = (): string => Faker.internet.email()
 
