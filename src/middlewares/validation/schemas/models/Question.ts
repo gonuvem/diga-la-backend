@@ -9,53 +9,58 @@ import {
   integerSchema,
   urlSchema
 } from '../baseSchemas'
+import { JoiSchemaMap } from '../../../../types'
+import {
+  NumberConfig, CheckBoxConfig, EmailConfig, PhoneConfig, LinkConfig, ImageChoiceConfig, ShortTextConfig, NPSConfig, DateConfig, DropDownConfig, MatrixConfig, SliderConfig, LongTextConfig, RadioButtonConfig, QuestionConfig, QuestionInterface, AnswerOption
+} from '../../../../interfaces'
 
-export const NumberConfig = {
+export const NumberConfigSchema: JoiSchemaMap<NumberConfig> = {
   hasMaxMinLimit: booleanSchema,
   maxValue: integerSchema,
   minValue: integerSchema,
   incValue: integerSchema.min(1)
 }
 
-export const AnswerOption = {
+export const AnswerOptionSchema: JoiSchemaMap<AnswerOption> = {
   text: basicStringSchema,
   image: urlSchema
 }
 
-const answerOptionsSchema = arraySchema(Joi.object(AnswerOption).required())
+const answerOptionsSchema = arraySchema(Joi.object(AnswerOptionSchema)
+  .required())
 
-export const CheckBoxConfig = {
+export const CheckBoxConfigSchema: JoiSchemaMap<CheckBoxConfig> = {
   hasHorizontalAlignment: booleanSchema,
   hasRandomResponsesOrder: booleanSchema,
   answerOptions: answerOptionsSchema
 }
 
-export const EmailConfig = {
+export const EmailConfigSchema: JoiSchemaMap<EmailConfig> = {
   hasValidation: booleanSchema
 }
 
-export const PhoneConfig = {
+export const PhoneConfigSchema: JoiSchemaMap<PhoneConfig> = {
   hasValidation: booleanSchema
 }
 
-export const LinkConfig = {
+export const LinkConfigSchema: JoiSchemaMap<LinkConfig> = {
   hasValidation: booleanSchema
 }
 
-export const ImageChoiceConfig = {
+export const ImageChoiceConfigSchema: JoiSchemaMap<ImageChoiceConfig> = {
   isMultipleChoice: booleanSchema,
   maxChoices: integerSchema.min(1),
   hasRandomResponsesOrder: booleanSchema,
   answerOptions: answerOptionsSchema
 }
 
-export const ShortTextConfig = {
+export const ShortTextConfigSchema: JoiSchemaMap<ShortTextConfig> = {
   placeholder: basicStringSchema,
   hasLimitedChars: booleanSchema,
   maxChars: integerSchema.min(1)
 }
 
-export const NPSConfig = {
+export const NPSConfigSchema: JoiSchemaMap<NPSConfig> = {
   canDisplayLabels: booleanSchema,
   leftLabel: basicStringSchema,
   rightLabel: basicStringSchema,
@@ -63,7 +68,7 @@ export const NPSConfig = {
   escale: basicStringSchema
 }
 
-export const DateConfig = {
+export const DateConfigSchema: JoiSchemaMap<DateConfig> = {
   isDateRequired: booleanSchema,
   dateFormat: basicStringSchema,
   isTimeRequired: booleanSchema,
@@ -71,19 +76,19 @@ export const DateConfig = {
   canCaptureInterval: booleanSchema
 }
 
-export const DropDownConfig = {
+export const DropDownConfigSchema: JoiSchemaMap<DropDownConfig> = {
   hasRandomResponsesOrder: booleanSchema,
   answerOptions: answerOptionsSchema
 }
 
-export const MatrixConfig = {
+export const MatrixConfigSchema: JoiSchemaMap<MatrixConfig> = {
   isMultipleChoice: booleanSchema,
   rowsLabels: arraySchema(basicStringSchema.required()),
   colsLabels: arraySchema(basicStringSchema.required()),
   answerOptions: arraySchema(answerOptionsSchema.required())
 }
 
-export const SliderConfig = {
+export const SliderConfigSchema: JoiSchemaMap<SliderConfig> = {
   minValue: integerSchema,
   minLabel: basicStringSchema,
   maxValue: integerSchema,
@@ -92,41 +97,41 @@ export const SliderConfig = {
   canHideValue: booleanSchema
 }
 
-export const LongTextConfig = {
+export const LongTextConfigSchema: JoiSchemaMap<LongTextConfig> = {
   placeholder: basicStringSchema,
   hasLimitedChars: booleanSchema,
   maxChars: integerSchema.min(1)
 }
 
-export const RadioButtonConfig = {
+export const RadioButtonConfigSchema: JoiSchemaMap<RadioButtonConfig> = {
   hasHorizontalAlignment: booleanSchema,
   hasRandomResponsesOrder: booleanSchema,
   answerOptions: answerOptionsSchema
 }
 
-export const QuestionConfig = {
+export const QuestionConfigSchema: JoiSchemaMap<QuestionConfig> = {
   name: basicStringSchema,
   description: basicStringSchema,
   isRequired: booleanSchema,
-  [QuestionTypeAlias.CheckBox]: Joi.object(CheckBoxConfig),
-  [QuestionTypeAlias.Date]: Joi.object(DateConfig),
-  [QuestionTypeAlias.DropDown]: Joi.object(DropDownConfig),
-  [QuestionTypeAlias.Email]: Joi.object(EmailConfig),
-  [QuestionTypeAlias.ImageChoice]: Joi.object(ImageChoiceConfig),
-  [QuestionTypeAlias.Link]: Joi.object(LinkConfig),
-  [QuestionTypeAlias.LongText]: Joi.object(LongTextConfig),
-  [QuestionTypeAlias.Matrix]: Joi.object(MatrixConfig),
-  [QuestionTypeAlias.NPS]: Joi.object(NPSConfig),
-  [QuestionTypeAlias.Number]: Joi.object(NumberConfig),
-  [QuestionTypeAlias.Phone]: Joi.object(PhoneConfig),
-  [QuestionTypeAlias.RadioButton]: Joi.object(RadioButtonConfig),
-  [QuestionTypeAlias.ShortText]: Joi.object(ShortTextConfig),
-  [QuestionTypeAlias.Slider]: Joi.object(SliderConfig)
+  [QuestionTypeAlias.CheckBox]: Joi.object(CheckBoxConfigSchema),
+  [QuestionTypeAlias.Date]: Joi.object(DateConfigSchema),
+  [QuestionTypeAlias.DropDown]: Joi.object(DropDownConfigSchema),
+  [QuestionTypeAlias.Email]: Joi.object(EmailConfigSchema),
+  [QuestionTypeAlias.ImageChoice]: Joi.object(ImageChoiceConfigSchema),
+  [QuestionTypeAlias.Link]: Joi.object(LinkConfigSchema),
+  [QuestionTypeAlias.LongText]: Joi.object(LongTextConfigSchema),
+  [QuestionTypeAlias.Matrix]: Joi.object(MatrixConfigSchema),
+  [QuestionTypeAlias.NPS]: Joi.object(NPSConfigSchema),
+  [QuestionTypeAlias.Number]: Joi.object(NumberConfigSchema),
+  [QuestionTypeAlias.Phone]: Joi.object(PhoneConfigSchema),
+  [QuestionTypeAlias.RadioButton]: Joi.object(RadioButtonConfigSchema),
+  [QuestionTypeAlias.ShortText]: Joi.object(ShortTextConfigSchema),
+  [QuestionTypeAlias.Slider]: Joi.object(SliderConfigSchema)
 }
 
-export const Question = {
+export const Question: JoiSchemaMap<QuestionInterface> = {
   form: idSchema,
   type: idSchema,
   formPage: integerSchema.min(1),
-  config: QuestionConfig
+  config: Joi.object(QuestionConfigSchema)
 }

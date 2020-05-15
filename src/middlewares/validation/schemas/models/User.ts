@@ -1,19 +1,19 @@
 import { Role } from '../../../../enums'
 import {
   fullNameSchema,
-  cpfSchema,
   passwordSchema,
   emailSchema,
   arraySchema,
   renewPasswordCodeSchema,
   stringEnumSchema
 } from '../baseSchemas'
+import { UserInterface } from '../../../../interfaces'
+import { JoiSchemaMap } from '../../../../types'
 
 export const userRoleSchema = stringEnumSchema(Role)
 
-export const User = {
+export const User: JoiSchemaMap<UserInterface> = {
   name: fullNameSchema,
-  cpf: cpfSchema,
   password: passwordSchema,
   email: emailSchema,
   roles: arraySchema(userRoleSchema.required()),
