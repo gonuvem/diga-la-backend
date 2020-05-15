@@ -1,4 +1,4 @@
-import { Document } from 'mongoose'
+import { Document, Types } from 'mongoose'
 
 import { ClientDocument } from './Client'
 
@@ -26,7 +26,7 @@ export interface FormStyle {
 }
 
 export interface FormInterface {
-  client: ClientDocument,
+  client: Partial<ClientDocument> | Types.ObjectId
   isActive: boolean,
   config: FormConfig,
   style: FormStyle
