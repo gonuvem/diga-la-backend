@@ -25,6 +25,7 @@
     "@types/jsonwebtoken": "^8.3.9",
     "@types/mongoose": "^5.7.14",
     "@types/morgan": "^1.9.0",
+    "@types/nanoid": "^2.1.0",
     "@types/rosie": "^0.0.37",
     "@types/supertest": "^2.0.9",
     "@typescript-eslint/eslint-plugin": "^2.31.0",
@@ -55,6 +56,7 @@
   "dependencies": {
     "@hapi/boom": "^9.1.0",
     "@hapi/joi": "^17.1.1",
+    "@sendgrid/mail": "^7.1.1",
     "@sentry/node": "^5.15.5",
     "apollo-server-express": "^2.13.0",
     "app-root-path": "^3.0.0",
@@ -68,6 +70,7 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.9.11",
     "morgan": "^1.10.0",
+    "nanoid": "^3.1.7",
     "winston": "^3.2.1"
   }
 }

@@ -3,6 +3,8 @@ process.env.PORT = "0";
 process.env.MONGODB_URI = "mongodb://db:27017/dig_test";
 process.env.APP_ENV = "test";
 process.env.JWT_SECRET = "segredo";
+process.env.CONTACT_EMAIL = "";
+process.env.SG_API_KEY = "SG.";
 
 module.exports = {
   globals: {
