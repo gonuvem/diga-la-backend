@@ -1,11 +1,13 @@
 import { fakeId, fakeWord, fakeArray } from '../fakers'
+import { AnswerAndQuestion, ResponseInterface } from '../../interfaces'
+import { Fake } from '../../types'
 
-export const AnswerAndQuestion = {
+const fakeAnswerAndQuestion: AnswerAndQuestion = {
   question: fakeId(),
   answer: fakeWord()
 }
 
-export const Response = {
+export const Response: Fake<ResponseInterface> = {
   form: fakeId,
-  answersAndQuestions: fakeArray(() => AnswerAndQuestion, 3)
+  answersAndQuestions: () => fakeArray(() => fakeAnswerAndQuestion, 3)
 }

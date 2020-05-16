@@ -1,15 +1,15 @@
-import { Document } from 'mongoose'
+import { Document, Types } from 'mongoose'
 
 import { QuestionDocument } from './Question'
 import { FormDocument } from './Form'
 
 export interface AnswerAndQuestion {
-  question: QuestionDocument,
+  question: QuestionDocument | Types.ObjectId,
   answer: any
 }
 
 export interface ResponseInterface {
-  form: FormDocument,
+  form: Partial<FormDocument> | Types.ObjectId,
   answersAndQuestions: AnswerAndQuestion[]
 }
 

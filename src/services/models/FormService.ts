@@ -1,6 +1,6 @@
-import Form from 'src/models/Form'
-import Question from 'src/models/Question'
-import Response from 'src/models/Response'
+import Form from '../../models/Form'
+import Question from '../../models/Question'
+import Response from '../../models/Response'
 import {
   createOne,
   fetchOneWithPopulate,
@@ -8,12 +8,12 @@ import {
   deleteOne,
   checkInUse,
   listPaginatedWithPopulate
-} from 'src/utils/mongoose'
+} from '../../utils/mongoose'
 import {
   FORMS_EMPTY_LIST,
   FORM_NOT_FOUND,
   FORM_IN_USE
-} from 'src/middlewares/errorHandling/errors'
+} from '../../middlewares/errorHandling/errors'
 
 const populate = { path: 'client', populate: { path: 'user' } }
 

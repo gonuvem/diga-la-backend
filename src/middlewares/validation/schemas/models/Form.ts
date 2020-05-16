@@ -8,8 +8,10 @@ import {
   integerSchema,
   urlSchema
 } from '../baseSchemas'
+import { JoiSchemaMap } from '../../../../types'
+import { FormConfig, FormStyle, FormInterface } from '../../../../interfaces'
 
-export const FormConfig = {
+export const FormConfigSchema: JoiSchemaMap<FormConfig> = {
   name: basicStringSchema,
   description: basicStringSchema,
   beginDate: dateSchema,
@@ -22,7 +24,7 @@ export const FormConfig = {
   canAllowMultipleSubmissions: booleanSchema
 }
 
-export const FormStyle = {
+export const FormStyleSchema: JoiSchemaMap<FormStyle> = {
   background: basicStringSchema,
   logo: urlSchema,
   headerText: basicStringSchema,
@@ -32,9 +34,9 @@ export const FormStyle = {
   footerBackground: basicStringSchema
 }
 
-export const Form = {
+export const Form: JoiSchemaMap<FormInterface> = {
   client: idSchema,
   isActive: booleanSchema,
-  config: Joi.object(FormConfig),
-  style: Joi.object(FormStyle)
+  config: Joi.object(FormConfigSchema),
+  style: Joi.object(FormStyleSchema)
 }

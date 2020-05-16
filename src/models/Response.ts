@@ -1,19 +1,27 @@
 import mongoose from 'mongoose'
 
-import { ResponseDocument } from '../interfaces'
+import {
+  ResponseDocument,
+  AnswerAndQuestion,
+  ResponseInterface
+} from '../interfaces'
+import { MongooseDefinition } from '../types'
 import './Question'
 import './Form'
 
-const AnswerAndQuestionSchema = new mongoose.Schema({
+const answerAndQuestionDefinition: MongooseDefinition<AnswerAndQuestion> = {
   question: {
     type: mongoose.Types.ObjectId,
     ref: 'Question',
     required: true
   },
   answer: mongoose.Schema.Types.Mixed
-}, { _id: false })
+}
 
-const ResponseSchema = new mongoose.Schema({
+const AnswerAndQuestionSchema = new mongoose.Schema(answerAndQuestionDefinition,
+  { _id: false })
+
+const responseDefinition: MongooseDefinition<ResponseInterface> = {
   form: {
     type: mongoose.Types.ObjectId,
     ref: 'Form',
@@ -23,7 +31,10 @@ const ResponseSchema = new mongoose.Schema({
     type: AnswerAndQuestionSchema,
     required: true
   }]
-}, { timestamps: true })
+}
+
+const ResponseSchema = new mongoose.Schema(responseDefinition,
+  { timestamps: true })
 
 const Response = mongoose.model<ResponseDocument>('Response', ResponseSchema)
 

@@ -1,12 +1,12 @@
-import User from 'src/models/User'
-import { USER_NOT_FOUND } from 'src/middlewares/errorHandling/errors'
+import User from '../../models/User'
+import { USER_NOT_FOUND } from '../../middlewares/errorHandling/errors'
 import {
   fetchOne,
   updateOne,
   deleteOne,
   createOneObject,
   createOne
-} from 'src/utils/mongoose'
+} from '../../utils/mongoose'
 
 export const fetchOneUser = fetchOne(User, USER_NOT_FOUND)
 

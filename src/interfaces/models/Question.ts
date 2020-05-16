@@ -1,6 +1,6 @@
-import { Document } from 'mongoose'
+import { Document, Types } from 'mongoose'
 
-import { QuestionTypeAlias } from 'src/enums'
+import { QuestionTypeAlias } from '../../enums'
 import { FormDocument } from './Form'
 import { QuestionTypeDocument } from './QuestionType'
 
@@ -117,8 +117,8 @@ export interface QuestionConfig {
 }
 
 export interface QuestionInterface {
-  form: FormDocument,
-  type: QuestionTypeDocument,
+  form: Partial<FormDocument> | Types.ObjectId,
+  type: Partial<QuestionTypeDocument> | Types.ObjectId,
   formPage: number,
   config: QuestionConfig
 }

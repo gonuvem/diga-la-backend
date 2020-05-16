@@ -1,15 +1,15 @@
-import Response from 'src/models/Response'
+import Response from '../../models/Response'
 import {
   createOne,
   fetchOneWithPopulate,
   updateOne,
   deleteOne,
   listPaginatedWithPopulate
-} from 'src/utils/mongoose'
+} from '../../utils/mongoose'
 import {
   RESPONSES_EMPTY_LIST,
   RESPONSE_NOT_FOUND
-} from 'src/middlewares/errorHandling/errors'
+} from '../../middlewares/errorHandling/errors'
 
 const populate = [
   {
