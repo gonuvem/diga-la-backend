@@ -12,3 +12,9 @@ export type ValidateTokenParams = {
 export type ForgotPasswordParams = {
   email: UserInterface['email']
 }
+
+export type RenewPasswordParams = {
+  email: UserInterface['email'],
+  password: UserInterface['password'],
+  code: UserInterface['renewPasswordCode']
+}
