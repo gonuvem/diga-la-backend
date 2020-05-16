@@ -8,3 +8,7 @@ export type LoginParams = {
 export type ValidateTokenParams = {
   token: string
 }
+
+export type ForgotPasswordParams = {
+  email: UserInterface['email']
+}
