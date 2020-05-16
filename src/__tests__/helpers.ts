@@ -11,7 +11,7 @@ import {
   UserInterface
 } from '../interfaces'
 
-function mapModelNameToModel (modelName: string): mongoose.Model<Document> {
+function mapModelNameToModel (modelName: string): mongoose.Model<any> {
   switch (modelName) {
     case 'User': return User
     case 'Client': return Client
@@ -28,14 +28,14 @@ export function createObject<T extends Document> ({ modelName }:
    { modelName: string }) {
   return function (
     { body = {}, size = 1 }: { body?: Partial<T>, size?: number })
-    : Promise<any> {
-    const Model = mapModelNameToModel(modelName)
+    : Promise<T> {
+    const Model: mongoose.Model<T> = mapModelNameToModel(modelName)
 
     return Model.create(buildFactories<T>(modelName, body, size))
   }
 }
 
-export async function dropCollection<T extends Document> ({ modelName }
+export async function dropCollection ({ modelName }
   : { modelName: string }): Promise<void> {
   const Model = mapModelNameToModel(modelName)
 
