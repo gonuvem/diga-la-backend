@@ -1,7 +1,12 @@
 import Joi from '@hapi/joi'
 
 import { User } from '../models/User'
-import { LoginParams, JoiSchemaMap } from '../../../../types'
+import { basicStringSchema } from '../baseSchemas'
+import {
+  LoginParams,
+  JoiSchemaMap,
+  ValidateTokenParams
+} from '../../../../types'
 
 const loginKeys: JoiSchemaMap<LoginParams> = {
   email: User.email.required(),
@@ -10,6 +15,13 @@ const loginKeys: JoiSchemaMap<LoginParams> = {
 
 const login = Joi.object<LoginParams>().keys(loginKeys)
 
+const validateTokenKeys: JoiSchemaMap<ValidateTokenParams> = {
+  token: basicStringSchema.required()
+}
+
+const validateToken = Joi.object().keys(validateTokenKeys)
+
 export default {
-  login
+  login,
+  validateToken
 }
