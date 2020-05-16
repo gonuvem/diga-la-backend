@@ -6,7 +6,8 @@ import {
   LoginParams,
   JoiSchemaMap,
   ValidateTokenParams,
-  ForgotPasswordParams
+  ForgotPasswordParams,
+  RenewPasswordParams
 } from '../../../../types'
 
 const loginKeys: JoiSchemaMap<LoginParams> = {
@@ -26,8 +27,17 @@ const forgotPasswordKeys: JoiSchemaMap<ForgotPasswordParams> = {
 const forgotPassword = Joi.object<ForgotPasswordParams>()
   .keys(forgotPasswordKeys)
 
+const renewPasswordKeys: JoiSchemaMap<RenewPasswordParams> = {
+  email: User.email.required(),
+  password: User.password.required(),
+  code: User.renewPasswordCode.required()
+}
+const renewPassword = Joi.object<RenewPasswordParams>()
+  .keys(renewPasswordKeys)
+
 export default {
   login,
   validateToken,
-  forgotPassword
+  forgotPassword,
+  renewPassword
 }
