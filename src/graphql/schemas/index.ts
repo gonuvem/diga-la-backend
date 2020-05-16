@@ -47,6 +47,7 @@ const Query = `
 type Query {
   "Acorda a API"
   wakeUp: String
+  ${AuthSchemas.Query}
 }
 `
 

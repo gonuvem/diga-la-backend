@@ -1,5 +1,10 @@
 import { wrapGqlAsyncFunc } from '../../middlewares/errorHandling/errorHelper'
 import validateGqlRequest from '../../middlewares/validation'
+import isGqlAuthorized from '../../middlewares/authorization'
+import {
+  isGqlAuthenticated
+} from '../../middlewares/authentication/authenticationHelper'
+
 import * as AuthResolverHelper from '../../helpers/resolverHelpers/AuthResolverHelper'
 import {
   MyContext,
@@ -9,6 +14,7 @@ import {
   ForgotPasswordParams,
   RenewPasswordParams
 } from '../../types'
+import { ClientDocument } from '../../interfaces'
 
 const login = (_parent: object, _args: object, context: MyContext<LoginParams>)
 : Promise<LoginResponse> => {
@@ -31,6 +37,16 @@ const renewPassword = (_parent: object, _args: object,
   context: MyContext<RenewPasswordParams>)
 : Promise<{}> => {
   return AuthResolverHelper.renewPassword(context.validData)
+}
+
+const readOwnProfile = (_parent: object, _args: object, context: MyContext)
+: Promise<{ client: ClientDocument }> => {
+  return AuthResolverHelper.readOwnProfile(context.user)
+}
+
+export const Query = {
+  readOwnProfile: wrapGqlAsyncFunc(isGqlAuthenticated(isGqlAuthorized(
+    readOwnProfile)))
 }
 
 export const Mutation = {
