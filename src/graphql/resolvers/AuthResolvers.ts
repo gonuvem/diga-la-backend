@@ -6,7 +6,8 @@ import {
   LoginParams,
   LoginResponse,
   ValidateTokenParams,
-  ForgotPasswordParams
+  ForgotPasswordParams,
+  RenewPasswordParams
 } from '../../types'
 
 const login = (_parent: object, _args: object, context: MyContext<LoginParams>)
@@ -26,8 +27,15 @@ const forgotPassword = (_parent: object, _args: object,
   return AuthResolverHelper.forgotPassword(context.validData)
 }
 
+const renewPassword = (_parent: object, _args: object,
+  context: MyContext<RenewPasswordParams>)
+: Promise<{}> => {
+  return AuthResolverHelper.renewPassword(context.validData)
+}
+
 export const Mutation = {
   login: wrapGqlAsyncFunc(validateGqlRequest(login)),
   validateToken: wrapGqlAsyncFunc(validateGqlRequest(validateToken)),
-  forgotPassword: wrapGqlAsyncFunc(validateGqlRequest(forgotPassword))
+  forgotPassword: wrapGqlAsyncFunc(validateGqlRequest(forgotPassword)),
+  renewPassword: wrapGqlAsyncFunc(validateGqlRequest(renewPassword))
 }
