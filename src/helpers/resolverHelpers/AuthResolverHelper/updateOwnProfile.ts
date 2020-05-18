@@ -9,11 +9,8 @@ import {
   fetchOneClientWithUser,
   updateOneClient
 } from '../../../services/models/ClientService'
-import {
-  fetchOneUserWithoutError,
-  updateOneUser
-} from '../../../services/models/UserService'
-import { EMAIL_CONFLICT } from '../../../middlewares/errorHandling/errors'
+import { updateOneUser } from '../../../services/models/UserService'
+import { checkUserConflicts } from '../../UserHelper'
 
 const updateClientWithUser = async (client: ClientDocument,
   clientData: Partial<ClientInterface>, userData: Partial<UserInterface>)
@@ -32,17 +29,6 @@ const updateClientWithUser = async (client: ClientDocument,
   clientUpdated.user = user
 
   return clientUpdated
-}
-
-const checkUserConflicts = async (user: Partial<UserDocument>,
-  query = {}): Promise<void> => {
-  const { email } = user
-
-  const [userWithSameEmail] = await Promise.all([
-    fetchOneUserWithoutError({ conditions: { email, ...query } })
-  ])
-
-  if (userWithSameEmail) throw EMAIL_CONFLICT
 }
 
 export async function updateOwnProfile (user: UserDocument,
