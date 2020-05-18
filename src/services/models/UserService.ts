@@ -5,7 +5,8 @@ import {
   updateOne,
   deleteOne,
   createOneObject,
-  createOne
+  createOne,
+  fetchOneWithoutError
 } from '../../utils/mongoose'
 
 export const fetchOneUser = fetchOne(User, USER_NOT_FOUND)
@@ -17,3 +18,5 @@ export const deleteOneUser = deleteOne(User, USER_NOT_FOUND)
 export const createOneUserObject = createOneObject(User)
 
 export const createOneUser = createOne(User)
+
+export const fetchOneUserWithoutError = fetchOneWithoutError(User)
