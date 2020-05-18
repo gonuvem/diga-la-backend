@@ -45,14 +45,14 @@ const readOwnProfile = (_parent: object, _args: object, context: MyContext)
   return AuthResolverHelper.readOwnProfile(context.user)
 }
 
-const updateOwnProfile = async (_parent: object, _args: object,
+const updateOwnProfile = (_parent: object, _args: object,
   context: MyContext<{ input: UpdateOwnProfileInput }>)
   : Promise<{ client: ClientDocument }> => {
   return AuthResolverHelper.updateOwnProfile(context.user,
     context.validData.input)
 }
 
-const updateOwnPassword = async (_parent: object, _args: object,
+const updateOwnPassword = (_parent: object, _args: object,
   context: MyContext<UpdateOwnPasswordParams>)
 : Promise<{ user: UserDocument }> => {
   return AuthResolverHelper.updateOwnPassword(context.user, context.validData)
