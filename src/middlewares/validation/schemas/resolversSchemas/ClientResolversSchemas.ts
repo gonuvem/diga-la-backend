@@ -2,7 +2,8 @@ import Joi from '@hapi/joi'
 
 import {
   createSchema,
-  updateSchema
+  updateSchema,
+  removeSchema
 } from '../baseSchemas'
 import { User } from '../models/User'
 import {
@@ -24,7 +25,10 @@ const updateKeys: JoiSchemaMap<UpdateClientInput> = {
 }
 const update = updateSchema(Joi.object().keys(updateKeys).or('name', 'email'))
 
+const remove = removeSchema
+
 export default {
   createClient: create,
-  updateClient: update
+  updateClient: update,
+  deleteClient: remove
 }
