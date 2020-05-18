@@ -1,4 +1,8 @@
-import { UpdateOwnProfileInput, CreateClientInput } from '../types'
+import {
+  UpdateOwnProfileInput,
+  CreateClientInput,
+  UpdateClientInput
+} from '../types'
 
 export const createInputUpdateOwnProfile = (input: UpdateOwnProfileInput)
 : string => `{
@@ -10,4 +14,9 @@ export const createInputCreateClient = (input: CreateClientInput): string => `{
   name: "${input.name}",
   email: "${input.email}",
   password: "${input.password}"
+}`
+
+export const createInputUpdateClient = (input: UpdateClientInput): string => `{
+  name: "${input.name}",
+  email: "${input.email}"
 }`
