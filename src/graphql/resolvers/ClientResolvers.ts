@@ -22,9 +22,18 @@ const updateClient = (_parent: object, _args: object,
   return ClientResolverHelper.updateClient(context.validData)
 }
 
+const deleteClient = (_parent: object, _args: object,
+  context: MyContext<{ id: string }>)
+: Promise<{}> => {
+  return ClientResolverHelper.deleteClient(context.validData)
+}
+
 export const Mutation = {
   createClient: wrapGqlAsyncFunc(isGqlAuthenticated(isGqlAuthorized(
     validateGqlRequest(createClient)))),
   updateClient: wrapGqlAsyncFunc(isGqlAuthenticated(isGqlAuthorized(
-    validateGqlRequest(updateClient))))
+    validateGqlRequest(updateClient)))),
+  deleteClient: wrapGqlAsyncFunc(isGqlAuthenticated(isGqlAuthorized(
+    validateGqlRequest(deleteClient))))
+
 }
