@@ -1,4 +1,5 @@
 import * as AuthResolvers from './AuthResolvers'
+import * as ClientResolvers from './ClientResolvers'
 
 const resolvers = {
   Date: (value: string | number | Date): string => new Date(value).toISOString(),
@@ -7,7 +8,8 @@ const resolvers = {
     ...AuthResolvers.Query
   },
   Mutation: {
-    ...AuthResolvers.Mutation
+    ...AuthResolvers.Mutation,
+    ...ClientResolvers.Mutation
   }
 }
 
