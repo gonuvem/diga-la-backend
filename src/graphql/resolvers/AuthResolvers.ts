@@ -4,7 +4,6 @@ import isGqlAuthorized from '../../middlewares/authorization'
 import {
   isGqlAuthenticated
 } from '../../middlewares/authentication/authenticationHelper'
-
 import * as AuthResolverHelper from '../../helpers/resolverHelpers/AuthResolverHelper'
 import {
   MyContext,
@@ -12,7 +11,8 @@ import {
   LoginResponse,
   ValidateTokenParams,
   ForgotPasswordParams,
-  RenewPasswordParams
+  RenewPasswordParams,
+  UpdateOwnProfileInput
 } from '../../types'
 import { ClientDocument } from '../../interfaces'
 
@@ -44,6 +44,13 @@ const readOwnProfile = (_parent: object, _args: object, context: MyContext)
   return AuthResolverHelper.readOwnProfile(context.user)
 }
 
+const updateOwnProfile = async (_parent: object, _args: object,
+  context: MyContext<{ input: UpdateOwnProfileInput }>)
+  : Promise<{ client: ClientDocument }> => {
+  return AuthResolverHelper.updateOwnProfile(context.user,
+    context.validData.input)
+}
+
 export const Query = {
   readOwnProfile: wrapGqlAsyncFunc(isGqlAuthenticated(isGqlAuthorized(
     readOwnProfile)))
@@ -53,5 +60,7 @@ export const Mutation = {
   login: wrapGqlAsyncFunc(validateGqlRequest(login)),
   validateToken: wrapGqlAsyncFunc(validateGqlRequest(validateToken)),
   forgotPassword: wrapGqlAsyncFunc(validateGqlRequest(forgotPassword)),
-  renewPassword: wrapGqlAsyncFunc(validateGqlRequest(renewPassword))
+  renewPassword: wrapGqlAsyncFunc(validateGqlRequest(renewPassword)),
+  updateOwnProfile: wrapGqlAsyncFunc(isGqlAuthenticated(isGqlAuthorized(
+    validateGqlRequest(updateOwnProfile))))
 }

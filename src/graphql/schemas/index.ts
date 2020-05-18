@@ -41,6 +41,7 @@ const enums = `
 `
 
 const inputs = `
+${AuthSchemas.inputs}
 `
 
 const Query = `
