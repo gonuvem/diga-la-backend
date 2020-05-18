@@ -18,3 +18,8 @@ export type RenewPasswordParams = {
   password: UserInterface['password'],
   code: UserInterface['renewPasswordCode']
 }
+
+export type UpdateOwnProfileInput = {
+  name: UserInterface['name'],
+  email: UserInterface['email']
+}
