@@ -23,7 +23,7 @@ type UpdateClient {
   | 620          |    403     | Este usuário não possui permissão para esta ação            |
   | 630          |    400     | Erro na validação. Veja error.message                       |
   | 703          |    409     | Já existe um usuário com este email                         |
-  | 721          |    404     | Cliente não encontrado                                      |
+  | 711          |    404     | Cliente não encontrado                                      |
   """
   error: MyError
 }
