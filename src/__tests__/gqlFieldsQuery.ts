@@ -15,3 +15,10 @@ export const userFieldsQuery = `{
   email
   roles
 }`
+
+export const clientFieldsQuery = `{
+  _id
+  user ${userFieldsQuery}
+  createdAt
+  updatedAt
+}`

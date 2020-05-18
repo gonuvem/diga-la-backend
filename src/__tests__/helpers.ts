@@ -88,17 +88,13 @@ export const createClientUserAndToken = async (userBody = {}, clientBody = {})
 }
 
 type SetupData = {
-      fact: UserInterface,
-      token: string,
-      user: UserDocument
-
+  fact: UserInterface,
+  token: string,
+  user: UserDocument
 }
 
-export type SetupTaskResult = {
-  noRole: SetupData
-  dev: SetupData
-  client: SetupData
-}
+export type SetupTaskResult = { [role in Role]: SetupData }
+& { [s: string]: SetupData }
 
 const createSetupData = (factory: UserInterface, token: string,
   user: UserDocument): SetupData => {
