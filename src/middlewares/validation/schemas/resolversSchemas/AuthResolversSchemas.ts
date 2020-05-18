@@ -1,13 +1,14 @@
 import Joi from '@hapi/joi'
 
 import { User } from '../models/User'
-import { basicStringSchema } from '../baseSchemas'
+import { basicStringSchema, createSchema } from '../baseSchemas'
 import {
   LoginParams,
   JoiSchemaMap,
   ValidateTokenParams,
   ForgotPasswordParams,
-  RenewPasswordParams
+  RenewPasswordParams,
+  UpdateOwnProfileInput
 } from '../../../../types'
 
 const loginKeys: JoiSchemaMap<LoginParams> = {
@@ -35,9 +36,18 @@ const renewPasswordKeys: JoiSchemaMap<RenewPasswordParams> = {
 const renewPassword = Joi.object<RenewPasswordParams>()
   .keys(renewPasswordKeys)
 
+const updateOwnProfileKeys: JoiSchemaMap<UpdateOwnProfileInput> = {
+  email: User.email.optional(),
+  name: User.name.optional()
+}
+
+const updateOwnProfile = createSchema(Joi.object<UpdateOwnProfileInput>()
+  .keys(updateOwnProfileKeys).or('email', 'name'))
+
 export default {
   login,
   validateToken,
   forgotPassword,
-  renewPassword
+  renewPassword,
+  updateOwnProfile
 }
