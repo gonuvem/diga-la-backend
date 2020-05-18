@@ -6,5 +6,9 @@ import { Role } from '../../enums'
  */
 export const gqlRouter: { [resolverName: string]: Role[] } = {
   readOwnProfile: [Role.Client],
-  updateOwnProfile: [Role.Client]
+  updateOwnProfile: [Role.Client],
+
+  createClient: [Role.Dev],
+  updateClient: [Role.Dev],
+  deleteClient: [Role.Dev]
 }

@@ -28,3 +28,14 @@ export type UpdateOwnPasswordParams = {
   oldPassword: UserInterface['password'],
   newPassword: UserInterface['password']
 }
+
+export type CreateClientInput = {
+  name: UserInterface['name'],
+  email: UserInterface['email'],
+  password: UserInterface['password'],
+}
+
+export type UpdateClientInput = {
+  name: UserInterface['name'],
+  email: UserInterface['email']
+}

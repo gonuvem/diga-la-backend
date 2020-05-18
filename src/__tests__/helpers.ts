@@ -5,16 +5,19 @@ import * as jwt from '../middlewares/authentication/jwt'
 import { Role } from '../enums'
 import User from '../models/User'
 import Client from '../models/Client'
+import Form from '../models/Form'
 import {
   UserDocument,
   ClientDocument,
-  UserInterface
+  UserInterface,
+  FormDocument
 } from '../interfaces'
 
 function mapModelNameToModel (modelName: string): mongoose.Model<any> {
   switch (modelName) {
     case 'User': return User
     case 'Client': return Client
+    case 'Form': return Form
   }
 }
 
@@ -74,6 +77,8 @@ export const splitRolesByPermission = (rolesAllowed: Array<Role>)
 export const createUser = createObject<UserDocument>({ modelName: 'User' })
 
 export const createClient = createObject<ClientDocument>({ modelName: 'Client' })
+
+export const createForm = createObject<FormDocument>({ modelName: 'Form' })
 
 export const createClientUserAndToken = async (userBody = {}, clientBody = {})
 : Promise<{ user: UserDocument, token: string, client: ClientDocument }> => {

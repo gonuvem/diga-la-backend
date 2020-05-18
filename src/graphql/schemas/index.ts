@@ -1,6 +1,7 @@
 import { gql } from 'apollo-server-express'
 
 import * as AuthSchemas from './AuthSchemas'
+import * as ClientSchemas from './ClientSchemas'
 
 const basicTypes = `
 "Tipo Date do JavaScript"
@@ -35,6 +36,7 @@ enum Role {
 
 const types = `
 ${AuthSchemas.types}
+${ClientSchemas.types}
 `
 
 const enums = `
@@ -42,6 +44,7 @@ const enums = `
 
 const inputs = `
 ${AuthSchemas.inputs}
+${ClientSchemas.inputs}
 `
 
 const Query = `
@@ -55,6 +58,7 @@ type Query {
 const Mutation = `
 type Mutation {
   ${AuthSchemas.Mutation}
+  ${ClientSchemas.Mutation}
 }
 `
 
