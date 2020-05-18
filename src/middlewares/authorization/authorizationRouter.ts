@@ -9,5 +9,6 @@ export const gqlRouter: { [resolverName: string]: Role[] } = {
   updateOwnProfile: [Role.Client],
 
   createClient: [Role.Dev],
-  updateClient: [Role.Dev]
+  updateClient: [Role.Dev],
+  deleteClient: [Role.Dev]
 }
