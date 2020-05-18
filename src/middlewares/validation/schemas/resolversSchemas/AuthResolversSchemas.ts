@@ -8,7 +8,8 @@ import {
   ValidateTokenParams,
   ForgotPasswordParams,
   RenewPasswordParams,
-  UpdateOwnProfileInput
+  UpdateOwnProfileInput,
+  UpdateOwnPasswordParams
 } from '../../../../types'
 
 const loginKeys: JoiSchemaMap<LoginParams> = {
@@ -44,10 +45,17 @@ const updateOwnProfileKeys: JoiSchemaMap<UpdateOwnProfileInput> = {
 const updateOwnProfile = createSchema(Joi.object<UpdateOwnProfileInput>()
   .keys(updateOwnProfileKeys).or('email', 'name'))
 
+const updateOwnPasswordKeys: JoiSchemaMap<UpdateOwnPasswordParams> = {
+  oldPassword: User.password.required(),
+  newPassword: User.password.required()
+}
+const updateOwnPassword = Joi.object().keys(updateOwnPasswordKeys)
+
 export default {
   login,
   validateToken,
   forgotPassword,
   renewPassword,
-  updateOwnProfile
+  updateOwnProfile,
+  updateOwnPassword
 }
