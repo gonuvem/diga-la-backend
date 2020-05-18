@@ -12,9 +12,10 @@ import {
   ValidateTokenParams,
   ForgotPasswordParams,
   RenewPasswordParams,
-  UpdateOwnProfileInput
+  UpdateOwnProfileInput,
+  UpdateOwnPasswordParams
 } from '../../types'
-import { ClientDocument } from '../../interfaces'
+import { ClientDocument, UserDocument } from '../../interfaces'
 
 const login = (_parent: object, _args: object, context: MyContext<LoginParams>)
 : Promise<LoginResponse> => {
@@ -51,6 +52,12 @@ const updateOwnProfile = async (_parent: object, _args: object,
     context.validData.input)
 }
 
+const updateOwnPassword = async (_parent: object, _args: object,
+  context: MyContext<UpdateOwnPasswordParams>)
+: Promise<{ user: UserDocument }> => {
+  return AuthResolverHelper.updateOwnPassword(context.user, context.validData)
+}
+
 export const Query = {
   readOwnProfile: wrapGqlAsyncFunc(isGqlAuthenticated(isGqlAuthorized(
     readOwnProfile)))
@@ -62,5 +69,7 @@ export const Mutation = {
   forgotPassword: wrapGqlAsyncFunc(validateGqlRequest(forgotPassword)),
   renewPassword: wrapGqlAsyncFunc(validateGqlRequest(renewPassword)),
   updateOwnProfile: wrapGqlAsyncFunc(isGqlAuthenticated(isGqlAuthorized(
-    validateGqlRequest(updateOwnProfile))))
+    validateGqlRequest(updateOwnProfile)))),
+  updateOwnPassword: wrapGqlAsyncFunc(isGqlAuthenticated(validateGqlRequest(
+    updateOwnPassword)))
 }
