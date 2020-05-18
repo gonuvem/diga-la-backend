@@ -34,3 +34,8 @@ export type CreateClientInput = {
   email: UserInterface['email'],
   password: UserInterface['password'],
 }
+
+export type UpdateClientInput = {
+  name: UserInterface['name'],
+  email: UserInterface['email']
+}
