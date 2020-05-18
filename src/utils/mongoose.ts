@@ -118,3 +118,11 @@ export function listPaginated<T extends Document>
     return { objects, total, pages }
   }
 }
+
+export function fetchOneWithoutError<T extends Document>
+(Model: mongoose.Model<T>) {
+  return function (
+    { conditions = {}, projection = '', lean = true }: FetchParams): Query<T> {
+    return Model.findOne(conditions, projection).lean(lean)
+  }
+}
