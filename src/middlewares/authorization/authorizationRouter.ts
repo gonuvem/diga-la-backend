@@ -10,5 +10,7 @@ export const gqlRouter: { [resolverName: string]: Role[] } = {
 
   createClient: [Role.Dev],
   updateClient: [Role.Dev],
-  deleteClient: [Role.Dev]
+  deleteClient: [Role.Dev],
+  listClients: [Role.Dev],
+  readClient: [Role.Dev]
 }

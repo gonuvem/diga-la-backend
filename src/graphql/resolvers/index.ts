@@ -5,7 +5,8 @@ const resolvers = {
   Date: (value: string | number | Date): string => new Date(value).toISOString(),
   Query: {
     wakeUp: (): string => 'DIG API',
-    ...AuthResolvers.Query
+    ...AuthResolvers.Query,
+    ...ClientResolvers.Query
   },
   Mutation: {
     ...AuthResolvers.Mutation,

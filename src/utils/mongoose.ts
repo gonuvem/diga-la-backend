@@ -126,3 +126,26 @@ export function fetchOneWithoutError<T extends Document>
     return Model.findOne(conditions, projection).lean(lean)
   }
 }
+
+export function fetchAll<T extends Document> (Model: mongoose.Model<T>) {
+  return function ({ conditions = {}, projection = '', lean = true }
+    : FetchParams): Query<Array<T>> {
+    return Model.find(conditions, projection).lean(lean)
+  }
+}
+
+type LookupObject = {
+  from: string,
+  localField: string,
+  foreignField: string,
+  as: string
+}
+export const createLookupObj = (collection: string, localField: string,
+  fK = '_id'): LookupObject => {
+  return {
+    from: collection,
+    localField: localField,
+    foreignField: fK,
+    as: localField
+  }
+}
