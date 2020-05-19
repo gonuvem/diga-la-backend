@@ -36,9 +36,17 @@ const listClients = (_parent: object, _args: object,
   return ClientResolverHelper.listClients(context.validData)
 }
 
+const readClient = async (_parent: object, _args: object,
+  context: MyContext<{ id: string }>)
+: Promise<{ client: ClientDocument }> => {
+  return ClientResolverHelper.readClient(context.validData)
+}
+
 export const Query = {
   listClients: wrapGqlAsyncFunc(isGqlAuthenticated(isGqlAuthorized(
-    validateGqlRequest(listClients))))
+    validateGqlRequest(listClients)))),
+  readClient: wrapGqlAsyncFunc(isGqlAuthenticated(isGqlAuthorized(
+    validateGqlRequest(readClient))))
 }
 
 export const Mutation = {
