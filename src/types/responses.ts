@@ -1,4 +1,4 @@
-import { UserDocument } from '../interfaces'
+import { UserDocument, ClientDocument } from '../interfaces'
 
 type BasicUser = {
   _id: UserDocument['_id']
@@ -15,4 +15,13 @@ export type UserRoleInfo = {
 export type LoginResponse = {
   token: string,
   info: UserRoleInfo
+}
+
+type ListResponse = {
+  total: number,
+  pages: number
+}
+
+export type ListClientsResponse = ListResponse & {
+  clients: ClientDocument[]
 }

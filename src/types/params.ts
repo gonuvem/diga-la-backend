@@ -39,3 +39,12 @@ export type UpdateClientInput = {
   name: UserInterface['name'],
   email: UserInterface['email']
 }
+
+type ListParams = {
+  q?: string,
+  page?: number,
+  perPage?: number,
+  sort?: string,
+}
+
+export type ListClientsParams = ListParams & { filters?: object }
