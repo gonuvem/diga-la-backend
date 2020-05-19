@@ -6,7 +6,9 @@ import * as ClientResolverHelper from '../../helpers/resolverHelpers/ClientResol
 import {
   MyContext,
   CreateClientInput,
-  UpdateClientInput
+  UpdateClientInput,
+  ListClientsParams,
+  ListClientsResponse
 } from '../../types'
 import { ClientDocument } from '../../interfaces'
 
@@ -26,6 +28,17 @@ const deleteClient = (_parent: object, _args: object,
   context: MyContext<{ id: string }>)
 : Promise<{}> => {
   return ClientResolverHelper.deleteClient(context.validData)
+}
+
+const listClients = (_parent: object, _args: object,
+  context: MyContext<ListClientsParams>)
+: Promise<ListClientsResponse> => {
+  return ClientResolverHelper.listClients(context.validData)
+}
+
+export const Query = {
+  listClients: wrapGqlAsyncFunc(isGqlAuthenticated(isGqlAuthorized(
+    validateGqlRequest(listClients))))
 }
 
 export const Mutation = {
