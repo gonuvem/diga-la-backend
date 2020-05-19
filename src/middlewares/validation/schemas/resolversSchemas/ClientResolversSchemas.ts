@@ -3,7 +3,8 @@ import Joi from '@hapi/joi'
 import {
   createSchema,
   updateSchema,
-  removeSchema
+  removeSchema,
+  listSchema
 } from '../baseSchemas'
 import { User } from '../models/User'
 import {
@@ -27,8 +28,15 @@ const update = updateSchema(Joi.object().keys(updateKeys).or('name', 'email'))
 
 const remove = removeSchema
 
+const sortFields = ['-user.name', 'user.name', '-createdAt', 'createdAt']
+const defaultField = 'user.name'
+const filters = {}
+
+const list = listSchema(sortFields, defaultField, filters)
+
 export default {
   createClient: create,
   updateClient: update,
-  deleteClient: remove
+  deleteClient: remove,
+  listClients: list
 }
