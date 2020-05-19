@@ -4,7 +4,8 @@ import {
   createSchema,
   updateSchema,
   removeSchema,
-  listSchema
+  listSchema,
+  readSchema
 } from '../baseSchemas'
 import { User } from '../models/User'
 import {
@@ -34,9 +35,12 @@ const filters = {}
 
 const list = listSchema(sortFields, defaultField, filters)
 
+const read = readSchema
+
 export default {
   createClient: create,
   updateClient: update,
   deleteClient: remove,
-  listClients: list
+  listClients: list,
+  readClient: read
 }
