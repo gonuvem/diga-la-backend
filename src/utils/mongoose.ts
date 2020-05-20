@@ -19,7 +19,7 @@ export function fetchOne<T extends Document>
 }
 
 export function createOne<T extends Document> (Model: mongoose.Model<T>) {
-  return async function ({ doc }: { doc: object }): Promise<T> {
+  return async function ({ doc }: { doc: Partial<T> }): Promise<T> {
     const obj = new Model(doc)
 
     return obj.save()
