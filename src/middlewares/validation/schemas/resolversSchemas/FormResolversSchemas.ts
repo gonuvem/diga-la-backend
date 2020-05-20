@@ -2,7 +2,8 @@ import Joi from '@hapi/joi'
 
 import {
   createSchema,
-  updateSchema
+  updateSchema,
+  removeSchema
 } from '../baseSchemas'
 import { Form } from '../models/Form'
 import {
@@ -26,7 +27,10 @@ const updateOwnKeys: JoiSchemaMap<UpdateOwnFormInput> = {
 const updateOwn = updateSchema(Joi.object().keys(updateOwnKeys)
   .or('isActive', 'config', 'style'))
 
+const removeOwn = removeSchema
+
 export default {
   createOwnForm: createOwn,
-  updateOwnForm: updateOwn
+  updateOwnForm: updateOwn,
+  deleteOwnForm: removeOwn
 }
