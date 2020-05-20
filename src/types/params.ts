@@ -54,3 +54,9 @@ export type CreateOwnFormInput = {
   config: FormInterface['config'],
   style?: FormInterface['style']
 }
+
+export type UpdateOwnFormInput = {
+  isActive?: FormInterface['isActive'],
+  config?: FormInterface['config'],
+  style?: FormInterface['style']
+}
