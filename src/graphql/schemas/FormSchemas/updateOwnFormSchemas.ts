@@ -1,5 +1,5 @@
 const UpdateOwnFormInput = `
-"Parâmetros para atualizar pesquisa. Pelo menos um dos campos opcionais deve ser enviado."
+"Parâmetros para atualizar pesquisa do cliente logado. Pelo menos um dos campos opcionais deve ser enviado."
 input UpdateOwnFormInput {
   "Valor booleano"
   isActive: Boolean
@@ -9,7 +9,7 @@ input UpdateOwnFormInput {
 `
 
 const UpdateOwnFormType = `
-"Resposta da mutation que atualiza pesquisa"
+"Resposta da mutation que atualiza pesquisa do cliente logado"
 type UpdateOwnForm {
   "Pesquisa atualizada"
   form: Form
@@ -31,7 +31,7 @@ type UpdateOwnForm {
 `
 
 const updateOwnFormMutation = `
-"Mutation que atualiza pesquisa. APENAS PARA ('dev')"
+"Mutation que atualiza pesquisa do cliente logado. APENAS PARA ('client')"
 updateOwnForm(
   "Regex: /^[0-9a-fA-F]{24}$/"
   id: ID!, 
