@@ -6,11 +6,15 @@ import { Role } from '../enums'
 import User from '../models/User'
 import Client from '../models/Client'
 import Form from '../models/Form'
+import Question from '../models/Question'
+import Response from '../models/Response'
 import {
   UserDocument,
   ClientDocument,
   UserInterface,
-  FormDocument
+  FormDocument,
+  QuestionDocument,
+  ResponseDocument
 } from '../interfaces'
 
 function mapModelNameToModel (modelName: string): mongoose.Model<any> {
@@ -18,6 +22,8 @@ function mapModelNameToModel (modelName: string): mongoose.Model<any> {
     case 'User': return User
     case 'Client': return Client
     case 'Form': return Form
+    case 'Question': return Question
+    case 'Response': return Response
   }
 }
 
@@ -76,9 +82,16 @@ export const splitRolesByPermission = (rolesAllowed: Array<Role>)
 
 export const createUser = createObject<UserDocument>({ modelName: 'User' })
 
-export const createClient = createObject<ClientDocument>({ modelName: 'Client' })
+export const createClient = createObject<ClientDocument>(
+  { modelName: 'Client' })
 
 export const createForm = createObject<FormDocument>({ modelName: 'Form' })
+
+export const createQuestion = createObject<QuestionDocument>(
+  { modelName: 'Question' })
+
+export const createResponse = createObject<ResponseDocument>(
+  { modelName: 'Response' })
 
 export const createClientUserAndToken = async (userBody = {}, clientBody = {})
 : Promise<{ user: UserDocument, token: string, client: ClientDocument }> => {

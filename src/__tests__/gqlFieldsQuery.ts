@@ -22,3 +22,36 @@ export const clientFieldsQuery = `{
   createdAt
   updatedAt
 }`
+
+const formConfigFieldsQuery = `{
+  name
+  description
+  beginDate
+  endDate
+  hasLimitedResponses
+  maxResponses
+  isTotemMode
+  canDisplayProgressBar
+  progressBarType
+  canAllowMultipleSubmissions
+}`
+
+const formStyleFieldsQuery = `{
+  background
+  logo
+  headerText
+  hasLogoInHeader
+  headerBackground
+  footerText
+  footerBackground
+}`
+
+export const formFieldsQuery = `{
+  _id
+  client ${clientFieldsQuery}
+  isActive
+  config ${formConfigFieldsQuery}
+  style ${formStyleFieldsQuery}
+  createdAt
+  updatedAt
+}`

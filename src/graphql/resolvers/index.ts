@@ -1,5 +1,6 @@
 import * as AuthResolvers from './AuthResolvers'
 import * as ClientResolvers from './ClientResolvers'
+import * as FormResolvers from './FormResolvers'
 
 const resolvers = {
   Date: (value: string | number | Date): string => new Date(value).toISOString(),
@@ -10,7 +11,8 @@ const resolvers = {
   },
   Mutation: {
     ...AuthResolvers.Mutation,
-    ...ClientResolvers.Mutation
+    ...ClientResolvers.Mutation,
+    ...FormResolvers.Mutation
   }
 }
 
