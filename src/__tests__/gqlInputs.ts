@@ -1,7 +1,8 @@
 import {
   UpdateOwnProfileInput,
   CreateClientInput,
-  UpdateClientInput
+  UpdateClientInput,
+  CreateOwnFormInput
 } from '../types'
 
 export const createInputUpdateOwnProfile = (input: UpdateOwnProfileInput)
@@ -19,4 +20,36 @@ export const createInputCreateClient = (input: CreateClientInput): string => `{
 export const createInputUpdateClient = (input: UpdateClientInput): string => `{
   name: "${input.name}",
   email: "${input.email}"
+}`
+
+const createInputFormConfig = (config: CreateOwnFormInput['config'])
+: string => `{
+  name: "${config.name}",
+  description: "${config.description}",
+  beginDate: "${config.beginDate.toISOString()}",
+  endDate: "${config.endDate.toISOString()}",
+  hasLimitedResponses: ${config.hasLimitedResponses},
+  maxResponses: ${config.maxResponses},
+  isTotemMode: ${config.isTotemMode},
+  canDisplayProgressBar: ${config.canDisplayProgressBar},
+  progressBarType: "${config.progressBarType}",
+  canAllowMultipleSubmissions: ${config.canAllowMultipleSubmissions}
+}`
+
+const createInputFormStyle = (style: CreateOwnFormInput['style'])
+: string => `{
+  background: "${style.background}",
+  logo: "${style.logo}",
+  headerText: "${style.headerText}",
+  hasLogoInHeader: ${style.hasLogoInHeader},
+  headerBackground: "${style.headerBackground}",
+  footerText: "${style.footerText}",
+  footerBackground: "${style.footerBackground}"
+}`
+
+export const createInputCreateOwnForm = (input: CreateOwnFormInput)
+: string => `{
+  isActive: ${input.isActive},
+  config: ${createInputFormConfig(input.config)},
+  style: ${createInputFormStyle(input.style)}
 }`
