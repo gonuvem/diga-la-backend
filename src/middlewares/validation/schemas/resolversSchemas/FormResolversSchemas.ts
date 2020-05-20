@@ -1,12 +1,14 @@
 import Joi from '@hapi/joi'
 
 import {
-  createSchema
+  createSchema,
+  updateSchema
 } from '../baseSchemas'
 import { Form } from '../models/Form'
 import {
   JoiSchemaMap,
-  CreateOwnFormInput
+  CreateOwnFormInput,
+  UpdateOwnFormInput
 } from '../../../../types'
 
 const createOwnKeys: JoiSchemaMap<CreateOwnFormInput> = {
@@ -16,6 +18,15 @@ const createOwnKeys: JoiSchemaMap<CreateOwnFormInput> = {
 }
 const createOwn = createSchema(Joi.object().keys(createOwnKeys))
 
+const updateOwnKeys: JoiSchemaMap<UpdateOwnFormInput> = {
+  isActive: Form.isActive.optional(),
+  config: Form.config.optional(),
+  style: Form.style.optional()
+}
+const updateOwn = updateSchema(Joi.object().keys(updateOwnKeys)
+  .or('isActive', 'config', 'style'))
+
 export default {
-  createOwnForm: createOwn
+  createOwnForm: createOwn,
+  updateOwnForm: updateOwn
 }
