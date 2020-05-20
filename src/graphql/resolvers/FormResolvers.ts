@@ -5,7 +5,8 @@ import isGqlAuthorized from '../../middlewares/authorization'
 import * as FormResolverHelper from '../../helpers/resolverHelpers/FormResolverHelper'
 import {
   MyContext,
-  CreateOwnFormInput
+  CreateOwnFormInput,
+  UpdateOwnFormInput
 } from '../../types'
 import { FormDocument } from '../../interfaces'
 
@@ -15,7 +16,15 @@ const createOwnForm = (_parent: object, _args: object,
   return FormResolverHelper.createOwnForm(context.user, context.validData.input)
 }
 
+const updateOwnForm = (_parent: object, _args: object,
+  context: MyContext<{ id: string, input: UpdateOwnFormInput }>)
+  : Promise<{ form: FormDocument }> => {
+  return FormResolverHelper.updateOwnForm(context.user, context.validData)
+}
+
 export const Mutation = {
   createOwnForm: wrapGqlAsyncFunc(isGqlAuthenticated(isGqlAuthorized(
-    validateGqlRequest(createOwnForm))))
+    validateGqlRequest(createOwnForm)))),
+  updateOwnForm: wrapGqlAsyncFunc(isGqlAuthenticated(isGqlAuthorized(
+    validateGqlRequest(updateOwnForm))))
 }
