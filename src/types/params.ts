@@ -1,4 +1,4 @@
-import { UserInterface } from '../interfaces'
+import { UserInterface, FormInterface } from '../interfaces'
 
 export type LoginParams = {
   email: UserInterface['email'],
@@ -48,3 +48,9 @@ type ListParams = {
 }
 
 export type ListClientsParams = ListParams & { filters?: object }
+
+export type CreateOwnFormInput = {
+  isActive: FormInterface['isActive'],
+  config: FormInterface['config'],
+  style?: FormInterface['style']
+}
