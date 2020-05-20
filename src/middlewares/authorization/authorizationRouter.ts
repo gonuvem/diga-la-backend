@@ -15,5 +15,6 @@ export const gqlRouter: { [resolverName: string]: Role[] } = {
   readClient: [Role.Dev],
 
   createOwnForm: [Role.Client],
-  updateOwnForm: [Role.Client]
+  updateOwnForm: [Role.Client],
+  deleteOwnForm: [Role.Client]
 }
