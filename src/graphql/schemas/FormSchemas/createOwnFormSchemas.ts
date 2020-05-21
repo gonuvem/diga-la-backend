@@ -57,6 +57,8 @@ type Form {
   config: FormConfig!
   "Estilos"
   style: FormStyle!
+  "Número de respostas. OBS.: Apenas para listOwnForms no momento."
+  numResponses: Int
   "Data de criação"
   createdAt: Date!
   "Data de atualização"
