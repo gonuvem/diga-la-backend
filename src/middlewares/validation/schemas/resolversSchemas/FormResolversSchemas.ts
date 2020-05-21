@@ -4,7 +4,8 @@ import {
   createSchema,
   updateSchema,
   removeSchema,
-  listSchema
+  listSchema,
+  readSchema
 } from '../baseSchemas'
 import { Form } from '../models/Form'
 import {
@@ -36,9 +37,12 @@ const filters = {}
 
 const listOwn = listSchema(sortFields, defaultField, filters)
 
+const readOwn = readSchema
+
 export default {
   createOwnForm: createOwn,
   updateOwnForm: updateOwn,
   deleteOwnForm: removeOwn,
-  listOwnForms: listOwn
+  listOwnForms: listOwn,
+  readOwnForm: readOwn
 }
