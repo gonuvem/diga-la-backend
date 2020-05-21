@@ -1,5 +1,5 @@
 const ListClientsType = `
-"Resposta da query que lista clientew."
+"Resposta da query que lista clientes."
 type ListClients {
   "Lista de clientes"
   clients: [Client]
@@ -23,7 +23,7 @@ type ListClients {
 `
 
 const listClientsQuery = `
-"Lista cursos de forma paginada. APENAS PARA ('dev')"
+"Lista clientes de forma paginada. APENAS PARA ('dev')"
 listClients(
   "Campos de busca: ['user.name', 'user.email']"
   q: String
