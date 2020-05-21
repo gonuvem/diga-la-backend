@@ -52,6 +52,7 @@ export const formFieldsQuery = `{
   isActive
   config ${formConfigFieldsQuery}
   style ${formStyleFieldsQuery}
+  numResponses
   createdAt
   updatedAt
 }`

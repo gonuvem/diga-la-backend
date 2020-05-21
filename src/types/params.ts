@@ -60,3 +60,5 @@ export type UpdateOwnFormInput = {
   config?: FormInterface['config'],
   style?: FormInterface['style']
 }
+
+export type ListOwnFormsParams = ListParams & { filters?: object }

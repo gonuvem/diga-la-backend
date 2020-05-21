@@ -1,12 +1,8 @@
-const ListClientsType = `
-"Resposta da query que lista clientes."
-type ListClients {
-  "Lista de clientes"
-  clients: [Client]
-  "Total de documentos encontrados"
-  total: Int
-  "Quantidade de páginas"
-  pages: Int
+const ReadOwnFormType = `
+"Resposta da query que detalha pesquisa do cliente logado"
+type ReadOwnForm {
+  "Pesquisa consultada"
+  form: Form
   """
   | internalCode | statusCode | message/Descrição                                           |
   | :----------- | :--------: | ----------------------------------------------------------- |
@@ -16,26 +12,21 @@ type ListClients {
   | 700          |    404     | Usuário não encontrado                                      |
   | 620          |    403     | Este usuário não possui permissão para esta ação            |
   | 630          |    400     | Erro na validação. Veja error.message                       |
-  | 710          |    404     | Nenhum cliente encontrado                                   |
+  | 711          |    404     | Cliente não encontrado                                      |
+  | 721          |    404     | Pesquisa não encontrada                                     |
   """
   error: MyError
 }
 `
 
-const listClientsQuery = `
-"Lista clientes de forma paginada. APENAS PARA ('dev')"
-listClients(
-  "Campos de busca: ['user.name', 'user.email']"
-  q: String
-  "Mínimo 0, Default: 0"
-  page: Int
-  "Mínimo 1, Default: 5"
-  perPage: Int
-  "Válidos: ['-user.name', 'user.name', '-createdAt', 'createdAt'] Default: user.name"
-  sort: String
-): ListClients!
+const readOwnFormQuery = `
+"Detalha pesquisa do cliente logado. APENAS PARA ('client')"
+readOwnForm(
+  "Regex: /^[0-9a-fA-F]{24}$/"
+  id: ID!
+): ReadOwnForm!
 `
 
-export const types = ListClientsType
+export const types = ReadOwnFormType
 
-export const Query = listClientsQuery
+export const Query = readOwnFormQuery

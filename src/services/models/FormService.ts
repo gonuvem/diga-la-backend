@@ -33,5 +33,5 @@ export const checkFormInUse = checkInUse(
   ], FORM_IN_USE
 )
 
-export const listFormsWithClientPaginated =
-listPaginatedWithPopulate(Form, FORMS_EMPTY_LIST, populate)
+export const listFormsWithClientPaginated = listPaginatedWithPopulate(Form,
+  FORMS_EMPTY_LIST, [populate, { path: 'numResponses' }])

@@ -1,4 +1,4 @@
-import { UserDocument, ClientDocument } from '../interfaces'
+import { UserDocument, ClientDocument, FormDocument } from '../interfaces'
 
 type BasicUser = {
   _id: UserDocument['_id']
@@ -22,6 +22,6 @@ type ListResponse = {
   pages: number
 }
 
-export type ListClientsResponse = ListResponse & {
-  clients: ClientDocument[]
-}
+export type ListClientsResponse = ListResponse & { clients: ClientDocument[] }
+
+export type ListFormsResponse = ListResponse & { forms: FormDocument[] }

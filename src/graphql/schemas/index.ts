@@ -56,6 +56,7 @@ type Query {
   wakeUp: String
   ${AuthSchemas.Query}
   ${ClientSchemas.Query}
+  ${FormSchemas.Query}
 }
 `
 

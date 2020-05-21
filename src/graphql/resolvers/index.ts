@@ -7,7 +7,8 @@ const resolvers = {
   Query: {
     wakeUp: (): string => 'DIG API',
     ...AuthResolvers.Query,
-    ...ClientResolvers.Query
+    ...ClientResolvers.Query,
+    ...FormResolvers.Query
   },
   Mutation: {
     ...AuthResolvers.Mutation,
