@@ -29,7 +29,8 @@ export interface FormInterface {
   client: Partial<ClientDocument> | Types.ObjectId
   isActive: boolean,
   config: FormConfig,
-  style: FormStyle
+  style: FormStyle,
+  numResponses?: number
 }
 
 export interface FormDocument extends FormInterface, Document {}
