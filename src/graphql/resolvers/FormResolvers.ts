@@ -34,9 +34,16 @@ const listOwnForms = (_parent: object, _args: object,
   return FormResolverHelper.listOwnForms(context.user, context.validData)
 }
 
+const readOwnForm = (_parent: object, _args: object,
+  context: MyContext<{ id: string }>): Promise<{ form: FormDocument }> => {
+  return FormResolverHelper.readOwnForm(context.user, context.validData)
+}
+
 export const Query = {
   listOwnForms: wrapGqlAsyncFunc(isGqlAuthenticated(isGqlAuthorized(
-    validateGqlRequest(listOwnForms))))
+    validateGqlRequest(listOwnForms)))),
+  readOwnForm: wrapGqlAsyncFunc(isGqlAuthenticated(isGqlAuthorized(
+    validateGqlRequest(readOwnForm))))
 }
 
 export const Mutation = {
