@@ -85,6 +85,13 @@ const formDefinition: MongooseDefinition<FormInterface> = {
 
 const FormSchema = new mongoose.Schema(formDefinition, { timestamps: true })
 
+FormSchema.virtual('numResponses', {
+  ref: 'Response',
+  localField: '_id',
+  foreignField: 'form',
+  count: true
+})
+
 const Form = mongoose.model<FormDocument>('Form', FormSchema)
 
 export default Form
