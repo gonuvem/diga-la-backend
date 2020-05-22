@@ -87,7 +87,7 @@ export default (): void => {
     const id = ents.objects[0]._id
     return baseRequest({ id }, setupData.dev.token)
       .then(response => {
-        utils.printForDocs(response.body)
+        // utils.printForDocs(response.body)
         const { error } = response.body.data[resolver]
         expect(error).toBe(null)
       })

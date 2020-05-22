@@ -3,7 +3,9 @@ import Joi from '@hapi/joi'
 import {
   createSchema,
   updateSchema,
-  removeSchema
+  removeSchema,
+  listSchema,
+  readSchema
 } from '../baseSchemas'
 import { QuestionType } from '../models/QuestionType'
 import {
@@ -33,8 +35,21 @@ const update = updateSchema(Joi.object().keys(updateKeys)
 
 const remove = removeSchema
 
+const sortFields = ['-name', 'name', '-createdAt', 'createdAt']
+const defaultField = 'name'
+const filters = {
+  kind: QuestionType.kind.optional(),
+  alias: QuestionType.alias.optional()
+}
+
+const list = listSchema(sortFields, defaultField, filters)
+
+const read = readSchema
+
 export default {
   createQuestionType: create,
   updateQuestionType: update,
-  deleteQuestionType: remove
+  deleteQuestionType: remove,
+  listQuestionTypes: list,
+  readQuestionType: read
 }
