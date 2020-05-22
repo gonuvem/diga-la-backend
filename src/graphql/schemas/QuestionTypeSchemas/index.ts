@@ -1,3 +1,5 @@
+import * as createQuestionTypeSchemas from './createQuestionTypeSchemas'
+
 const QuestionTypeKindEnum = `
 "Classificação de um Tipo de Questão"
 enum QuestionTypeKind {
@@ -73,13 +75,16 @@ ${QuestionTypeAliasEnum}
 
 export const types = `
 ${QuestionTypeType}
+${createQuestionTypeSchemas.types}
 `
 
 export const inputs = `
+${createQuestionTypeSchemas.inputs}
 `
 
 export const Query = `
 `
 
 export const Mutation = `
+${createQuestionTypeSchemas.Mutation}
 `
