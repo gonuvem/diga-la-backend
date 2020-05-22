@@ -22,3 +22,36 @@ export interface ListPaginatedParams {
   page?: number,
   perPage?: number
 }
+
+export type FilterTypes = 'id' | 'boolean' | 'dateInterval' | 'string' | 'list'
+
+export interface FieldFilterObject {
+  type: FilterTypes,
+  name: string,
+  value: string | boolean | Date | DateInterval | Array<unknown>
+}
+
+export interface IdFilterObject extends FieldFilterObject {
+  value: string
+}
+
+export interface BooleanFilterObject extends FieldFilterObject {
+  value: boolean
+}
+
+export interface DateInterval {
+  beginDate: Date,
+  endDate: Date
+}
+
+export interface DateIntervalFilterObject extends FieldFilterObject {
+  value: DateInterval
+}
+
+export interface StringFilterObject extends FieldFilterObject {
+  value: string
+}
+
+export interface ArrayFilterObject extends FieldFilterObject {
+  value: Array<unknown>
+}
