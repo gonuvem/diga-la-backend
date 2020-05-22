@@ -1,12 +1,13 @@
 import Joi from '@hapi/joi'
 
 import {
-  createSchema
+  createSchema, updateSchema
 } from '../baseSchemas'
 import { QuestionType } from '../models/QuestionType'
 import {
   JoiSchemaMap,
-  CreateQuestionTypeInput
+  CreateQuestionTypeInput,
+  UpdateQuestionTypeInput
 } from '../../../../types'
 
 const createKeys: JoiSchemaMap<CreateQuestionTypeInput> = {
@@ -18,6 +19,17 @@ const createKeys: JoiSchemaMap<CreateQuestionTypeInput> = {
 }
 const create = createSchema(Joi.object().keys(createKeys))
 
+const updateKeys: JoiSchemaMap<UpdateQuestionTypeInput> = {
+  kind: QuestionType.kind.optional(),
+  alias: QuestionType.alias.optional(),
+  name: QuestionType.name.optional(),
+  cover: QuestionType.cover.optional(),
+  description: QuestionType.description.optional()
+}
+const update = updateSchema(Joi.object().keys(updateKeys)
+  .or('kind', 'alias', 'name', 'cover', 'description'))
+
 export default {
-  createQuestionType: create
+  createQuestionType: create,
+  updateQuestionType: update
 }
