@@ -5,7 +5,9 @@ import {
   ClientInterface,
   ClientDocument,
   FormDocument,
-  FormInterface
+  FormInterface,
+  QuestionTypeInterface,
+  QuestionTypeDocument
 } from '../interfaces'
 
 export const checkUser = (expected: Partial<UserInterface>,
@@ -63,4 +65,15 @@ export const checkForm = (expected: Partial<FormInterface>,
     received.client as ClientDocument)
   checkFormConfig(expected.config, received.config)
   checkFormStyle(expected.style, received.style)
+}
+
+export const checkQuestionType = (expected: Partial<QuestionTypeInterface>,
+  received: Partial<QuestionTypeDocument>): void => {
+  expect(received).toMatchObject({
+    kind: expected.kind,
+    alias: expected.alias,
+    name: expected.name,
+    cover: expected.cover,
+    description: expected.description
+  })
 }
