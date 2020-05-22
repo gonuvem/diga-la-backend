@@ -56,3 +56,14 @@ export const formFieldsQuery = `{
   createdAt
   updatedAt
 }`
+
+export const questionTypeFieldsQuery = `{
+  _id
+  kind
+  alias
+  name
+  cover
+  description
+  createdAt
+  updatedAt
+}`
