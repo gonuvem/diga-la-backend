@@ -6,7 +6,9 @@ import * as QuestionTypeResolverHelper from '../../helpers/resolverHelpers/Quest
 import {
   MyContext,
   CreateQuestionTypeInput,
-  UpdateQuestionTypeInput
+  UpdateQuestionTypeInput,
+  ListQuestionTypesParams,
+  ListQuestionTypesResponse
 } from '../../types'
 import { QuestionTypeDocument } from '../../interfaces'
 
@@ -26,6 +28,17 @@ const deleteQuestionType = (_parent: object, _args: object,
   context: MyContext<{ id: string }>)
 : Promise<{}> => {
   return QuestionTypeResolverHelper.deleteQuestionType(context.validData)
+}
+
+const listQuestionTypes = (_parent: object, _args: object,
+  context: MyContext<ListQuestionTypesParams>)
+: Promise<ListQuestionTypesResponse> => {
+  return QuestionTypeResolverHelper.listQuestionTypes(context.validData)
+}
+
+export const Query = {
+  listQuestionTypes: wrapGqlAsyncFunc(isGqlAuthenticated(validateGqlRequest(
+    listQuestionTypes)))
 }
 
 export const Mutation = {
