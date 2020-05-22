@@ -3,7 +3,8 @@ import {
   CreateClientInput,
   UpdateClientInput,
   CreateOwnFormInput,
-  UpdateOwnFormInput
+  UpdateOwnFormInput,
+  CreateQuestionTypeInput
 } from '../types'
 
 export const createInputUpdateOwnProfile = (input: UpdateOwnProfileInput)
@@ -60,4 +61,13 @@ export const createInputUpdateOwnForm = (input: UpdateOwnFormInput)
   isActive: ${input.isActive},
   config: ${createInputFormConfig(input.config)},
   style: ${createInputFormStyle(input.style)}
+}`
+
+export const createInputCreateQuestionType = (input: CreateQuestionTypeInput)
+: string => `{
+  kind: ${input.kind},
+  alias: ${input.alias},
+  name: "${input.name}",
+  cover: "${input.cover}",
+  description: "${input.description}"
 }`
