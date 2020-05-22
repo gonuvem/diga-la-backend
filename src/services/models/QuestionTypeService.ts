@@ -18,7 +18,7 @@ import {
 
 export const createOneQuestionType = createOne(QuestionType)
 
-export const fetchOneQuestionTypeWithClient = fetchOne(
+export const fetchOneQuestionType = fetchOne(
   QuestionType, QUESTION_TYPE_NOT_FOUND)
 
 export const updateOneQuestionType = updateOne(

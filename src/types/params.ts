@@ -74,3 +74,11 @@ export type CreateQuestionTypeInput = {
   cover: QuestionTypeInterface['cover'],
   description: QuestionTypeInterface['description']
 }
+
+export type UpdateQuestionTypeInput = {
+  kind: QuestionTypeInterface['kind'],
+  alias: QuestionTypeInterface['alias'],
+  name: QuestionTypeInterface['name'],
+  cover: QuestionTypeInterface['cover'],
+  description: QuestionTypeInterface['description']
+}
