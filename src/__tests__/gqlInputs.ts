@@ -4,7 +4,8 @@ import {
   UpdateClientInput,
   CreateOwnFormInput,
   UpdateOwnFormInput,
-  CreateQuestionTypeInput
+  CreateQuestionTypeInput,
+  UpdateQuestionTypeInput
 } from '../types'
 
 export const createInputUpdateOwnProfile = (input: UpdateOwnProfileInput)
@@ -64,6 +65,15 @@ export const createInputUpdateOwnForm = (input: UpdateOwnFormInput)
 }`
 
 export const createInputCreateQuestionType = (input: CreateQuestionTypeInput)
+: string => `{
+  kind: ${input.kind},
+  alias: ${input.alias},
+  name: "${input.name}",
+  cover: "${input.cover}",
+  description: "${input.description}"
+}`
+
+export const createInputUpdateQuestionType = (input: UpdateQuestionTypeInput)
 : string => `{
   kind: ${input.kind},
   alias: ${input.alias},
