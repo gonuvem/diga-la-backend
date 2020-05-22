@@ -22,9 +22,17 @@ const updateQuestionType = (_parent: object, _args: object,
   return QuestionTypeResolverHelper.updateQuestionType(context.validData)
 }
 
+const deleteQuestionType = (_parent: object, _args: object,
+  context: MyContext<{ id: string }>)
+: Promise<{}> => {
+  return QuestionTypeResolverHelper.deleteQuestionType(context.validData)
+}
+
 export const Mutation = {
   createQuestionType: wrapGqlAsyncFunc(isGqlAuthenticated(isGqlAuthorized(
     validateGqlRequest(createQuestionType)))),
   updateQuestionType: wrapGqlAsyncFunc(isGqlAuthenticated(isGqlAuthorized(
-    validateGqlRequest(updateQuestionType))))
+    validateGqlRequest(updateQuestionType)))),
+  deleteQuestionType: wrapGqlAsyncFunc(isGqlAuthenticated(isGqlAuthorized(
+    validateGqlRequest(deleteQuestionType))))
 }
