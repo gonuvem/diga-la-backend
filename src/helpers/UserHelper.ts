@@ -1,11 +1,7 @@
 import bcrypt from 'bcrypt'
 
-import {
-  PASSWORD_INCORRECT,
-  EMAIL_CONFLICT
-} from '../middlewares/errorHandling/errors'
+import { PASSWORD_INCORRECT } from '../middlewares/errorHandling/errors'
 import { UserDocument } from '../interfaces'
-import { fetchOneUserWithoutError } from '../services/models/UserService'
 
 const comparePassword = (
   encryptedPassword: string, candidatePassword: string): Promise<boolean> => {
@@ -17,15 +13,4 @@ export const checkIfPasswordIsCorrect = async (
   const isEqual = await comparePassword(user.password, passwordToCheck)
 
   if (!isEqual) throw PASSWORD_INCORRECT
-}
-
-export const checkUserConflicts = async (user: Partial<UserDocument>,
-  query = {}): Promise<void> => {
-  const { email } = user
-
-  const [userWithSameEmail] = await Promise.all([
-    fetchOneUserWithoutError({ conditions: { email, ...query } })
-  ])
-
-  if (userWithSameEmail) throw EMAIL_CONFLICT
 }

@@ -1,5 +1,3 @@
-import { createOneUserObject } from '../../../services/models/UserService'
-import { createOneClientObject } from '../../../services/models/ClientService'
 import { CreateClientInput } from '../../../types'
 import {
   ClientDocument,
@@ -7,7 +5,11 @@ import {
   UserInterface
 } from '../../../interfaces'
 import { Role } from '../../../enums'
-import { checkUserConflicts } from '../../UserHelper'
+import {
+  createOneUserObject,
+  checkUserConflicts
+} from '../../../services/models/UserService'
+import { createOneClientObject } from '../../../services/models/ClientService'
 
 const createClientWithUser = async (clientData: Partial<ClientInterface>,
   userData: Partial<UserInterface>): Promise<ClientDocument> => {
