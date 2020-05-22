@@ -1,7 +1,9 @@
 import Joi from '@hapi/joi'
 
 import {
-  createSchema, updateSchema
+  createSchema,
+  updateSchema,
+  removeSchema
 } from '../baseSchemas'
 import { QuestionType } from '../models/QuestionType'
 import {
@@ -29,7 +31,10 @@ const updateKeys: JoiSchemaMap<UpdateQuestionTypeInput> = {
 const update = updateSchema(Joi.object().keys(updateKeys)
   .or('kind', 'alias', 'name', 'cover', 'description'))
 
+const remove = removeSchema
+
 export default {
   createQuestionType: create,
-  updateQuestionType: update
+  updateQuestionType: update,
+  deleteQuestionType: remove
 }
