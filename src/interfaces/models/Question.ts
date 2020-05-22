@@ -96,6 +96,11 @@ export interface RadioButtonConfig {
   answerOptions: AnswerOption[]
 }
 
+export interface SortListConfig {
+  hasRandomResponsesOrder: boolean,
+  answerOptions: AnswerOption[]
+}
+
 export interface QuestionConfig {
   name: string,
   description?: string,
@@ -114,6 +119,7 @@ export interface QuestionConfig {
   [QuestionTypeAlias.RadioButton]?: RadioButtonConfig,
   [QuestionTypeAlias.ShortText]?: ShortTextConfig,
   [QuestionTypeAlias.Slider]?: SliderConfig,
+  [QuestionTypeAlias.SortList]?: SortListConfig
 }
 
 export interface QuestionInterface {

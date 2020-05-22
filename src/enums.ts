@@ -17,7 +17,8 @@ export enum QuestionTypeAlias {
   Matrix = 'matrix',
   Slider = 'slider',
   LongText = 'longText',
-  RadioButton = 'radioButton'
+  RadioButton = 'radioButton',
+  SortList = 'sortList'
 }
 
 export enum QuestionTypeKind {
