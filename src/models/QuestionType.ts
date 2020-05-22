@@ -13,7 +13,8 @@ const definition: MongooseDefinition<QuestionTypeInterface> = {
   alias: {
     type: String,
     enum: Object.values(QuestionTypeAlias),
-    required: true
+    required: true,
+    unique: true
   },
   name: {
     type: String,

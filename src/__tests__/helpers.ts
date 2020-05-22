@@ -8,13 +8,15 @@ import Client from '../models/Client'
 import Form from '../models/Form'
 import Question from '../models/Question'
 import Response from '../models/Response'
+import QuestionType from '../models/QuestionType'
 import {
   UserDocument,
   ClientDocument,
   UserInterface,
   FormDocument,
   QuestionDocument,
-  ResponseDocument
+  ResponseDocument,
+  QuestionTypeDocument
 } from '../interfaces'
 
 function mapModelNameToModel (modelName: string): mongoose.Model<any> {
@@ -24,6 +26,7 @@ function mapModelNameToModel (modelName: string): mongoose.Model<any> {
     case 'Form': return Form
     case 'Question': return Question
     case 'Response': return Response
+    case 'QuestionType': return QuestionType
   }
 }
 
@@ -92,6 +95,9 @@ export const createQuestion = createObject<QuestionDocument>(
 
 export const createResponse = createObject<ResponseDocument>(
   { modelName: 'Response' })
+
+export const createQuestionType = createObject<QuestionTypeDocument>(
+  { modelName: 'QuestionType' })
 
 export const createClientUserAndToken = async (userBody = {}, clientBody = {})
 : Promise<{ user: UserDocument, token: string, client: ClientDocument }> => {

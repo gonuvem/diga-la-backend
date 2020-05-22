@@ -19,7 +19,8 @@ import {
   LongTextConfig,
   RadioButtonConfig,
   QuestionConfig,
-  QuestionInterface
+  QuestionInterface,
+  SortListConfig
 } from '../interfaces'
 import { MongooseDefinition } from '../types'
 import './Form'
@@ -292,6 +293,21 @@ const radioButtonDefinition: MongooseDefinition<RadioButtonConfig> = {
 const RadioButtonConfigSchema = new mongoose.Schema(radioButtonDefinition,
   { _id: false })
 
+const sortListDefinition: MongooseDefinition<SortListConfig> = {
+  hasRandomResponsesOrder: {
+    type: Boolean,
+    required: true,
+    default: false
+  },
+  answerOptions: [{
+    type: AnswerOptionSchema,
+    required: true
+  }]
+}
+
+const SortListConfigSchema = new mongoose.Schema(sortListDefinition,
+  { _id: false })
+
 const questionConfigDefinition: MongooseDefinition<QuestionConfig> = {
   name: {
     type: String,
@@ -316,7 +332,8 @@ const questionConfigDefinition: MongooseDefinition<QuestionConfig> = {
   phone: PhoneConfigSchema,
   radioButton: RadioButtonConfigSchema,
   shortText: ShortTextConfigSchema,
-  slider: SliderConfigSchema
+  slider: SliderConfigSchema,
+  sortList: SortListConfigSchema
 }
 
 const QuestionConfigSchema = new mongoose.Schema(questionConfigDefinition,

@@ -11,7 +11,24 @@ import {
 } from '../baseSchemas'
 import { JoiSchemaMap } from '../../../../types'
 import {
-  NumberConfig, CheckBoxConfig, EmailConfig, PhoneConfig, LinkConfig, ImageChoiceConfig, ShortTextConfig, NPSConfig, DateConfig, DropDownConfig, MatrixConfig, SliderConfig, LongTextConfig, RadioButtonConfig, QuestionConfig, QuestionInterface, AnswerOption
+  NumberConfig,
+  CheckBoxConfig,
+  EmailConfig,
+  PhoneConfig,
+  LinkConfig,
+  ImageChoiceConfig,
+  ShortTextConfig,
+  NPSConfig,
+  DateConfig,
+  DropDownConfig,
+  MatrixConfig,
+  SliderConfig,
+  LongTextConfig,
+  RadioButtonConfig,
+  QuestionConfig,
+  QuestionInterface,
+  AnswerOption,
+  SortListConfig
 } from '../../../../interfaces'
 
 export const NumberConfigSchema: JoiSchemaMap<NumberConfig> = {
@@ -109,6 +126,11 @@ export const RadioButtonConfigSchema: JoiSchemaMap<RadioButtonConfig> = {
   answerOptions: answerOptionsSchema
 }
 
+export const SortListConfigSchema: JoiSchemaMap<SortListConfig> = {
+  hasRandomResponsesOrder: booleanSchema,
+  answerOptions: answerOptionsSchema
+}
+
 export const QuestionConfigSchema: JoiSchemaMap<QuestionConfig> = {
   name: basicStringSchema,
   description: basicStringSchema,
@@ -126,7 +148,8 @@ export const QuestionConfigSchema: JoiSchemaMap<QuestionConfig> = {
   [QuestionTypeAlias.Phone]: Joi.object(PhoneConfigSchema),
   [QuestionTypeAlias.RadioButton]: Joi.object(RadioButtonConfigSchema),
   [QuestionTypeAlias.ShortText]: Joi.object(ShortTextConfigSchema),
-  [QuestionTypeAlias.Slider]: Joi.object(SliderConfigSchema)
+  [QuestionTypeAlias.Slider]: Joi.object(SliderConfigSchema),
+  [QuestionTypeAlias.SortList]: Joi.object(SortListConfigSchema)
 }
 
 export const Question: JoiSchemaMap<QuestionInterface> = {

@@ -26,7 +26,8 @@ import {
   LongTextConfig,
   RadioButtonConfig,
   QuestionInterface,
-  QuestionConfig
+  QuestionConfig,
+  SortListConfig
 } from '../../interfaces'
 import { Fake } from '../../types'
 
@@ -125,6 +126,11 @@ const fakeRadioButtonConfig: RadioButtonConfig = {
   answerOptions: fakeAnswerOptions()
 }
 
+const fakeSortListConfig: SortListConfig = {
+  hasRandomResponsesOrder: fakeBoolean(),
+  answerOptions: fakeAnswerOptions()
+}
+
 const fakeQuestionConfig: QuestionConfig = {
   name: fakeWord(),
   description: fakeSentence(),
@@ -142,7 +148,8 @@ const fakeQuestionConfig: QuestionConfig = {
   [QuestionTypeAlias.Phone]: ((): PhoneConfig => fakePhoneConfig)(),
   [QuestionTypeAlias.RadioButton]: ((): RadioButtonConfig => fakeRadioButtonConfig)(),
   [QuestionTypeAlias.ShortText]: ((): ShortTextConfig => fakeShortTextConfig)(),
-  [QuestionTypeAlias.Slider]: ((): SliderConfig => fakeSliderConfig)()
+  [QuestionTypeAlias.Slider]: ((): SliderConfig => fakeSliderConfig)(),
+  [QuestionTypeAlias.SortList]: ((): SortListConfig => fakeSortListConfig)()
 }
 
 export const Question: Fake<QuestionInterface> = {
