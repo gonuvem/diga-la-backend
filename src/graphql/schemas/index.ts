@@ -3,6 +3,7 @@ import { gql } from 'apollo-server-express'
 import * as AuthSchemas from './AuthSchemas'
 import * as ClientSchemas from './ClientSchemas'
 import * as FormSchemas from './FormSchemas'
+import * as QuestionTypeSchemas from './QuestionTypeSchemas'
 
 const basicTypes = `
 "Tipo Date do JavaScript"
@@ -39,15 +40,18 @@ const types = `
 ${AuthSchemas.types}
 ${ClientSchemas.types}
 ${FormSchemas.types}
+${QuestionTypeSchemas.types}
 `
 
 const enums = `
+${QuestionTypeSchemas.enums}
 `
 
 const inputs = `
 ${AuthSchemas.inputs}
 ${ClientSchemas.inputs}
 ${FormSchemas.inputs}
+${QuestionTypeSchemas.inputs}
 `
 
 const Query = `
@@ -57,6 +61,7 @@ type Query {
   ${AuthSchemas.Query}
   ${ClientSchemas.Query}
   ${FormSchemas.Query}
+  ${QuestionTypeSchemas.Query}
 }
 `
 
@@ -65,6 +70,7 @@ type Mutation {
   ${AuthSchemas.Mutation}
   ${ClientSchemas.Mutation}
   ${FormSchemas.Mutation}
+  ${QuestionTypeSchemas.Mutation}
 }
 `
 
