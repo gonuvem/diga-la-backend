@@ -18,3 +18,9 @@ export const QUESTION_TYPE_IN_USE = createError({
   statusCode: 422,
   internalCode: 732
 })
+
+export const ALIAS_CONFLICT = createError({
+  message: 'Já existe um tipo de questão com este apelido',
+  statusCode: 409,
+  internalCode: 733
+})

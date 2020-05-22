@@ -1,3 +1,7 @@
+import * as createQuestionTypeSchemas from './createQuestionTypeSchemas'
+import * as updateQuestionTypeSchemas from './updateQuestionTypeSchemas'
+import * as deleteQuestionTypeSchemas from './deleteQuestionTypeSchemas'
+
 const QuestionTypeKindEnum = `
 "Classificação de um Tipo de Questão"
 enum QuestionTypeKind {
@@ -73,13 +77,21 @@ ${QuestionTypeAliasEnum}
 
 export const types = `
 ${QuestionTypeType}
+${createQuestionTypeSchemas.types}
+${updateQuestionTypeSchemas.types}
+${deleteQuestionTypeSchemas.types}
 `
 
 export const inputs = `
+${createQuestionTypeSchemas.inputs}
+${updateQuestionTypeSchemas.inputs}
 `
 
 export const Query = `
 `
 
 export const Mutation = `
+${createQuestionTypeSchemas.Mutation}
+${updateQuestionTypeSchemas.Mutation}
+${deleteQuestionTypeSchemas.Mutation}
 `

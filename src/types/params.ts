@@ -1,4 +1,8 @@
-import { UserInterface, FormInterface } from '../interfaces'
+import {
+  UserInterface,
+  FormInterface,
+  QuestionTypeInterface
+} from '../interfaces'
 
 export type LoginParams = {
   email: UserInterface['email'],
@@ -62,3 +66,19 @@ export type UpdateOwnFormInput = {
 }
 
 export type ListOwnFormsParams = ListParams & { filters?: object }
+
+export type CreateQuestionTypeInput = {
+  kind: QuestionTypeInterface['kind'],
+  alias: QuestionTypeInterface['alias'],
+  name: QuestionTypeInterface['name'],
+  cover: QuestionTypeInterface['cover'],
+  description: QuestionTypeInterface['description']
+}
+
+export type UpdateQuestionTypeInput = {
+  kind: QuestionTypeInterface['kind'],
+  alias: QuestionTypeInterface['alias'],
+  name: QuestionTypeInterface['name'],
+  cover: QuestionTypeInterface['cover'],
+  description: QuestionTypeInterface['description']
+}

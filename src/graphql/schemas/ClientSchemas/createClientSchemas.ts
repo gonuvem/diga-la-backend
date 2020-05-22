@@ -31,7 +31,7 @@ type CreateClient {
 `
 
 const createClientMutation = `
-"Cria um cliente gerando senha a partir do cpf. APENAS PARA ('dev')"
+"Cria um cliente. APENAS PARA ('dev')"
 createClient(input: CreateClientInput!): CreateClient!
 `
 

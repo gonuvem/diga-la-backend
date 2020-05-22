@@ -134,6 +134,29 @@ export function fetchAll<T extends Document> (Model: mongoose.Model<T>) {
   }
 }
 
+type ConflictFieldAndError<T> = {
+  fieldName: keyof T,
+  error: Boom
+}
+export function checkConflicts<T extends Document> (Model: mongoose.Model<T>,
+  fieldsAndErrors: ConflictFieldAndError<T>[]) {
+  return async function (doc: Partial<T>, excludeId?: string): Promise<void> {
+    const excludeQuery = excludeId ? { _id: { $ne: excludeId } } : {}
+
+    const promises = fieldsAndErrors.map(({ fieldName }) => {
+      return fetchOneWithoutError(Model)({
+        conditions: { [fieldName]: doc[fieldName], ...excludeQuery }
+      })
+    })
+
+    const results = await Promise.all(promises)
+
+    for (const [i, conflictFound] of results.entries()) {
+      if (conflictFound) throw fieldsAndErrors[i].error
+    }
+  }
+}
+
 type LookupObject = {
   from: string,
   localField: string,

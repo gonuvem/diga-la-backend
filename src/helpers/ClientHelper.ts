@@ -8,8 +8,10 @@ import {
   updateOneClient,
   fetchOneClientWithUser
 } from '../services/models/ClientService'
-import { updateOneUser } from '../services/models/UserService'
-import { checkUserConflicts } from './UserHelper'
+import {
+  updateOneUser,
+  checkUserConflicts
+} from '../services/models/UserService'
 
 export const updateClientWithUser = async (client: ClientDocument,
   clientData: Partial<ClientInterface>, userData: Partial<UserInterface>)
@@ -38,8 +40,7 @@ export const fetchAndUpdateClientWithUser = async (conditions: object,
   const client = await fetchOneClientWithUser({ conditions })
 
   if (userData.email) {
-    const query = { _id: { $ne: (client.user as UserDocument)._id } }
-    await checkUserConflicts(userData, query)
+    await checkUserConflicts(userData, (client.user as UserDocument)._id)
   }
 
   return updateClientWithUser(client, { }, userData)

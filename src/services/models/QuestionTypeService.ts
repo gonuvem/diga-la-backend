@@ -6,17 +6,19 @@ import {
   updateOne,
   deleteOne,
   checkInUse,
-  listPaginated
+  listPaginated,
+  checkConflicts
 } from '../../utils/mongoose'
 import {
   QUESTION_TYPES_EMPTY_LIST,
   QUESTION_TYPE_NOT_FOUND,
-  QUESTION_TYPE_IN_USE
+  QUESTION_TYPE_IN_USE,
+  ALIAS_CONFLICT
 } from '../../middlewares/errorHandling/errors'
 
 export const createOneQuestionType = createOne(QuestionType)
 
-export const fetchOneQuestionTypeWithClient = fetchOne(
+export const fetchOneQuestionType = fetchOne(
   QuestionType, QUESTION_TYPE_NOT_FOUND)
 
 export const updateOneQuestionType = updateOne(
@@ -30,3 +32,8 @@ export const checkQuestionTypeInUse = checkInUse(
 
 export const listQuestionTypesPaginated =
 listPaginated(QuestionType, QUESTION_TYPES_EMPTY_LIST)
+
+export const checkQuestionTypeConflicts = checkConflicts(QuestionType, [{
+  fieldName: 'alias',
+  error: ALIAS_CONFLICT
+}])
