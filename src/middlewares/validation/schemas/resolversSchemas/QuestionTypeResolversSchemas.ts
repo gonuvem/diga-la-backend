@@ -4,7 +4,8 @@ import {
   createSchema,
   updateSchema,
   removeSchema,
-  listSchema
+  listSchema,
+  readSchema
 } from '../baseSchemas'
 import { QuestionType } from '../models/QuestionType'
 import {
@@ -43,9 +44,12 @@ const filters = {
 
 const list = listSchema(sortFields, defaultField, filters)
 
+const read = readSchema
+
 export default {
   createQuestionType: create,
   updateQuestionType: update,
   deleteQuestionType: remove,
-  listQuestionTypes: list
+  listQuestionTypes: list,
+  readQuestionType: read
 }
