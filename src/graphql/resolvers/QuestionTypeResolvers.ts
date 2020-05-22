@@ -36,9 +36,17 @@ const listQuestionTypes = (_parent: object, _args: object,
   return QuestionTypeResolverHelper.listQuestionTypes(context.validData)
 }
 
+const readQuestionType = async (_parent: object, _args: object,
+  context: MyContext<{ id: string }>)
+: Promise<{ type: QuestionTypeDocument }> => {
+  return QuestionTypeResolverHelper.readQuestionType(context.validData)
+}
+
 export const Query = {
   listQuestionTypes: wrapGqlAsyncFunc(isGqlAuthenticated(validateGqlRequest(
-    listQuestionTypes)))
+    listQuestionTypes))),
+  readQuestionType: wrapGqlAsyncFunc(isGqlAuthenticated(validateGqlRequest(
+    readQuestionType)))
 }
 
 export const Mutation = {

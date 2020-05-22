@@ -2,6 +2,7 @@ import * as createQuestionTypeSchemas from './createQuestionTypeSchemas'
 import * as updateQuestionTypeSchemas from './updateQuestionTypeSchemas'
 import * as deleteQuestionTypeSchemas from './deleteQuestionTypeSchemas'
 import * as listQuestionTypesSchemas from './listQuestionTypesSchemas'
+import * as readQuestionTypeSchemas from './readQuestionTypeSchemas'
 
 const QuestionTypeKindEnum = `
 "Classificação de um Tipo de Questão"
@@ -82,6 +83,7 @@ ${createQuestionTypeSchemas.types}
 ${updateQuestionTypeSchemas.types}
 ${deleteQuestionTypeSchemas.types}
 ${listQuestionTypesSchemas.types}
+${readQuestionTypeSchemas.types}
 `
 
 export const inputs = `
@@ -91,6 +93,7 @@ ${updateQuestionTypeSchemas.inputs}
 
 export const Query = `
 ${listQuestionTypesSchemas.Query}
+${readQuestionTypeSchemas.Query}
 `
 
 export const Mutation = `
