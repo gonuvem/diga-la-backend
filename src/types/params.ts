@@ -44,14 +44,14 @@ export type UpdateClientInput = {
   email: UserInterface['email']
 }
 
-type ListParams = {
+type ListParams<Filters = {}> = {
   q?: string,
   page?: number,
   perPage?: number,
   sort?: string,
-}
+} & Filters
 
-export type ListClientsParams = ListParams & { filters?: object }
+export type ListClientsParams = ListParams
 
 export type CreateOwnFormInput = {
   isActive: FormInterface['isActive'],
@@ -65,7 +65,7 @@ export type UpdateOwnFormInput = {
   style?: FormInterface['style']
 }
 
-export type ListOwnFormsParams = ListParams & { filters?: object }
+export type ListOwnFormsParams = ListParams
 
 export type CreateQuestionTypeInput = {
   kind: QuestionTypeInterface['kind'],
@@ -82,3 +82,8 @@ export type UpdateQuestionTypeInput = {
   cover: QuestionTypeInterface['cover'],
   description: QuestionTypeInterface['description']
 }
+
+export type ListQuestionTypesParams = ListParams<{
+  kind?: QuestionTypeInterface['kind'],
+  alias?: QuestionTypeInterface['alias'],
+}>
