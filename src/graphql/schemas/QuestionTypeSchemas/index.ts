@@ -1,4 +1,5 @@
 import * as createQuestionTypeSchemas from './createQuestionTypeSchemas'
+import * as updateQuestionTypeSchemas from './updateQuestionTypeSchemas'
 
 const QuestionTypeKindEnum = `
 "Classificação de um Tipo de Questão"
@@ -76,10 +77,12 @@ ${QuestionTypeAliasEnum}
 export const types = `
 ${QuestionTypeType}
 ${createQuestionTypeSchemas.types}
+${updateQuestionTypeSchemas.types}
 `
 
 export const inputs = `
 ${createQuestionTypeSchemas.inputs}
+${updateQuestionTypeSchemas.inputs}
 `
 
 export const Query = `
@@ -87,4 +90,5 @@ export const Query = `
 
 export const Mutation = `
 ${createQuestionTypeSchemas.Mutation}
+${updateQuestionTypeSchemas.Mutation}
 `
