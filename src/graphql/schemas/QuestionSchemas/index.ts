@@ -1,6 +1,7 @@
 /* eslint-disable max-lines */
 import * as createOwnQuestionSchemas from './createOwnQuestionSchemas'
 import * as updateOwnQuestionSchemas from './updateOwnQuestionSchemas'
+import * as deleteOwnQuestionSchemas from './deleteOwnQuestionSchemas'
 
 const NumberConfigType = `
 "Número"
@@ -264,6 +265,7 @@ ${QuestionConfigType}
 ${QuestionType}
 ${createOwnQuestionSchemas.types}
 ${updateOwnQuestionSchemas.types}
+${deleteOwnQuestionSchemas.types}
 `
 
 export const inputs = `
@@ -277,4 +279,5 @@ export const Query = `
 export const Mutation = `
 ${createOwnQuestionSchemas.Mutation}
 ${updateOwnQuestionSchemas.Mutation}
+${deleteOwnQuestionSchemas.Mutation}
 `

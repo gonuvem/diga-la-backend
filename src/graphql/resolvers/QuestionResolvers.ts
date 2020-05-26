@@ -24,9 +24,17 @@ const updateOwnQuestion = (_parent: object, _args: object,
     context.validData)
 }
 
+const deleteOwnQuestion = (_parent: object, _args: object,
+  context: MyContext<{ id: string }>) : Promise<{}> => {
+  return QuestionResolverHelper.deleteOwnQuestion(context.user,
+    context.validData)
+}
+
 export const Mutation = {
   createOwnQuestion: wrapGqlAsyncFunc(isGqlAuthenticated(isGqlAuthorized(
     validateGqlRequest(createOwnQuestion)))),
   updateOwnQuestion: wrapGqlAsyncFunc(isGqlAuthenticated(isGqlAuthorized(
-    validateGqlRequest(updateOwnQuestion))))
+    validateGqlRequest(updateOwnQuestion)))),
+  deleteOwnQuestion: wrapGqlAsyncFunc(isGqlAuthenticated(isGqlAuthorized(
+    validateGqlRequest(deleteOwnQuestion))))
 }
