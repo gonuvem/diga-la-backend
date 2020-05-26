@@ -95,3 +95,8 @@ export type CreateOwnQuestionInput = {
   formPage: QuestionInterface['formPage'],
   config: QuestionInterface['config']
 }
+
+export type UpdateOwnQuestionInput = {
+  formPage: QuestionInterface['formPage'],
+  config: QuestionInterface['config']
+}
