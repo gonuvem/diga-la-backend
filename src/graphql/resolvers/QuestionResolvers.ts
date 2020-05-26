@@ -5,7 +5,8 @@ import isGqlAuthorized from '../../middlewares/authorization'
 import * as QuestionResolverHelper from '../../helpers/resolverHelpers/QuestionResolverHelper'
 import {
   MyContext,
-  CreateOwnQuestionInput
+  CreateOwnQuestionInput,
+  UpdateOwnQuestionInput
 } from '../../types'
 import { QuestionDocument } from '../../interfaces'
 
@@ -16,7 +17,16 @@ const createOwnQuestion = (_parent: object, _args: object,
     context.validData.input)
 }
 
+const updateOwnQuestion = (_parent: object, _args: object,
+  context: MyContext<{ id: string, input: UpdateOwnQuestionInput }>)
+  : Promise<{ question: QuestionDocument }> => {
+  return QuestionResolverHelper.updateOwnQuestion(context.user,
+    context.validData)
+}
+
 export const Mutation = {
   createOwnQuestion: wrapGqlAsyncFunc(isGqlAuthenticated(isGqlAuthorized(
-    validateGqlRequest(createOwnQuestion))))
+    validateGqlRequest(createOwnQuestion)))),
+  updateOwnQuestion: wrapGqlAsyncFunc(isGqlAuthenticated(isGqlAuthorized(
+    validateGqlRequest(updateOwnQuestion))))
 }

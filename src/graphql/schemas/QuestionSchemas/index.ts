@@ -1,5 +1,6 @@
 /* eslint-disable max-lines */
 import * as createOwnQuestionSchemas from './createOwnQuestionSchemas'
+import * as updateOwnQuestionSchemas from './updateOwnQuestionSchemas'
 
 const NumberConfigType = `
 "Número"
@@ -262,10 +263,12 @@ ${SortListConfigType}
 ${QuestionConfigType}
 ${QuestionType}
 ${createOwnQuestionSchemas.types}
+${updateOwnQuestionSchemas.types}
 `
 
 export const inputs = `
 ${createOwnQuestionSchemas.inputs}
+${updateOwnQuestionSchemas.inputs}
 `
 
 export const Query = `
@@ -273,4 +276,5 @@ export const Query = `
 
 export const Mutation = `
 ${createOwnQuestionSchemas.Mutation}
+${updateOwnQuestionSchemas.Mutation}
 `
