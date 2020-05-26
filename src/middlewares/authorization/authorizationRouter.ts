@@ -25,5 +25,6 @@ export const gqlRouter: { [resolverName: string]: Role[] } = {
   deleteQuestionType: [Role.Dev],
 
   createOwnQuestion: [Role.Client],
-  updateOwnQuestion: [Role.Client]
+  updateOwnQuestion: [Role.Client],
+  deleteOwnQuestion: [Role.Client]
 }
