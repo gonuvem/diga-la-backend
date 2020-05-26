@@ -8,7 +8,8 @@ import {
   UpdateOwnFormInput,
   CreateQuestionTypeInput,
   UpdateQuestionTypeInput,
-  CreateOwnQuestionInput
+  CreateOwnQuestionInput,
+  UpdateOwnQuestionInput
 } from '../types'
 import { createArrayInput, createStringValue } from './gqlTestHelper'
 import { AnswerOption } from '../interfaces'
@@ -228,6 +229,12 @@ export const createInputCreateOwnQuestion = (input: CreateOwnQuestionInput)
 : string => `{
   form: "${input.form}"
   type: "${input.type}"
+  formPage: ${input.formPage}
+  config: ${createInputQuestionConfig(input.config)}
+}`
+
+export const createInputUpdateOwnQuestion = (input: UpdateOwnQuestionInput)
+: string => `{
   formPage: ${input.formPage}
   config: ${createInputQuestionConfig(input.config)}
 }`
