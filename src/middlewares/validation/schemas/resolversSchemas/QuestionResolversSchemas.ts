@@ -1,12 +1,14 @@
 import Joi from '@hapi/joi'
 
 import {
-  createSchema
+  createSchema,
+  updateSchema
 } from '../baseSchemas'
 import { Question } from '../models/Question'
 import {
   JoiSchemaMap,
-  CreateOwnQuestionInput
+  CreateOwnQuestionInput,
+  UpdateOwnQuestionInput
 } from '../../../../types'
 
 const createOwnKeys: JoiSchemaMap<CreateOwnQuestionInput> = {
@@ -17,6 +19,14 @@ const createOwnKeys: JoiSchemaMap<CreateOwnQuestionInput> = {
 }
 const createOwn = createSchema(Joi.object().keys(createOwnKeys))
 
+const updateOwnKeys: JoiSchemaMap<UpdateOwnQuestionInput> = {
+  formPage: Question.formPage.optional(),
+  config: Question.config.optional()
+}
+const updateOwn = updateSchema(Joi.object().keys(updateOwnKeys)
+  .or('formPage', 'config'))
+
 export default {
-  createOwnQuestion: createOwn
+  createOwnQuestion: createOwn,
+  updateOwnQuestion: updateOwn
 }
