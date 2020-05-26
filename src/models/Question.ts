@@ -57,8 +57,7 @@ const answerOptionDefinition: MongooseDefinition<AnswerOption> = {
   image: String
 }
 
-const AnswerOptionSchema = new mongoose.Schema(answerOptionDefinition,
-  { _id: false })
+const AnswerOptionSchema = new mongoose.Schema(answerOptionDefinition)
 
 const checkBoxDefinition: MongooseDefinition<CheckBoxConfig> = {
   hasHorizontalAlignment: {
