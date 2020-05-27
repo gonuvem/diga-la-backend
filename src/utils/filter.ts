@@ -7,7 +7,8 @@ import {
   DateIntervalFilterObject,
   StringFilterObject,
   ArrayFilterObject,
-  FieldFilterObject
+  FieldFilterObject,
+  NumberFilterObject
 } from '../interfaces'
 
 export const createIdFilter = (field: IdFilterObject)
@@ -20,8 +21,8 @@ export const createBooleanFilter = (field: BooleanFilterObject)
   return field.value !== undefined ? { [field.name]: field.value } : {}
 }
 
-export const createDateIntervalFilter = (field: DateIntervalFilterObject)
-: { [field: string]: { $gte: Date, $lte: Date } } => {
+export const createDateIntervalFilter = (field: DateIntervalFilterObject):
+ { [field: string]: { $gte: Date, $lte: Date } } => {
   return field.value.beginDate && field.value.endDate
     ? {
       [field.name]: {
@@ -34,6 +35,11 @@ export const createDateIntervalFilter = (field: DateIntervalFilterObject)
 
 export const createStringFilter = (field: StringFilterObject)
 : { [field: string]: string } => {
+  return field.value ? { [field.name]: field.value } : {}
+}
+
+export const createNumberFilter = (field: NumberFilterObject)
+: { [field: string]: number } => {
   return field.value ? { [field.name]: field.value } : {}
 }
 
@@ -51,7 +57,8 @@ export const createFilterQuery = async (fields: Array<FieldFilterObject>)
     boolean: createBooleanFilter,
     dateInterval: createDateIntervalFilter,
     string: createStringFilter,
-    list: createArrayFilter
+    list: createArrayFilter,
+    number: createNumberFilter
   }
 
   const filterQuery = fields.reduce(
