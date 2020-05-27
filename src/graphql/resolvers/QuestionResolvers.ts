@@ -39,9 +39,17 @@ const listOwnQuestions = (_parent: object, _args: object,
     context.validData)
 }
 
+const readOwnQuestion = (_parent: object, _args: object,
+  context: MyContext<{ id: string }>)
+  : Promise<{ question: QuestionDocument }> => {
+  return QuestionResolverHelper.readOwnQuestion(context.user, context.validData)
+}
+
 export const Query = {
   listOwnQuestions: wrapGqlAsyncFunc(isGqlAuthenticated(isGqlAuthorized(
-    validateGqlRequest(listOwnQuestions))))
+    validateGqlRequest(listOwnQuestions)))),
+  readOwnQuestion: wrapGqlAsyncFunc(isGqlAuthenticated(isGqlAuthorized(
+    validateGqlRequest(readOwnQuestion))))
 }
 
 export const Mutation = {

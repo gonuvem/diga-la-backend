@@ -3,6 +3,7 @@ import * as createOwnQuestionSchemas from './createOwnQuestionSchemas'
 import * as updateOwnQuestionSchemas from './updateOwnQuestionSchemas'
 import * as deleteOwnQuestionSchemas from './deleteOwnQuestionSchemas'
 import * as listOwnQuestionsSchemas from './listOwnQuestionsSchemas'
+import * as readOwnQuestionSchemas from './readOwnQuestionSchemas'
 
 const NumberConfigType = `
 "Número"
@@ -270,6 +271,7 @@ ${createOwnQuestionSchemas.types}
 ${updateOwnQuestionSchemas.types}
 ${deleteOwnQuestionSchemas.types}
 ${listOwnQuestionsSchemas.types}
+${readOwnQuestionSchemas.types}
 `
 
 export const inputs = `
@@ -279,6 +281,7 @@ ${updateOwnQuestionSchemas.inputs}
 
 export const Query = `
 ${listOwnQuestionsSchemas.Query}
+${readOwnQuestionSchemas.Query}
 `
 
 export const Mutation = `
