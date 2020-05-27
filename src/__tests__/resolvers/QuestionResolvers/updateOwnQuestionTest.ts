@@ -135,7 +135,7 @@ export default (): void => {
           const expected = {
             ...baseQuestion.toJSON(),
             _id: id,
-            formPage: body.formPage,
+            position: body.position,
             config: body.config
           } as QuestionDocument
           checkResponse(expected, question)
