@@ -263,7 +263,8 @@ export const checkQuestion = (expected: Partial<QuestionInterface>,
   checkQuestionType(expected.type as QuestionTypeInterface,
      received.type as QuestionTypeInterface)
   expect(received).toMatchObject({
-    formPage: expected.formPage
+    formPage: expected.formPage,
+    position: expected.position
   })
   checkQuestionConfig(expected.config, received.config)
 }
