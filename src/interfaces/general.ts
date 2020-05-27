@@ -1,7 +1,8 @@
 export interface FetchParams {
   conditions?: object,
   projection?: string,
-  lean?: boolean
+  sort?: string,
+  lean?: boolean,
 }
 
 export interface UpdateParams {
@@ -24,11 +25,12 @@ export interface ListPaginatedParams {
 }
 
 export type FilterTypes = 'id' | 'boolean' | 'dateInterval' | 'string' | 'list'
+| 'number'
 
 export interface FieldFilterObject {
   type: FilterTypes,
   name: string,
-  value: string | boolean | Date | DateInterval | Array<unknown>
+  value: string | boolean | Date | DateInterval | Array<unknown> | number
 }
 
 export interface IdFilterObject extends FieldFilterObject {
@@ -54,4 +56,8 @@ export interface StringFilterObject extends FieldFilterObject {
 
 export interface ArrayFilterObject extends FieldFilterObject {
   value: Array<unknown>
+}
+
+export interface NumberFilterObject extends FieldFilterObject {
+  value: number
 }

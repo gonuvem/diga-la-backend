@@ -6,7 +6,9 @@ import {
   updateOne,
   deleteOne,
   checkInUse,
-  listPaginatedWithPopulate
+  listPaginatedWithPopulate,
+  countTotal,
+  fetchAll
 } from '../../utils/mongoose'
 import {
   QUESTIONS_EMPTY_LIST,
@@ -39,3 +41,7 @@ export const checkQuestionInUse = checkInUse(
 
 export const listQuestionsWithFormAndTypePaginated =
 listPaginatedWithPopulate(Question, QUESTIONS_EMPTY_LIST, populate)
+
+export const countQuestionsTotal = countTotal(Question)
+
+export const fetchAllQuestions = fetchAll(Question)

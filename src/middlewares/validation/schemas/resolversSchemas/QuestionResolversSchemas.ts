@@ -3,7 +3,9 @@ import Joi from '@hapi/joi'
 import {
   createSchema,
   updateSchema,
-  removeSchema
+  removeSchema,
+  listSchema,
+  readSchema
 } from '../baseSchemas'
 import { Question } from '../models/Question'
 import {
@@ -21,16 +23,29 @@ const createOwnKeys: JoiSchemaMap<CreateOwnQuestionInput> = {
 const createOwn = createSchema(Joi.object().keys(createOwnKeys))
 
 const updateOwnKeys: JoiSchemaMap<UpdateOwnQuestionInput> = {
-  formPage: Question.formPage.optional(),
+  position: Question.position.optional(),
   config: Question.config.optional()
 }
 const updateOwn = updateSchema(Joi.object().keys(updateOwnKeys)
-  .or('formPage', 'config'))
+  .or('formPage', 'position', 'config'))
 
 const removeOwn = removeSchema
+
+const sortFields = ['position']
+const defaultField = 'position'
+const filters = {
+  form: Question.form.required(),
+  formPage: Question.formPage.optional()
+}
+
+const listOwn = listSchema(sortFields, defaultField, filters)
+
+const readOwn = readSchema
 
 export default {
   createOwnQuestion: createOwn,
   updateOwnQuestion: updateOwn,
-  deleteOwnQuestion: removeOwn
+  deleteOwnQuestion: removeOwn,
+  listOwnQuestions: listOwn,
+  readOwnQuestion: readOwn
 }

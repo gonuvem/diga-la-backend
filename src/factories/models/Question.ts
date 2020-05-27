@@ -156,5 +156,6 @@ export const Question: Fake<QuestionInterface> = {
   form: fakeId,
   type: fakeId,
   formPage: fakeRandomInt({ min: 1, max: 10 }),
+  position: fakeRandomInt({ min: 0, max: 10 }),
   config: (): QuestionConfig => fakeQuestionConfig
 }

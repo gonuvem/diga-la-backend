@@ -11,7 +11,8 @@ const resolvers = {
     ...AuthResolvers.Query,
     ...ClientResolvers.Query,
     ...FormResolvers.Query,
-    ...QuestionTypeResolvers.Query
+    ...QuestionTypeResolvers.Query,
+    ...QuestionResolvers.Query
   },
   Mutation: {
     ...AuthResolvers.Mutation,

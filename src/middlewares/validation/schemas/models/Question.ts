@@ -156,5 +156,6 @@ export const Question: JoiSchemaMap<QuestionInterface> = {
   form: idSchema,
   type: idSchema,
   formPage: integerSchema.min(1),
+  position: integerSchema.min(0),
   config: Joi.object(QuestionConfigSchema)
 }

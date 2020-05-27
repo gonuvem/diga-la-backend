@@ -6,7 +6,6 @@ import Factory from '../../../factories'
 import * as err from '../../../middlewares/errorHandling/errors'
 import { Role } from '../../../enums'
 import {
-  QuestionInterface,
   QuestionDocument,
   FormDocument,
   QuestionTypeDocument
@@ -56,7 +55,7 @@ export default (): void => {
     setupData = await helpers.setupTask()
   })
 
-  const body = Factory.build<QuestionInterface>('Question')
+  const body = Factory.build<CreateOwnQuestionInput>('Question')
   utils.testIsGqlAuthenticated(app, resolver,
     createQuery(body as CreateOwnQuestionInput))
 
@@ -102,18 +101,20 @@ export default (): void => {
   })
 
   test('200 Question created', () => {
+    const { form, type, token } = ents
+
     const body = Factory.build<CreateOwnQuestionInput>('Question', {
-      form: ents.form._id,
-      type: ents.type._id
+      form: form._id,
+      type: type._id
     })
 
-    return baseRequest(body, ents.token)
+    return baseRequest(body, token)
       .then(response => {
         // utils.printForDocs(response)
         const { question } = response.body.data[resolver] as {
            question: QuestionDocument }
 
-        const expected = { ...body, form: ents.form, type: ents.type }
+        const expected = { ...body, form, type, position: 0 }
 
         checkResponse(expected, question)
       })

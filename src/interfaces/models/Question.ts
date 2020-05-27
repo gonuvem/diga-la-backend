@@ -126,6 +126,7 @@ export interface QuestionInterface {
   form: Partial<FormDocument> | Types.ObjectId,
   type: Partial<QuestionTypeDocument> | Types.ObjectId,
   formPage: number,
+  position: number,
   config: QuestionConfig
 }
 
