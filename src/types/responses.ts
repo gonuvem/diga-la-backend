@@ -2,7 +2,8 @@ import {
   UserDocument,
   ClientDocument,
   FormDocument,
-  QuestionTypeDocument
+  QuestionTypeDocument,
+  QuestionDocument
 } from '../interfaces'
 
 type BasicUser = {
@@ -33,3 +34,6 @@ export type ListFormsResponse = ListResponse & { forms: FormDocument[] }
 
 export type ListQuestionTypesResponse = ListResponse &
 { types: QuestionTypeDocument[] }
+
+export type ListQuestionsResponse = ListResponse &
+{ questions: QuestionDocument[] }
