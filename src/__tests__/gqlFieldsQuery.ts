@@ -187,8 +187,11 @@ const questionConfigFieldsQuery = `{
 }`
 
 export const questionFieldsQuery = `{
+  _id
   form ${formFieldsQuery}
   type ${questionTypeFieldsQuery}
   formPage
   config ${questionConfigFieldsQuery}
+  createdAt
+  updatedAt
 }`

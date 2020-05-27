@@ -1,4 +1,8 @@
 /* eslint-disable max-lines */
+import * as createOwnQuestionSchemas from './createOwnQuestionSchemas'
+import * as updateOwnQuestionSchemas from './updateOwnQuestionSchemas'
+import * as deleteOwnQuestionSchemas from './deleteOwnQuestionSchemas'
+
 const NumberConfigType = `
 "Número"
 type NumberConfig {
@@ -16,6 +20,7 @@ type NumberConfig {
 const AnswerOptionType = `
 "Opção de resposta"
 type AnswerOption {
+  _id: ID!
   "Texto"
   text: String!
   "Link da imagem"
@@ -258,13 +263,21 @@ ${RadioButtonConfigType}
 ${SortListConfigType}
 ${QuestionConfigType}
 ${QuestionType}
+${createOwnQuestionSchemas.types}
+${updateOwnQuestionSchemas.types}
+${deleteOwnQuestionSchemas.types}
 `
 
 export const inputs = `
+${createOwnQuestionSchemas.inputs}
+${updateOwnQuestionSchemas.inputs}
 `
 
 export const Query = `
 `
 
 export const Mutation = `
+${createOwnQuestionSchemas.Mutation}
+${updateOwnQuestionSchemas.Mutation}
+${deleteOwnQuestionSchemas.Mutation}
 `

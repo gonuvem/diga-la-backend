@@ -1,7 +1,8 @@
 import {
   UserInterface,
   FormInterface,
-  QuestionTypeInterface
+  QuestionTypeInterface,
+  QuestionInterface
 } from '../interfaces'
 
 export type LoginParams = {
@@ -87,3 +88,15 @@ export type ListQuestionTypesParams = ListParams<{
   kind?: QuestionTypeInterface['kind'],
   alias?: QuestionTypeInterface['alias'],
 }>
+
+export type CreateOwnQuestionInput = {
+  form: string,
+  type: string,
+  formPage: QuestionInterface['formPage'],
+  config: QuestionInterface['config']
+}
+
+export type UpdateOwnQuestionInput = {
+  formPage: QuestionInterface['formPage'],
+  config: QuestionInterface['config']
+}
