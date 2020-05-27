@@ -1,8 +1,8 @@
 const UpdateOwnQuestionInput = `
 "Parâmetros para atualizar questão do cliente logado. Pelo menos um dos campos opcionais deve ser enviado."
 input UpdateOwnQuestionInput {
-  "Mínimo: 1"
-  formPage: Int
+  "Mínimo: 0"
+  position: Int
   config: QuestionConfigInput
 }
 `
