@@ -4,7 +4,8 @@ import {
   createSchema,
   updateSchema,
   removeSchema,
-  listSchema
+  listSchema,
+  readSchema
 } from '../baseSchemas'
 import { Question } from '../models/Question'
 import {
@@ -39,9 +40,12 @@ const filters = {
 
 const listOwn = listSchema(sortFields, defaultField, filters)
 
+const readOwn = readSchema
+
 export default {
   createOwnQuestion: createOwn,
   updateOwnQuestion: updateOwn,
   deleteOwnQuestion: removeOwn,
-  listOwnQuestions: listOwn
+  listOwnQuestions: listOwn,
+  readOwnQuestion: readOwn
 }
