@@ -227,14 +227,14 @@ const createInputQuestionConfig = (input: CreateOwnQuestionInput['config'])
 
 export const createInputCreateOwnQuestion = (input: CreateOwnQuestionInput)
 : string => `{
-  form: "${input.form}"
-  type: "${input.type}"
-  formPage: ${input.formPage}
+  form: "${input.form}",
+  type: "${input.type}",
+  formPage: ${input.formPage},
   config: ${createInputQuestionConfig(input.config)}
 }`
 
 export const createInputUpdateOwnQuestion = (input: UpdateOwnQuestionInput)
 : string => `{
-  formPage: ${input.formPage}
+  position: ${input.position},
   config: ${createInputQuestionConfig(input.config)}
 }`
