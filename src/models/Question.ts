@@ -354,6 +354,11 @@ const questionDefinition: MongooseDefinition<QuestionInterface> = {
     validate: Number.isInteger,
     required: true
   },
+  position: {
+    type: Number,
+    validate: Number.isInteger,
+    required: true
+  },
   config: {
     type: QuestionConfigSchema,
     required: true
