@@ -53,6 +53,12 @@ export function countByCriteria<T extends Document> (Model: mongoose.Model<T>) {
   }
 }
 
+export function countTotal<T extends Document> (Model: mongoose.Model<T>) {
+  return function (): Query<number> {
+    return Model.estimatedDocumentCount().lean()
+  }
+}
+
 type CountInfo = { Model: mongoose.Model<Document>, fieldName: string }
 
 export function checkInUse (countInfo: CountInfo[], inUseError: Boom) {
@@ -128,9 +134,9 @@ export function fetchOneWithoutError<T extends Document>
 }
 
 export function fetchAll<T extends Document> (Model: mongoose.Model<T>) {
-  return function ({ conditions = {}, projection = '', lean = true }
+  return function ({ conditions = {}, projection = '', sort = '', lean = true }
     : FetchParams): Query<Array<T>> {
-    return Model.find(conditions, projection).lean(lean)
+    return Model.find(conditions, projection).sort(sort).lean(lean)
   }
 }
 
