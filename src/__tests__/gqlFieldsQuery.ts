@@ -191,6 +191,7 @@ export const questionFieldsQuery = `{
   form ${formFieldsQuery}
   type ${questionTypeFieldsQuery}
   formPage
+  position
   config ${questionConfigFieldsQuery}
   createdAt
   updatedAt
