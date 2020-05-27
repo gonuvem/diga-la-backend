@@ -2,6 +2,7 @@
 import * as createOwnQuestionSchemas from './createOwnQuestionSchemas'
 import * as updateOwnQuestionSchemas from './updateOwnQuestionSchemas'
 import * as deleteOwnQuestionSchemas from './deleteOwnQuestionSchemas'
+import * as listOwnQuestionsSchemas from './listOwnQuestionsSchemas'
 
 const NumberConfigType = `
 "Número"
@@ -235,6 +236,8 @@ type Question {
   type: QuestionType!
   "Página"
   formPage: Int!
+  "Posição dentro da página"
+  position: Int!
   "Configuração"
   config: QuestionConfig!
   "Data de criação"
@@ -266,6 +269,7 @@ ${QuestionType}
 ${createOwnQuestionSchemas.types}
 ${updateOwnQuestionSchemas.types}
 ${deleteOwnQuestionSchemas.types}
+${listOwnQuestionsSchemas.types}
 `
 
 export const inputs = `
@@ -274,6 +278,7 @@ ${updateOwnQuestionSchemas.inputs}
 `
 
 export const Query = `
+${listOwnQuestionsSchemas.Query}
 `
 
 export const Mutation = `

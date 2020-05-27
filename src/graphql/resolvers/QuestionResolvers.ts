@@ -6,7 +6,9 @@ import * as QuestionResolverHelper from '../../helpers/resolverHelpers/QuestionR
 import {
   MyContext,
   CreateOwnQuestionInput,
-  UpdateOwnQuestionInput
+  UpdateOwnQuestionInput,
+  ListOwnQuestionsParams,
+  ListQuestionsResponse
 } from '../../types'
 import { QuestionDocument } from '../../interfaces'
 
@@ -28,6 +30,18 @@ const deleteOwnQuestion = (_parent: object, _args: object,
   context: MyContext<{ id: string }>) : Promise<{}> => {
   return QuestionResolverHelper.deleteOwnQuestion(context.user,
     context.validData)
+}
+
+const listOwnQuestions = (_parent: object, _args: object,
+  context: MyContext<ListOwnQuestionsParams>)
+  : Promise<ListQuestionsResponse> => {
+  return QuestionResolverHelper.listOwnQuestions(context.user,
+    context.validData)
+}
+
+export const Query = {
+  listOwnQuestions: wrapGqlAsyncFunc(isGqlAuthenticated(isGqlAuthorized(
+    validateGqlRequest(listOwnQuestions))))
 }
 
 export const Mutation = {
