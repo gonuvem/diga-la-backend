@@ -5,6 +5,7 @@ import * as ClientSchemas from './ClientSchemas'
 import * as FormSchemas from './FormSchemas'
 import * as QuestionTypeSchemas from './QuestionTypeSchemas'
 import * as QuestionSchemas from './QuestionSchemas'
+import * as ResponseSchemas from './ResponseSchemas'
 
 const basicTypes = `
 "Tipo Date do JavaScript"
@@ -43,6 +44,7 @@ ${ClientSchemas.types}
 ${FormSchemas.types}
 ${QuestionTypeSchemas.types}
 ${QuestionSchemas.types}
+${ResponseSchemas.types}
 `
 
 const enums = `
@@ -55,6 +57,7 @@ ${ClientSchemas.inputs}
 ${FormSchemas.inputs}
 ${QuestionTypeSchemas.inputs}
 ${QuestionSchemas.inputs}
+${ResponseSchemas.inputs}
 `
 
 const Query = `
@@ -66,6 +69,7 @@ type Query {
   ${FormSchemas.Query}
   ${QuestionTypeSchemas.Query}
   ${QuestionSchemas.Query}
+  ${ResponseSchemas.Query}
 }
 `
 
@@ -76,6 +80,7 @@ type Mutation {
   ${FormSchemas.Mutation}
   ${QuestionTypeSchemas.Mutation}
   ${QuestionSchemas.Mutation}
+  ${ResponseSchemas.Mutation}
 }
 `
 
