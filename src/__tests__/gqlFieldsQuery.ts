@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 export const errorFieldsQuery = `{
   message
   statusCode
@@ -193,6 +194,37 @@ export const questionFieldsQuery = `{
   formPage
   position
   config ${questionConfigFieldsQuery}
+  createdAt
+  updatedAt
+}`
+
+const answerFieldsQuery = `{
+  checkBox
+  date
+  dropDown
+  email
+  imageChoice
+  link
+  longText
+  matrix
+  nps
+  number
+  phone
+  radioButton
+  shortText
+  slider
+  sortList
+}`
+
+const answerAndQuestionFieldsQuery = `{
+  question ${questionFieldsQuery}
+  answer ${answerFieldsQuery}
+}`
+
+export const responseFieldsQuery = `{
+  _id
+  form ${formFieldsQuery}
+  answersAndQuestions ${answerAndQuestionFieldsQuery}
   createdAt
   updatedAt
 }`
