@@ -36,7 +36,11 @@ const createEnts = async (): Promise<Ents> => {
 
   await Promise.all([
     helpers.createResponse({
-      body: { answersAndQuestions: [{ answer: 'x', question: o1._id }] }
+      body: {
+        answersAndQuestions: [
+          { answer: { shortText: 'ok' }, question: o1._id }
+        ]
+      }
     })
   ])
 
