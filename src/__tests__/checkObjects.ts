@@ -12,7 +12,10 @@ import {
   QuestionTypeDocument,
   QuestionInterface,
   QuestionDocument,
-  AnswerOption
+  AnswerOption,
+  ResponseInterface,
+  ResponseDocument,
+  AnswerAndQuestion
 } from '../interfaces'
 
 export const checkUser = (expected: Partial<UserInterface>,
@@ -267,4 +270,47 @@ export const checkQuestion = (expected: Partial<QuestionInterface>,
     position: expected.position
   })
   checkQuestionConfig(expected.config, received.config)
+}
+
+const checkAnswer = (expected: Partial<AnswerAndQuestion['answer']>,
+  received: Partial<AnswerAndQuestion['answer']>): void => {
+  const checkArrayOfIds = (expectedIds: string[], receivedIds: string[])
+    : void => {
+    receivedIds.forEach((id, i) =>
+      expect(expectedIds[i].toString()).toBe(id.toString()))
+  }
+  const checkArrayOfDates = (expectedIds: Date[], receivedIds: Date[])
+    : void => {
+    receivedIds.forEach((id, i) =>
+      expect(expectedIds[i].toISOString()).toBe(id.toISOString()))
+  }
+  if (received.checkBox) checkArrayOfIds(expected.checkBox, received.checkBox)
+  if (received.date) checkArrayOfDates(expected.date, received.date)
+  if (received.dropDown) checkArrayOfIds(expected.dropDown, received.dropDown)
+  if (received.email) expect(expected.email).toBe(received.email)
+  if (received.imageChoice) checkArrayOfIds(expected.imageChoice, received.imageChoice)
+  if (received.link) expect(expected.link).toBe(received.link)
+  if (received.longText) expect(expected.longText).toBe(received.longText)
+  if (received.matrix) checkArrayOfIds(expected.matrix, received.matrix)
+  if (received.nps) expect(expected.nps).toBe(received.nps)
+  if (received.number) expect(expected.number).toBe(received.number)
+  if (received.phone) expect(expected.phone).toBe(received.phone)
+  if (received.radioButton) checkArrayOfIds(expected.radioButton, received.radioButton)
+  if (received.shortText) expect(expected.shortText).toBe(received.shortText)
+  if (received.slider) expect(expected.slider).toBe(received.slider)
+  if (received.sortList) checkArrayOfIds(expected.sortList, received.sortList)
+}
+
+const checkAnswerAndQuestion = (expected: Partial<AnswerAndQuestion>,
+  received: Partial<AnswerAndQuestion>): void => {
+  checkQuestion(expected.question as QuestionInterface,
+     received.question as QuestionInterface)
+  checkAnswer(expected.answer, received.answer)
+}
+
+export const checkResponse = (expected: Partial<ResponseInterface>,
+  received: Partial<ResponseDocument>): void => {
+  checkForm(expected.form as FormInterface, received.form as FormInterface)
+  received.answersAndQuestions.forEach((v, i) =>
+    checkAnswerAndQuestion(expected.answersAndQuestions[i], v))
 }
