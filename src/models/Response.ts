@@ -9,13 +9,35 @@ import { MongooseDefinition } from '../types'
 import './Question'
 import './Form'
 
+const AnswerSchema = new mongoose.Schema({
+  checkBox: [String],
+  date: [Date],
+  dropDown: [String],
+  email: String,
+  imageChoice: [String],
+  link: String,
+  longText: String,
+  matrix: [String],
+  nps: Number,
+  number: Number,
+  phone: String,
+  radioButton: [String],
+  shortText: String,
+  slider: Number,
+  sortList: [String]
+} as MongooseDefinition<AnswerAndQuestion['answer']>,
+{ _id: false })
+
 const answerAndQuestionDefinition: MongooseDefinition<AnswerAndQuestion> = {
   question: {
     type: mongoose.Types.ObjectId,
     ref: 'Question',
     required: true
   },
-  answer: mongoose.Schema.Types.Mixed
+  answer: {
+    type: AnswerSchema,
+    required: true
+  }
 }
 
 const AnswerAndQuestionSchema = new mongoose.Schema(answerAndQuestionDefinition,
