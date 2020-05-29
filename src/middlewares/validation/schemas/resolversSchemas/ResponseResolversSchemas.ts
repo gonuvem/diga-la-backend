@@ -1,5 +1,7 @@
 import {
-  listSchema, idSchema
+  listSchema,
+  idSchema,
+  readSchema
 } from '../baseSchemas'
 import { Response } from '../models/Response'
 import {
@@ -16,6 +18,9 @@ const filters: JoiSchemaMap<ListOwnResponsesParams> = {
 
 const listOwn = listSchema(sortFields, defaultField, filters)
 
+const readOwn = readSchema
+
 export default {
-  listOwnResponses: listOwn
+  listOwnResponses: listOwn,
+  readOwnResponse: readOwn
 }
