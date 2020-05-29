@@ -3,6 +3,7 @@ import * as ClientResolvers from './ClientResolvers'
 import * as FormResolvers from './FormResolvers'
 import * as QuestionTypeResolvers from './QuestionTypeResolvers'
 import * as QuestionResolvers from './QuestionResolvers'
+import * as ResponseResolvers from './ResponseResolvers'
 
 const resolvers = {
   Date: (value: string | number | Date): string => new Date(value).toISOString(),
@@ -12,7 +13,8 @@ const resolvers = {
     ...ClientResolvers.Query,
     ...FormResolvers.Query,
     ...QuestionTypeResolvers.Query,
-    ...QuestionResolvers.Query
+    ...QuestionResolvers.Query,
+    ...ResponseResolvers.Query
   },
   Mutation: {
     ...AuthResolvers.Mutation,
