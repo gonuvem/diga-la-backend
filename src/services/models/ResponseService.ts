@@ -15,6 +15,10 @@ const populate = [
   {
     path: 'form',
     populate: { path: 'client', populate: { path: 'user' } }
+  },
+  {
+    path: 'answersAndQuestions.question',
+    populate: { path: 'type' }
   }
 ]
 

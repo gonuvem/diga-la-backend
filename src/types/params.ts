@@ -105,3 +105,8 @@ export type ListOwnQuestionsParams = ListParams<{
   form: string
   formPage?: QuestionInterface['formPage']
 }>
+
+export type ListOwnResponsesParams = ListParams<{
+  form: string,
+  question?: string
+}>

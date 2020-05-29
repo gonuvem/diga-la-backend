@@ -217,7 +217,15 @@ const answerFieldsQuery = `{
 }`
 
 const answerAndQuestionFieldsQuery = `{
-  question ${questionFieldsQuery}
+  question {
+    _id
+    type ${questionTypeFieldsQuery}
+    formPage
+    position
+    config ${questionConfigFieldsQuery}
+    createdAt
+    updatedAt
+  }
   answer ${answerFieldsQuery}
 }`
 
