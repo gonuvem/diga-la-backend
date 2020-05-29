@@ -1,4 +1,5 @@
 import * as listOwnResponsesSchemas from './listOwnResponsesSchemas'
+import * as readOwnResponseSchemas from './readOwnResponseSchemas'
 
 const AnswerType = `
 "Conteúdo da resposta de acordo com tipo de questão"
@@ -69,6 +70,7 @@ ${AnswerType}
 ${AnswerAndQuestionType}
 ${ResponseType}
 ${listOwnResponsesSchemas.types}
+${readOwnResponseSchemas.types}
 `
 
 export const inputs = `
@@ -76,6 +78,7 @@ export const inputs = `
 
 export const Query = `
 ${listOwnResponsesSchemas.Query}
+${readOwnResponseSchemas.Query}
 `
 
 export const Mutation = `

@@ -8,6 +8,7 @@ import {
   ListOwnResponsesParams,
   ListResponsesResponse
 } from '../../types'
+import { ResponseDocument } from '../../interfaces'
 
 const listOwnResponses = (_parent: object, _args: object,
   context: MyContext<ListOwnResponsesParams>)
@@ -16,7 +17,15 @@ const listOwnResponses = (_parent: object, _args: object,
     context.validData)
 }
 
+const readOwnResponse = (_parent: object, _args: object,
+  context: MyContext<{ id: string }>)
+  : Promise<{ response: ResponseDocument }> => {
+  return ResponseResolverHelper.readOwnResponse(context.user, context.validData)
+}
+
 export const Query = {
   listOwnResponses: wrapGqlAsyncFunc(isGqlAuthenticated(isGqlAuthorized(
-    validateGqlRequest(listOwnResponses))))
+    validateGqlRequest(listOwnResponses)))),
+  readOwnResponse: wrapGqlAsyncFunc(isGqlAuthenticated(isGqlAuthorized(
+    validateGqlRequest(readOwnResponse))))
 }
