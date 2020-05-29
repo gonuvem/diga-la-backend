@@ -6,7 +6,8 @@ import * as ResponseResolverHelper from '../../helpers/resolverHelpers/ResponseR
 import {
   MyContext,
   ListOwnResponsesParams,
-  ListResponsesResponse
+  ListResponsesResponse,
+  SubmitResponseInput
 } from '../../types'
 import { ResponseDocument } from '../../interfaces'
 
@@ -23,9 +24,19 @@ const readOwnResponse = (_parent: object, _args: object,
   return ResponseResolverHelper.readOwnResponse(context.user, context.validData)
 }
 
+const submitResponse = (_parent: object, _args: object,
+  context: MyContext<{ input: SubmitResponseInput }>)
+  : Promise<{ }> => {
+  return ResponseResolverHelper.submitResponse(context.validData.input)
+}
+
 export const Query = {
   listOwnResponses: wrapGqlAsyncFunc(isGqlAuthenticated(isGqlAuthorized(
     validateGqlRequest(listOwnResponses)))),
   readOwnResponse: wrapGqlAsyncFunc(isGqlAuthenticated(isGqlAuthorized(
     validateGqlRequest(readOwnResponse))))
+}
+
+export const Mutation = {
+  submitResponse: wrapGqlAsyncFunc(validateGqlRequest(submitResponse))
 }
