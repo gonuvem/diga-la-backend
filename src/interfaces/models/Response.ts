@@ -5,21 +5,21 @@ import { FormDocument } from './Form'
 import { QuestionTypeAlias } from '../../enums'
 
 interface Answer {
-  [QuestionTypeAlias.CheckBox]?: string[],
+  [QuestionTypeAlias.CheckBox]?: Types.ObjectId[] | string[],
   [QuestionTypeAlias.Date]?: Date[],
-  [QuestionTypeAlias.DropDown]?: string[],
+  [QuestionTypeAlias.DropDown]?: Types.ObjectId[] | string[],
   [QuestionTypeAlias.Email]?: string,
-  [QuestionTypeAlias.ImageChoice]?: string[],
+  [QuestionTypeAlias.ImageChoice]?: Types.ObjectId[] | string[],
   [QuestionTypeAlias.Link]?: string,
   [QuestionTypeAlias.LongText]?: string,
-  [QuestionTypeAlias.Matrix]?: string[],
+  [QuestionTypeAlias.Matrix]?: Types.ObjectId[] | string[],
   [QuestionTypeAlias.NPS]?: number,
   [QuestionTypeAlias.Number]?: number,
   [QuestionTypeAlias.Phone]?: string,
-  [QuestionTypeAlias.RadioButton]?: string[],
+  [QuestionTypeAlias.RadioButton]?: Types.ObjectId[] | string[],
   [QuestionTypeAlias.ShortText]?: string,
   [QuestionTypeAlias.Slider]?: number,
-  [QuestionTypeAlias.SortList]?: string[]
+  [QuestionTypeAlias.SortList]?: Types.ObjectId[] | string[]
 }
 
 export interface AnswerAndQuestion {
