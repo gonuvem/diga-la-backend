@@ -49,8 +49,7 @@ const createResponse = helpers.createResponse
 
 type Ents = {
   token: string,
-  objectsByForm: ResponseDocument[],
-  questions: QuestionDocument[]
+  objectsByForm: ResponseDocument[]
 }
 const createEnts = async (): Promise<Ents> => {
   const { token, client, user } = await helpers.createClientUserAndToken()
@@ -112,7 +111,7 @@ const createEnts = async (): Promise<Ents> => {
   o12.form = form1
   o12.answersAndQuestions[0].question = question3
 
-  return { token, objectsByForm: [o1, o11, o12], questions: [question1, question2, question3] }
+  return { token, objectsByForm: [o1, o11, o12] }
 }
 
 const baseRequest = utils.baseGqlRequest(app, createQuery)
