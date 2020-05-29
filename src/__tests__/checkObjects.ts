@@ -301,9 +301,20 @@ const checkAnswer = (expected: Partial<AnswerAndQuestion['answer']>,
   if (received.sortList) checkArrayOfIds(expected.sortList, received.sortList)
 }
 
+export const checkQuestionWithoutForm = (expected: Partial<QuestionInterface>,
+  received: Partial<QuestionDocument>): void => {
+  checkQuestionType(expected.type as QuestionTypeInterface,
+     received.type as QuestionTypeInterface)
+  expect(received).toMatchObject({
+    formPage: expected.formPage,
+    position: expected.position
+  })
+  checkQuestionConfig(expected.config, received.config)
+}
+
 const checkAnswerAndQuestion = (expected: Partial<AnswerAndQuestion>,
   received: Partial<AnswerAndQuestion>): void => {
-  checkQuestion(expected.question as QuestionInterface,
+  checkQuestionWithoutForm(expected.question as QuestionInterface,
      received.question as QuestionInterface)
   checkAnswer(expected.answer, received.answer)
 }
