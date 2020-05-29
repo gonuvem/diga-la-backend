@@ -9,7 +9,8 @@ import {
   CreateQuestionTypeInput,
   UpdateQuestionTypeInput,
   CreateOwnQuestionInput,
-  UpdateOwnQuestionInput
+  UpdateOwnQuestionInput,
+  SubmitResponseInput
 } from '../types'
 import { createArrayInput, createStringValue } from './gqlTestHelper'
 import { AnswerOption } from '../interfaces'
@@ -237,4 +238,36 @@ export const createInputUpdateOwnQuestion = (input: UpdateOwnQuestionInput)
 : string => `{
   position: ${input.position},
   config: ${createInputQuestionConfig(input.config)}
+}`
+
+const createInputAnswer = (
+  input: SubmitResponseInput['answersAndQuestions'][0]['answer']): string => `{
+    checkBox: ${createArrayInput(input.checkBox, createStringValue)}
+    date: ${createArrayInput(input.date, (date: Date) => `"${date.toISOString()}"`)}
+    dropDown: ${createArrayInput(input.dropDown, createStringValue)}
+    email: "${input.email}"
+    imageChoice: ${createArrayInput(input.imageChoice, createStringValue)}
+    link: "${input.link}"
+    longText: "${input.longText}"
+    matrix: ${createArrayInput(input.matrix, createStringValue)}
+    nps: ${input.nps}
+    number: ${input.number}
+    phone: "${input.phone}"
+    radioButton: ${createArrayInput(input.radioButton, createStringValue)}
+    shortText: "${input.shortText}"
+    slider: ${input.slider}
+    sortList: ${createArrayInput(input.sortList, createStringValue)}
+  }`
+
+const createInputAnswerAndQuestion = (
+  input: SubmitResponseInput['answersAndQuestions'][0]): string => `{
+    question: "${input.question}"
+    answer: ${createInputAnswer(input.answer)}
+  }`
+
+export const createInputSubmitResponse = (input: SubmitResponseInput)
+: string => `{
+  form: "${input.form}",
+  answersAndQuestions: ${createArrayInput(input.answersAndQuestions,
+     createInputAnswerAndQuestion)}
 }`
