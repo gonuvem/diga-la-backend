@@ -21,7 +21,8 @@ const resolvers = {
     ...ClientResolvers.Mutation,
     ...FormResolvers.Mutation,
     ...QuestionTypeResolvers.Mutation,
-    ...QuestionResolvers.Mutation
+    ...QuestionResolvers.Mutation,
+    ...ResponseResolvers.Mutation
   }
 }
 

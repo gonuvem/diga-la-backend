@@ -1,5 +1,7 @@
 /* eslint-disable max-lines */
 /* eslint-disable max-lines-per-function */
+import { Types } from 'mongoose'
+
 import { Role } from '../enums'
 import {
   UserInterface,
@@ -274,9 +276,9 @@ export const checkQuestion = (expected: Partial<QuestionInterface>,
 
 const checkAnswer = (expected: Partial<AnswerAndQuestion['answer']>,
   received: Partial<AnswerAndQuestion['answer']>): void => {
-  const checkArrayOfIds = (expectedIds: string[], receivedIds: string[])
-    : void => {
-    receivedIds.forEach((id, i) =>
+  const checkArrayOfIds = (expectedIds: unknown[],
+    receivedIds: unknown[]) : void => {
+    receivedIds.forEach((id: Types.ObjectId, i: number) =>
       expect(expectedIds[i].toString()).toBe(id.toString()))
   }
   const checkArrayOfDates = (expectedIds: Date[], receivedIds: Date[])

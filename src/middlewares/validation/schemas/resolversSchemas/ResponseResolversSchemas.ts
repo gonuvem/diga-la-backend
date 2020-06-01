@@ -1,12 +1,16 @@
+import Joi from '@hapi/joi'
+
 import {
   listSchema,
   idSchema,
-  readSchema
+  readSchema,
+  createSchema
 } from '../baseSchemas'
 import { Response } from '../models/Response'
 import {
   JoiSchemaMap,
-  ListOwnResponsesParams
+  ListOwnResponsesParams,
+  SubmitResponseInput
 } from '../../../../types'
 
 const sortFields = ['createdAt', '-createdAt']
@@ -20,7 +24,14 @@ const listOwn = listSchema(sortFields, defaultField, filters)
 
 const readOwn = readSchema
 
+const submitKeys: JoiSchemaMap<SubmitResponseInput> = {
+  form: Response.form.required(),
+  answersAndQuestions: Response.answersAndQuestions.required()
+}
+const submit = createSchema(Joi.object().keys(submitKeys))
+
 export default {
   listOwnResponses: listOwn,
-  readOwnResponse: readOwn
+  readOwnResponse: readOwn,
+  submitResponse: submit
 }
