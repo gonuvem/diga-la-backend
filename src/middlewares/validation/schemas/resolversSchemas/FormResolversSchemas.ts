@@ -39,10 +39,13 @@ const listOwn = listSchema(sortFields, defaultField, filters)
 
 const readOwn = readSchema
 
+const show = readSchema
+
 export default {
   createOwnForm: createOwn,
   updateOwnForm: updateOwn,
   deleteOwnForm: removeOwn,
   listOwnForms: listOwn,
-  readOwnForm: readOwn
+  readOwnForm: readOwn,
+  showForm: show
 }
