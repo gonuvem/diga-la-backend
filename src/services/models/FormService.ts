@@ -3,11 +3,12 @@ import Question from '../../models/Question'
 import Response from '../../models/Response'
 import {
   createOne,
-  fetchOneWithPopulate,
+  fetchOne,
   updateOne,
   deleteOne,
   checkInUse,
-  listPaginatedWithPopulate
+  listPaginated,
+  fetchOneWithoutError
 } from '../../utils/mongoose'
 import {
   FORMS_EMPTY_LIST,
@@ -15,12 +16,10 @@ import {
   FORM_IN_USE
 } from '../../middlewares/errorHandling/errors'
 
-const populate = { path: 'client', populate: { path: 'user' } }
-
 export const createOneForm = createOne(Form)
 
-export const fetchOneFormWithClient = fetchOneWithPopulate(
-  Form, FORM_NOT_FOUND, populate)
+export const fetchOneForm = fetchOne(
+  Form, FORM_NOT_FOUND)
 
 export const updateOneForm = updateOne(Form, FORM_NOT_FOUND)
 
@@ -33,5 +32,6 @@ export const checkFormInUse = checkInUse(
   ], FORM_IN_USE
 )
 
-export const listFormsWithClientPaginated = listPaginatedWithPopulate(Form,
-  FORMS_EMPTY_LIST, [populate, { path: 'numResponses' }])
+export const listFormsPaginated = listPaginated(Form, FORMS_EMPTY_LIST)
+
+export const fetchOneFormWithoutError = fetchOneWithoutError(Form)
