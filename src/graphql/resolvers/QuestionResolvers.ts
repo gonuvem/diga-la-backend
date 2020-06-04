@@ -60,3 +60,10 @@ export const Mutation = {
   deleteOwnQuestion: wrapGqlAsyncFunc(isGqlAuthenticated(isGqlAuthorized(
     validateGqlRequest(deleteOwnQuestion))))
 }
+
+export const references = {
+  Question: {
+    form: QuestionResolverHelper.getQuestionForm,
+    type: QuestionResolverHelper.getQuestionType
+  }
+}
