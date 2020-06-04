@@ -3,7 +3,7 @@ import { Types } from 'mongoose'
 import { QuestionDocument } from '../../../interfaces'
 import { SubmitResponseInput } from '../../../types'
 import { createOneResponse } from '../../../services/models/ResponseService'
-import { fetchOneFormWithClient } from '../../../services/models/FormService'
+import { fetchOneForm } from '../../../services/models/FormService'
 import { fetchAllQuestions } from '../../../services/models/QuestionService'
 import { QUESTION_NOT_FOUND } from '../../../middlewares/errorHandling/errors'
 
@@ -19,7 +19,7 @@ const checkForQuestionNotFound = (ids: Types.ObjectId[],
 
 export async function submitResponse (input: SubmitResponseInput)
 : Promise<{ }> {
-  const form = await fetchOneFormWithClient({ conditions: { _id: input.form } })
+  const form = await fetchOneForm({ conditions: { _id: input.form } })
 
   const questionsIds = input.answersAndQuestions.map(o => o.question)
   const questions = await fetchAllQuestions({

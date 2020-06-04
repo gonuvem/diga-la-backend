@@ -1,3 +1,5 @@
+import { Types } from 'mongoose'
+
 import {
   UserDocument,
   ClientDocument,
@@ -6,7 +8,7 @@ import {
 } from '../interfaces'
 import {
   updateOneClient,
-  fetchOneClientWithUser
+  fetchOneClient
 } from '../services/models/ClientService'
 import {
   updateOneUser,
@@ -37,10 +39,10 @@ export const fetchAndUpdateClientWithUser = async (conditions: object,
   : Promise<ClientDocument> => {
   const { ...userData } = updateData
 
-  const client = await fetchOneClientWithUser({ conditions })
+  const client = await fetchOneClient({ conditions })
 
   if (userData.email) {
-    await checkUserConflicts(userData, (client.user as UserDocument)._id)
+    await checkUserConflicts(userData, (client.user) as Types.ObjectId)
   }
 
   return updateClientWithUser(client, { }, userData)

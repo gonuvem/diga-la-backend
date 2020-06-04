@@ -1,18 +1,16 @@
 import { FormDocument, UserDocument } from '../../../interfaces'
 import { UpdateOwnFormInput } from '../../../types'
-import { fetchOneClientWithUser } from '../../../services/models/ClientService'
+import { fetchOneClient } from '../../../services/models/ClientService'
 import {
-  fetchOneFormWithClient,
+  fetchOneForm,
   updateOneForm
 } from '../../../services/models/FormService'
 
 export async function updateOwnForm (user: UserDocument, { id, input }:
    { id: string, input: UpdateOwnFormInput }): Promise<{ form: FormDocument }> {
-  const client = await fetchOneClientWithUser({
-    conditions: { user: user._id }
-  })
+  const client = await fetchOneClient({ conditions: { user: user._id } })
 
-  const form = await fetchOneFormWithClient({
+  const form = await fetchOneForm({
     conditions: { _id: id, client: client._id }
   })
 
@@ -21,5 +19,5 @@ export async function updateOwnForm (user: UserDocument, { id, input }:
     updateData: input
   })
 
-  return { form: { ...formUpdated, client } as FormDocument }
+  return { form: formUpdated }
 }

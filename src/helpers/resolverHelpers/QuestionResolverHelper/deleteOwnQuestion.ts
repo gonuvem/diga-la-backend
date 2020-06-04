@@ -1,11 +1,11 @@
 import { UserDocument, QuestionDocument } from '../../../interfaces'
 import {
-  fetchOneQuestionWithFormAndType,
+  fetchOneQuestion,
   checkQuestionInUse,
   deleteOneQuestion,
   fetchAllQuestions
 } from '../../../services/models/QuestionService'
-import { fetchOneClientWithUser } from '../../../services/models/ClientService'
+import { fetchOneClient } from '../../../services/models/ClientService'
 
 const getNextQuestionsFromSameFormPage = async (id: string, formPage: number,
   outgoingPosition: number)
@@ -41,9 +41,9 @@ const repositionQuestions = async (id: string, formPage: number,
 
 export async function deleteOwnQuestion (user: UserDocument,
   { id }:{ id: string }): Promise<{}> {
-  await fetchOneClientWithUser({ conditions: { user: user._id } })
+  await fetchOneClient({ conditions: { user: user._id } })
 
-  const { _id, formPage, position } = await fetchOneQuestionWithFormAndType({
+  const { _id, formPage, position } = await fetchOneQuestion({
     conditions: { _id: id }
   })
 

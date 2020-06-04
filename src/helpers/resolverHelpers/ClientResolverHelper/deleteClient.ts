@@ -1,5 +1,5 @@
 import {
-  fetchOneClientWithUser,
+  fetchOneClient,
   checkClientInUse,
   deleteOneClient
 } from '../../../services/models/ClientService'
@@ -7,7 +7,7 @@ import { deleteOneUser } from '../../../services/models/UserService'
 import { UserDocument } from '../../../interfaces'
 
 export async function deleteClient ({ id }: { id: string }): Promise<object> {
-  const client = await fetchOneClientWithUser({ conditions: { _id: id } })
+  const client = await fetchOneClient({ conditions: { _id: id } })
 
   await checkClientInUse({ id: client._id })
 

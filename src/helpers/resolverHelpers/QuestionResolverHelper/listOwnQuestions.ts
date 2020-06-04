@@ -1,9 +1,7 @@
 import { UserDocument } from '../../../interfaces'
 import { ListOwnQuestionsParams, ListQuestionsResponse } from '../../../types'
-import {
-  listQuestionsWithFormAndTypePaginated
-} from '../../../services/models/QuestionService'
-import { fetchOneClientWithUser } from '../../../services/models/ClientService'
+import { listQuestionsPaginated } from '../../../services/models/QuestionService'
+import { fetchOneClient } from '../../../services/models/ClientService'
 import { createFilterQuery } from '../../../utils/filter'
 
 const createListOwnQuestionsConditions = async (
@@ -19,7 +17,7 @@ const createListOwnQuestionsConditions = async (
 export async function listOwnQuestions (user: UserDocument,
   { sort, page, perPage, ...filters }: ListOwnQuestionsParams)
   : Promise<ListQuestionsResponse> {
-  await fetchOneClientWithUser({ conditions: { user: user._id } })
+  await fetchOneClient({ conditions: { user: user._id } })
 
   const conditions = await createListOwnQuestionsConditions(filters)
 
@@ -27,8 +25,7 @@ export async function listOwnQuestions (user: UserDocument,
     objects: questions,
     total,
     pages
-  } = await listQuestionsWithFormAndTypePaginated(
-    { conditions, page, perPage, sort })
+  } = await listQuestionsPaginated({ conditions, page, perPage, sort })
 
   return { questions, total, pages }
 }

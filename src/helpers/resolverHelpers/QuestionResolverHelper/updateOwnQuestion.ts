@@ -1,11 +1,8 @@
-import {
-  QuestionDocument,
-  UserDocument
-} from '../../../interfaces'
+import { QuestionDocument, UserDocument } from '../../../interfaces'
 import { UpdateOwnQuestionInput } from '../../../types'
-import { fetchOneClientWithUser } from '../../../services/models/ClientService'
+import { fetchOneClient } from '../../../services/models/ClientService'
 import {
-  fetchOneQuestionWithFormAndType,
+  fetchOneQuestion,
   updateOneQuestion,
   fetchAllQuestions
 } from '../../../services/models/QuestionService'
@@ -61,10 +58,10 @@ const repositionQuestions = async (id: string, formPage: number,
 export async function updateOwnQuestion (user: UserDocument, { id, input }:
    { id: string, input: UpdateOwnQuestionInput }):
     Promise<{ question: QuestionDocument }> {
-  await fetchOneClientWithUser({ conditions: { user: user._id } })
+  await fetchOneClient({ conditions: { user: user._id } })
 
-  const { _id, form, type, position, formPage } = await
-  fetchOneQuestionWithFormAndType({ conditions: { _id: id } })
+  const { _id, position, formPage } = await fetchOneQuestion(
+    { conditions: { _id: id } })
 
   const isModifyingPosition = input.position !== undefined &&
   input.position !== position
@@ -76,5 +73,5 @@ export async function updateOwnQuestion (user: UserDocument, { id, input }:
   const questionUpdated = await updateOneQuestion(
     { conditions: { _id }, updateData: input })
 
-  return { question: { ...questionUpdated, form, type } as QuestionDocument }
+  return { question: questionUpdated }
 }
