@@ -60,3 +60,10 @@ export const Mutation = {
   deleteOwnForm: wrapGqlAsyncFunc(isGqlAuthenticated(isGqlAuthorized(
     validateGqlRequest(deleteOwnForm))))
 }
+
+export const references = {
+  Form: {
+    client: FormResolverHelper.getFormClient,
+    numResponses: FormResolverHelper.getFormNumResponses
+  }
+}
