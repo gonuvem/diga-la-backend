@@ -40,3 +40,12 @@ export const Query = {
 export const Mutation = {
   submitResponse: wrapGqlAsyncFunc(validateGqlRequest(submitResponse))
 }
+
+export const references = {
+  Response: {
+    form: ResponseResolverHelper.getResponseForm
+  },
+  AnswerAndQuestion: {
+    question: ResponseResolverHelper.getResponseQuestion
+  }
+}

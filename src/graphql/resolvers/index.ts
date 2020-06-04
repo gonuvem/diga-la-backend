@@ -23,7 +23,11 @@ const resolvers = {
     ...QuestionTypeResolvers.Mutation,
     ...QuestionResolvers.Mutation,
     ...ResponseResolvers.Mutation
-  }
+  },
+  ...ClientResolvers.references,
+  ...FormResolvers.references,
+  ...QuestionResolvers.references,
+  ...ResponseResolvers.references
 }
 
 export default resolvers

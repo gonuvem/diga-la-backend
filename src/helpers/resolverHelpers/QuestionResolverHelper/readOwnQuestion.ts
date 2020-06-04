@@ -1,16 +1,12 @@
 import { UserDocument, QuestionDocument } from '../../../interfaces'
-import {
-  fetchOneQuestionWithFormAndType
-} from '../../../services/models/QuestionService'
-import { fetchOneClientWithUser } from '../../../services/models/ClientService'
+import { fetchOneQuestion } from '../../../services/models/QuestionService'
+import { fetchOneClient } from '../../../services/models/ClientService'
 
-export async function readOwnQuestion (user: UserDocument, { id }: { id: string }):
-Promise<{ question: QuestionDocument }> {
-  await fetchOneClientWithUser({ conditions: { user: user._id } })
+export async function readOwnQuestion (user: UserDocument,
+  { id }: { id: string }): Promise<{ question: QuestionDocument }> {
+  await fetchOneClient({ conditions: { user: user._id } })
 
-  const question = await fetchOneQuestionWithFormAndType({
-    conditions: { _id: id }
-  })
+  const question = await fetchOneQuestion({ conditions: { _id: id } })
 
   return { question }
 }

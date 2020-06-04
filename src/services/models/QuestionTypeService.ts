@@ -7,7 +7,8 @@ import {
   deleteOne,
   checkInUse,
   listPaginated,
-  checkConflicts
+  checkConflicts,
+  fetchOneWithoutError
 } from '../../utils/mongoose'
 import {
   QUESTION_TYPES_EMPTY_LIST,
@@ -37,3 +38,6 @@ export const checkQuestionTypeConflicts = checkConflicts(QuestionType, [{
   fieldName: 'alias',
   error: ALIAS_CONFLICT
 }])
+
+export const fetchOneQuestionTypeWithoutError = fetchOneWithoutError(
+  QuestionType)

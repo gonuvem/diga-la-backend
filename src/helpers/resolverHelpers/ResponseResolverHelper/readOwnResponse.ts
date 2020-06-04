@@ -1,16 +1,12 @@
 import { UserDocument, ResponseDocument } from '../../../interfaces'
-import {
-  fetchOneResponseWithForm
-} from '../../../services/models/ResponseService'
-import { fetchOneClientWithUser } from '../../../services/models/ClientService'
+import { fetchOneResponse } from '../../../services/models/ResponseService'
+import { fetchOneClient } from '../../../services/models/ClientService'
 
-export async function readOwnResponse (user: UserDocument, { id }: { id: string }):
-Promise<{ response: ResponseDocument }> {
-  await fetchOneClientWithUser({ conditions: { user: user._id } })
+export async function readOwnResponse (user: UserDocument,
+  { id }: { id: string }): Promise<{ response: ResponseDocument }> {
+  await fetchOneClient({ conditions: { user: user._id } })
 
-  const response = await fetchOneResponseWithForm({
-    conditions: { _id: id }
-  })
+  const response = await fetchOneResponse({ conditions: { _id: id } })
 
   return { response }
 }

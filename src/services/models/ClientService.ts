@@ -3,11 +3,12 @@ import Form from '../../models/Form'
 import {
   createOne,
   createOneObject,
-  fetchOneWithPopulate,
+  fetchOne,
   updateOne,
   deleteOne,
   checkInUse,
-  createLookupObj
+  createLookupObj,
+  fetchOneWithoutError
 } from '../../utils/mongoose'
 import {
   CLIENTS_EMPTY_LIST,
@@ -17,14 +18,11 @@ import {
 import { isEmptyArray } from '../../utils/general'
 import { BaseListResult, ClientDocument } from '../../interfaces'
 
-const populate = 'user'
-
 export const createOneClient = createOne(Client)
 
 export const createOneClientObject = createOneObject(Client)
 
-export const fetchOneClientWithUser = fetchOneWithPopulate(
-  Client, CLIENT_NOT_FOUND, populate)
+export const fetchOneClient = fetchOne(Client, CLIENT_NOT_FOUND)
 
 export const updateOneClient = updateOne(Client, CLIENT_NOT_FOUND)
 
@@ -33,6 +31,8 @@ export const deleteOneClient = deleteOne(Client, CLIENT_NOT_FOUND)
 export const checkClientInUse = checkInUse(
   [{ Model: Form, fieldName: 'client' }], CLIENT_IN_USE
 )
+
+export const fetchOneClientWithoutError = fetchOneWithoutError(Client)
 
 export const listClientsWithUserPaginated = async (conditions: object,
   projection: string, sort: string, page: number, perPage: number)

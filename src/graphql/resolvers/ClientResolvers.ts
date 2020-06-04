@@ -56,5 +56,10 @@ export const Mutation = {
     validateGqlRequest(updateClient)))),
   deleteClient: wrapGqlAsyncFunc(isGqlAuthenticated(isGqlAuthorized(
     validateGqlRequest(deleteClient))))
+}
 
+export const references = {
+  Client: {
+    user: ClientResolverHelper.getClientUser
+  }
 }

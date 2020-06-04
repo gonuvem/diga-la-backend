@@ -2,13 +2,14 @@ import Question from '../../models/Question'
 import Response from '../../models/Response'
 import {
   createOne,
-  fetchOneWithPopulate,
+  fetchOne,
   updateOne,
   deleteOne,
   checkInUse,
-  listPaginatedWithPopulate,
+  listPaginated,
   countTotal,
-  fetchAll
+  fetchAll,
+  fetchOneWithoutError
 } from '../../utils/mongoose'
 import {
   QUESTIONS_EMPTY_LIST,
@@ -16,18 +17,9 @@ import {
   QUESTION_IN_USE
 } from '../../middlewares/errorHandling/errors'
 
-const populate = [
-  {
-    path: 'form',
-    populate: { path: 'client', populate: { path: 'user' } }
-  },
-  { path: 'type' }
-]
-
 export const createOneQuestion = createOne(Question)
 
-export const fetchOneQuestionWithFormAndType = fetchOneWithPopulate(
-  Question, QUESTION_NOT_FOUND, populate)
+export const fetchOneQuestion = fetchOne(Question, QUESTION_NOT_FOUND)
 
 export const updateOneQuestion = updateOne(Question, QUESTION_NOT_FOUND)
 
@@ -39,9 +31,11 @@ export const checkQuestionInUse = checkInUse(
   ], QUESTION_IN_USE
 )
 
-export const listQuestionsWithFormAndTypePaginated =
-listPaginatedWithPopulate(Question, QUESTIONS_EMPTY_LIST, populate)
+export const listQuestionsPaginated = listPaginated(Question,
+  QUESTIONS_EMPTY_LIST)
 
 export const countQuestionsTotal = countTotal(Question)
 
 export const fetchAllQuestions = fetchAll(Question)
+
+export const fetchOneQuestionWithoutError = fetchOneWithoutError(Question)

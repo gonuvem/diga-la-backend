@@ -152,7 +152,7 @@ export default (): void => {
       const expected = ents.objectsByForm[i]
       return baseRequest({ id: expected._id.toString() }, ents.token)
         .then(res => {
-          // utils.printForDocs(response.body)
+          // utils.printForDocs(res.body)
           const { response, error } = res.body.data[resolver]
           expect(error).toBeNull()
           checkResponse(expected, response)
