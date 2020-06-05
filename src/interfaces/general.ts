@@ -1,3 +1,5 @@
+import { ID } from '../types'
+
 export interface FetchParams {
   conditions?: object,
   projection?: string,
@@ -30,11 +32,11 @@ export type FilterTypes = 'id' | 'boolean' | 'dateInterval' | 'string' | 'list'
 export interface FieldFilterObject {
   type: FilterTypes,
   name: string,
-  value: string | boolean | Date | DateInterval | Array<unknown> | number
+  value: string | boolean | Date | DateInterval | Array<unknown> | number | ID
 }
 
 export interface IdFilterObject extends FieldFilterObject {
-  value: string
+  value: ID
 }
 
 export interface BooleanFilterObject extends FieldFilterObject {

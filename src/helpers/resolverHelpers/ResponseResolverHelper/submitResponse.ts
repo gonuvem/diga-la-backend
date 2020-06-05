@@ -1,17 +1,15 @@
-import { Types } from 'mongoose'
-
 import { QuestionDocument } from '../../../interfaces'
-import { SubmitResponseInput } from '../../../types'
+import { SubmitResponseInput, ID } from '../../../types'
 import { createOneResponse } from '../../../services/models/ResponseService'
 import { fetchOneForm } from '../../../services/models/FormService'
 import { fetchAllQuestions } from '../../../services/models/QuestionService'
 import { QUESTION_NOT_FOUND } from '../../../middlewares/errorHandling/errors'
 
-const checkForQuestionNotFound = (ids: Types.ObjectId[],
-  questions: QuestionDocument[]): void => {
+const checkForQuestionNotFound = (ids: ID[], questions: QuestionDocument[])
+: void => {
   const getId = (question: QuestionDocument): string => question._id.toString()
 
-  const isNotInQuestions = (id: Types.ObjectId): boolean =>
+  const isNotInQuestions = (id: ID): boolean =>
     !questions.map(getId).includes(id.toString())
 
   if (ids.some(isNotInQuestions)) throw QUESTION_NOT_FOUND

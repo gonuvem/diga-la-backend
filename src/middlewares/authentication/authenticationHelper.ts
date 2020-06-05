@@ -1,12 +1,11 @@
-import { Types } from 'mongoose'
 import { GraphQLResolveInfo } from 'graphql'
 
 import * as jwt from './jwt'
 import { INVALID_AUTH_HEADER } from '../errorHandling/errors'
-import { TokenPayload, MyContext } from '../../types'
+import { TokenPayload, MyContext, ID } from '../../types'
 import { fetchOneUser } from '../../services/models/UserService'
 
-export const createToken = (accountId: Types.ObjectId): Promise<string> => {
+export const createToken = (accountId: ID): Promise<string> => {
   return jwt.sign({ _id: accountId })
 }
 

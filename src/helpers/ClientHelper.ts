@@ -1,5 +1,4 @@
-import { Types } from 'mongoose'
-
+import { ID } from '../types'
 import {
   UserDocument,
   ClientDocument,
@@ -42,7 +41,7 @@ export const fetchAndUpdateClientWithUser = async (conditions: object,
   const client = await fetchOneClient({ conditions })
 
   if (userData.email) {
-    await checkUserConflicts(userData, (client.user) as Types.ObjectId)
+    await checkUserConflicts(userData, client.user as ID)
   }
 
   return updateClientWithUser(client, { }, userData)
