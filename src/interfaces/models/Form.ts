@@ -2,6 +2,7 @@ import { Document } from 'mongoose'
 
 import { ID } from '../../types'
 import { ClientDocument } from './Client'
+import { Timestamps } from '../general'
 
 export interface FormConfig {
   name: string,
@@ -34,4 +35,4 @@ export interface FormInterface {
   numResponses?: number
 }
 
-export interface FormDocument extends FormInterface, Document {}
+export interface FormDocument extends FormInterface, Document, Timestamps {}

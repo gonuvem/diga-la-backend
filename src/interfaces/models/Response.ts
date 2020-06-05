@@ -4,6 +4,7 @@ import { QuestionDocument } from './Question'
 import { FormDocument } from './Form'
 import { QuestionTypeAlias } from '../../enums'
 import { ID } from '../../types'
+import { Timestamps } from '../general'
 
 interface Answer {
   [QuestionTypeAlias.CheckBox]?: ID[] | string[],
@@ -33,4 +34,5 @@ export interface ResponseInterface {
   answersAndQuestions: AnswerAndQuestion[]
 }
 
-export interface ResponseDocument extends ResponseInterface, Document {}
+export interface ResponseDocument extends ResponseInterface, Document,
+Timestamps {}

@@ -4,6 +4,7 @@ import { QuestionTypeAlias } from '../../enums'
 import { ID } from '../../types'
 import { FormDocument } from './Form'
 import { QuestionTypeDocument } from './QuestionType'
+import { Timestamps } from '../general'
 
 export interface NumberConfig {
   hasMaxMinLimit: boolean,
@@ -131,4 +132,5 @@ export interface QuestionInterface {
   config: QuestionConfig
 }
 
-export interface QuestionDocument extends QuestionInterface, Document {}
+export interface QuestionDocument extends QuestionInterface, Document,
+Timestamps {}
