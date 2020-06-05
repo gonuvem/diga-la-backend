@@ -63,3 +63,8 @@ export interface ArrayFilterObject extends FieldFilterObject {
 export interface NumberFilterObject extends FieldFilterObject {
   value: number
 }
+
+export interface Timestamps {
+  readonly createdAt: Date,
+  readonly updatedAt: Date
+}
