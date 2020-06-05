@@ -1,6 +1,8 @@
-import { Document, Types } from 'mongoose'
+import { Document } from 'mongoose'
 
+import { ID } from '../../types'
 import { ClientDocument } from './Client'
+import { Timestamps } from '../general'
 
 export interface FormConfig {
   name: string,
@@ -26,11 +28,11 @@ export interface FormStyle {
 }
 
 export interface FormInterface {
-  client: Partial<ClientDocument> | Types.ObjectId
+  client: Partial<ClientDocument> | ID
   isActive: boolean,
   config: FormConfig,
   style: FormStyle,
   numResponses?: number
 }
 
-export interface FormDocument extends FormInterface, Document {}
+export interface FormDocument extends FormInterface, Document, Timestamps {}

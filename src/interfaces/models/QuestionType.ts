@@ -1,6 +1,7 @@
 import { Document } from 'mongoose'
 
 import { QuestionTypeAlias, QuestionTypeKind } from '../../enums'
+import { Timestamps } from '../general'
 
 export interface QuestionTypeInterface {
   kind: QuestionTypeKind,
@@ -10,4 +11,5 @@ export interface QuestionTypeInterface {
   description: string
 }
 
-export interface QuestionTypeDocument extends QuestionTypeInterface, Document {}
+export interface QuestionTypeDocument extends QuestionTypeInterface, Document,
+Timestamps {}

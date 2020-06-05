@@ -1,5 +1,3 @@
-import { Types } from 'mongoose'
-
 import {
   UserInterface,
   FormInterface,
@@ -7,6 +5,7 @@ import {
   QuestionInterface,
   AnswerAndQuestion
 } from '../interfaces'
+import { ID } from '../types'
 
 export type LoginParams = {
   email: UserInterface['email'],
@@ -93,8 +92,8 @@ export type ListQuestionTypesParams = ListParams<{
 }>
 
 export type CreateOwnQuestionInput = {
-  form: string,
-  type: string,
+  form: ID,
+  type: ID,
   formPage: QuestionInterface['formPage'],
   config: QuestionInterface['config']
 }
@@ -105,21 +104,21 @@ export type UpdateOwnQuestionInput = {
 }
 
 export type ListOwnQuestionsParams = ListParams<{
-  form: string
+  form: ID
   formPage?: QuestionInterface['formPage']
 }>
 
 export type ListOwnResponsesParams = ListParams<{
-  form: string,
-  question?: string
+  form: ID,
+  question?: ID
 }>
 
 type AnswerAndQuestionInput = {
-  question: Types.ObjectId,
+  question: ID,
   answer: AnswerAndQuestion['answer']
 }
 
 export type SubmitResponseInput = {
-  form: string,
+  form: ID,
   answersAndQuestions: AnswerAndQuestionInput[]
 }

@@ -35,7 +35,8 @@ mutation {
 
 const baseRequest = utils.baseGqlRequest(app, createQuery)
 
-const checkResponse = (expected: any, received: any): void => {
+const checkResponse = (expected: QuestionTypeDocument,
+  received: QuestionTypeDocument): void => {
   checkObjects.checkQuestionType(expected, received)
   expect(received).toMatchObject({
     _id: expected._id.toString()
@@ -113,7 +114,8 @@ export default (): void => {
   })
 
   test('200 QuestionType updated', async () => {
-    const id = ents.objects[0]._id.toString()
+    const baseType = ents.objects[0]
+    const id = baseType._id.toString()
 
     const body = createFakeBody({ alias: QuestionTypeAlias.Email })
 
@@ -122,7 +124,7 @@ export default (): void => {
         // utils.printForDocs(response.body)
         const { type, error } = response.body.data[resolver]
         expect(error).toBe(null)
-        const expected = { _id: id, ...body }
+        const expected = { ...baseType.toJSON(), ...body }
         checkResponse(expected, type)
       })
   })

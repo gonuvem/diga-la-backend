@@ -1,35 +1,38 @@
-import { Document, Types } from 'mongoose'
+import { Document } from 'mongoose'
 
 import { QuestionDocument } from './Question'
 import { FormDocument } from './Form'
 import { QuestionTypeAlias } from '../../enums'
+import { ID } from '../../types'
+import { Timestamps } from '../general'
 
 interface Answer {
-  [QuestionTypeAlias.CheckBox]?: Types.ObjectId[] | string[],
+  [QuestionTypeAlias.CheckBox]?: ID[] | string[],
   [QuestionTypeAlias.Date]?: Date[],
-  [QuestionTypeAlias.DropDown]?: Types.ObjectId[] | string[],
+  [QuestionTypeAlias.DropDown]?: ID[] | string[],
   [QuestionTypeAlias.Email]?: string,
-  [QuestionTypeAlias.ImageChoice]?: Types.ObjectId[] | string[],
+  [QuestionTypeAlias.ImageChoice]?: ID[] | string[],
   [QuestionTypeAlias.Link]?: string,
   [QuestionTypeAlias.LongText]?: string,
-  [QuestionTypeAlias.Matrix]?: Types.ObjectId[] | string[],
+  [QuestionTypeAlias.Matrix]?: ID[] | string[],
   [QuestionTypeAlias.NPS]?: number,
   [QuestionTypeAlias.Number]?: number,
   [QuestionTypeAlias.Phone]?: string,
-  [QuestionTypeAlias.RadioButton]?: Types.ObjectId[] | string[],
+  [QuestionTypeAlias.RadioButton]?: ID[] | string[],
   [QuestionTypeAlias.ShortText]?: string,
   [QuestionTypeAlias.Slider]?: number,
-  [QuestionTypeAlias.SortList]?: Types.ObjectId[] | string[]
+  [QuestionTypeAlias.SortList]?: ID[] | string[]
 }
 
 export interface AnswerAndQuestion {
-  question: QuestionDocument | Types.ObjectId,
+  question: QuestionDocument | ID,
   answer: Answer
 }
 
 export interface ResponseInterface {
-  form: Partial<FormDocument> | Types.ObjectId,
+  form: Partial<FormDocument> | ID,
   answersAndQuestions: AnswerAndQuestion[]
 }
 
-export interface ResponseDocument extends ResponseInterface, Document {}
+export interface ResponseDocument extends ResponseInterface, Document,
+Timestamps {}

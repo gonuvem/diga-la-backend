@@ -64,7 +64,7 @@ const createEnts = async (): Promise<Ents> => {
 
 const baseRequest = utils.baseGqlRequest(app, createQuery)
 
-const checkResponse = (expected: any, received: any)
+const checkResponse = (expected: ClientDocument, received: ClientDocument)
 : void => {
   checkObjects.checkClient(expected, received)
   expect(received).toMatchObject({

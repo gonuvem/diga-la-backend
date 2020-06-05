@@ -1,4 +1,4 @@
-import mongoose, { Query, Document, QueryPopulateOptions, Types } from 'mongoose'
+import mongoose, { Query, Document, QueryPopulateOptions } from 'mongoose'
 import { Boom } from '@hapi/boom'
 
 import {
@@ -7,6 +7,7 @@ import {
   ListPaginatedParams,
   BaseListResult
 } from '../interfaces'
+import { ID } from '../types'
 import { isEmptyArray } from './general'
 
 export function fetchOne<T extends Document>
@@ -146,7 +147,7 @@ type ConflictFieldAndError<T> = {
 }
 export function checkConflicts<T extends Document> (Model: mongoose.Model<T>,
   fieldsAndErrors: ConflictFieldAndError<T>[]) {
-  return async function (doc: Partial<T>, excludeId?: Types.ObjectId):
+  return async function (doc: Partial<T>, excludeId?: ID):
    Promise<void> {
     const excludeQuery = excludeId ? { _id: { $ne: excludeId } } : {}
 

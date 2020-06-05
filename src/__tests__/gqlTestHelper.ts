@@ -2,7 +2,7 @@
  * Cria uma query graphql, em String, de um valor.
  * @param value Valor que não seja uma String
  */
-export const createNonStringValue = (value: any): string => `${value}`
+export const createNonStringValue = (value: unknown): string => `${value}`
 
 /**
  * Cria uma query graphql, em String, de um valor.
@@ -15,7 +15,7 @@ export const createStringValue = (string: string): string => `"${string}"`
  * @param array Array de valores
  * @param func Função que cria cada valor separadamente
  */
-export const createArrayInput = (array: any[], func: Function): string => {
+export const createArrayInput = (array: unknown[], func: Function): string => {
   return `[${array.map(a => func(a)).join(',')}]`
 }
 
@@ -25,13 +25,13 @@ export const createArrayInput = (array: any[], func: Function): string => {
  * @param func Função que criará o valor em String do argumento
  */
 export const createArgumentRest = (name: string,
-  func: Function = createStringValue) => (value: any): string => {
+  func: Function = createStringValue) => (value: unknown): string => {
   return `, ${name}: ${func(value)}`
 }
 
 type FilterTest = {
   field: string,
-  value: any,
+  value: unknown,
   createRest: Function,
   filterFunc: Function
 }
@@ -44,7 +44,7 @@ type FilterTest = {
  * @param values Valores a serem testados para este filtro
  */
 export const createFilterTests = (fieldName: string, createRestFunc: Function,
-  filterFunc: Function, values: any[]): FilterTest[] => {
+  filterFunc: Function, values: unknown[]): FilterTest[] => {
   return values.map(value => ({
     field: fieldName,
     value: value,

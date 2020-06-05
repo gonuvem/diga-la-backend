@@ -5,6 +5,8 @@ import Joi from '@hapi/joi'
 
 import { UserDocument } from '../interfaces'
 
+export type ID = Types.ObjectId | string
+
 export type MyError = {
   message: string,
   statusCode: number,
@@ -13,7 +15,7 @@ export type MyError = {
 }
 
 export type TokenPayload = {
-  _id: Types.ObjectId
+  _id: ID
 }
 
 export type MyContext<T = object> = Context & {

@@ -10,10 +10,13 @@ import {
   FieldFilterObject,
   NumberFilterObject
 } from '../interfaces'
+import { ID } from '../types'
 
 export const createIdFilter = (field: IdFilterObject)
-: { [field: string]: Types.ObjectId } => {
-  return field.value ? { [field.name]: Types.ObjectId(field.value) } : {}
+: { [field: string]: ID } => {
+  return field.value
+    ? { [field.name]: Types.ObjectId(field.value as string) }
+    : {}
 }
 
 export const createBooleanFilter = (field: BooleanFilterObject)

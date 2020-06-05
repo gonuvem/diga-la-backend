@@ -1,6 +1,7 @@
 import { Document } from 'mongoose'
 
 import { Role } from '../../enums'
+import { Timestamps } from '../general'
 
 export interface UserInterface {
   /** Nome completo */
@@ -11,4 +12,5 @@ export interface UserInterface {
   renewPasswordCode?: string
 }
 
-export interface UserDocument extends UserInterface, Document {}
+export interface UserDocument extends UserInterface, Document, Timestamps {
+}
