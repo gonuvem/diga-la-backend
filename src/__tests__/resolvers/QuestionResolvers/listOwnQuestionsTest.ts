@@ -95,7 +95,8 @@ const createEnts = async (): Promise<Ents> => {
 
 const baseRequest = utils.baseGqlRequest(app, createQuery)
 
-const checkResponse = (expected: any, received: any): void => {
+const checkResponse = (expected: QuestionDocument, received: QuestionDocument)
+: void => {
   checkObjects.checkQuestion(expected, received)
   expect(received).toMatchObject({
     _id: expected._id.toString(),
@@ -156,8 +157,8 @@ export default (): void => {
   const sortTests = [
     {
       sort: 'position',
-      func: (a: any, b: any): number => utils.sortByNumberAsc(a.position,
-        b.position)
+      func: (a: QuestionDocument, b: QuestionDocument): number =>
+        utils.sortByNumberAsc(a.position, b.position)
     }
   ]
   const defaultSort = sortTests[0]

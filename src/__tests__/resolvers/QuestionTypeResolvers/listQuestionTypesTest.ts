@@ -67,7 +67,8 @@ const createEnts = async (): Promise<Ents> => {
 
 const baseRequest = utils.baseGqlRequest(app, createQuery)
 
-const checkResponse = (expected: any, received: any): void => {
+const checkResponse = (expected: QuestionTypeDocument,
+  received: QuestionTypeDocument): void => {
   checkObjects.checkQuestionType(expected, received)
   expect(received).toMatchObject({
     _id: expected._id.toString(),
@@ -148,13 +149,15 @@ export default (): void => {
     ...createFilterTests(
       'kind',
       createKindRest,
-      (value: any) => (o: any): boolean => o.kind === value,
+      (value: QuestionTypeDocument['kind']) => (o: QuestionTypeDocument)
+      : boolean => o.kind === value,
       [QuestionTypeKind.Basic, QuestionTypeKind.Advanced]
     ),
     ...createFilterTests(
       'alias',
       createAliasRest,
-      (value: any) => (o: any): boolean => o.alias === value,
+      (value: QuestionTypeDocument['alias']) => (o: QuestionTypeDocument)
+      : boolean => o.alias === value,
       [QuestionTypeAlias.Link, QuestionTypeAlias.Matrix, QuestionTypeAlias.NPS]
     )
   ]

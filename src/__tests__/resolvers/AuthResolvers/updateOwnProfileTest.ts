@@ -27,7 +27,8 @@ mutation {
 
 const baseRequest = utils.baseGqlRequest(app, createQuery)
 
-const checkResponse = (expected: any, received: any): void => {
+const checkResponse = (expected: ClientDocument, received: ClientDocument)
+: void => {
   checkObjects.checkClient(expected, received)
   expect(received).toMatchObject({
     _id: expected._id.toString()
@@ -109,7 +110,7 @@ export default (): void => {
   }
 
   test('200 Client updated', async () => {
-    const id = ents.objects[0]._id.toString()
+    const object = ents.objects[0]
     const body = createFakeBody({})
 
     return baseRequest({ input: body }, ents.tokens[0])
@@ -117,8 +118,8 @@ export default (): void => {
         // utils.printForDocs(response.body)
         const { client, error } = response.body.data[resolver]
         expect(error).toBe(null)
-        const { ...user } = body
-        const expected = { _id: id, user }
+        const user = body
+        const expected = { ...object.toJSON(), user }
         checkResponse(expected, client)
       })
   })
