@@ -7,9 +7,10 @@ import {
   MyContext,
   ListOwnResponsesParams,
   ListResponsesResponse,
-  SubmitResponseInput
+  SubmitResponseInput,
+  answersAndQuestionsDataLoader
 } from '../../types'
-import { ResponseDocument } from '../../interfaces'
+import { ResponseDocument, AnswerAndQuestion } from '../../interfaces'
 
 const listOwnResponses = (_parent: object, _args: object,
   context: MyContext<ListOwnResponsesParams>)
@@ -30,6 +31,16 @@ const submitResponse = (_parent: object, _args: object,
   return ResponseResolverHelper.submitResponse(context.validData.input)
 }
 
+const getResponseAnswersAndQuestions = (response: ResponseDocument,
+  _args: object, context: MyContext<object, answersAndQuestionsDataLoader>)
+  : Promise<AnswerAndQuestion[]> => {
+  const { loaders } = context
+
+  const { answersAndQuestionsLoader } = loaders
+
+  return answersAndQuestionsLoader.load(response)
+}
+
 export const Query = {
   listOwnResponses: wrapGqlAsyncFunc(isGqlAuthenticated(isGqlAuthorized(
     validateGqlRequest(listOwnResponses)))),
@@ -43,9 +54,7 @@ export const Mutation = {
 
 export const references = {
   Response: {
-    form: ResponseResolverHelper.getResponseForm
-  },
-  AnswerAndQuestion: {
-    question: ResponseResolverHelper.getResponseQuestion
+    form: ResponseResolverHelper.getResponseForm,
+    answersAndQuestions: getResponseAnswersAndQuestions
   }
 }
