@@ -50,8 +50,6 @@ export default (): void => {
   })
 
   test('404 Question not found', async () => {
-    ents = await createEnts()
-
     const body = createFakeBody({ form: ents.form._id })
 
     return baseRequest(body)
