@@ -2,8 +2,13 @@ import { Types } from 'mongoose'
 import { Context } from 'apollo-server-core'
 import { Request, Response } from 'express'
 import Joi from '@hapi/joi'
+import DataLoader from 'dataloader'
 
-import { UserDocument } from '../interfaces'
+import {
+  UserDocument,
+  ResponseDocument,
+  AnswerAndQuestion
+} from '../interfaces'
 
 export type ID = Types.ObjectId | string
 
@@ -18,11 +23,16 @@ export type TokenPayload = {
   _id: ID
 }
 
-export type MyContext<T = object> = Context & {
+type Loader<L> = {
+  [key: string]: L
+}
+
+export type MyContext<T = object, L = object> = Context & {
   req: Request,
   res: Response,
   validData?: T,
-  user?: UserDocument
+  user?: UserDocument,
+  loaders: Loader<L>
 }
 
 /** Cria um contrato entre os schemas de validação e a interface passada */
@@ -39,3 +49,6 @@ export type MongooseDefinition<T> = {
 export type Fake<T> = {
   [key in keyof T]: () => T[key]
 }
+
+export type answersAndQuestionsDataLoader = DataLoader<ResponseDocument,
+ AnswerAndQuestion[], ResponseDocument[]>
