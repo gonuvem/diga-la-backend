@@ -50,16 +50,15 @@ export function isIDEqual (id1: ID, id2: ID): boolean {
   return id1.toString() === id2.toString()
 }
 
-// interface Dictionary<T> {
-//   [key: string]: T;
-// }
+interface Dictionary<T> {
+  [key: string]: T;
+}
 
-// const groupBy = function<TItem> (array: TItem[], key: keyof TItem):
-//  Dictionary<TItem[]> {
-//   const result: Dictionary<TItem[]> = {}
+export function groupBy<T> (array: T[], key: keyof T): Dictionary<T[]> {
+  const result: any = {}
 
-//   return array.reduce((group, item) => {
-//     (group[item[key]] = group[item[key]] || []).push(item)
-//     return group
-//   }, result)
-// }
+  return array.reduce((group, item) => {
+    (group[item[key]] = group[item[key]] || []).push(item)
+    return group
+  }, result)
+}
