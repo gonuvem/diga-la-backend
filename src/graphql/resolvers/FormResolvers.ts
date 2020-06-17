@@ -8,9 +8,10 @@ import {
   CreateOwnFormInput,
   UpdateOwnFormInput,
   ListOwnFormsParams,
-  ListFormsResponse
+  ListFormsResponse,
+  FormQuestionsDataLoader
 } from '../../types'
-import { FormDocument } from '../../interfaces'
+import { FormDocument, QuestionDocument } from '../../interfaces'
 
 const createOwnForm = (_parent: object, _args: object,
   context: MyContext<{ input: CreateOwnFormInput }>)
@@ -44,6 +45,16 @@ const showForm = (_parent: object, _args: object,
   return FormResolverHelper.showForm(context.validData)
 }
 
+const getFormQuestions = (form: FormDocument,
+  _args: object, context: MyContext<object, FormQuestionsDataLoader>)
+  : Promise<QuestionDocument[]> => {
+  const { loaders } = context
+
+  const { formQuestionsLoader } = loaders
+
+  return formQuestionsLoader.load(form)
+}
+
 export const Query = {
   listOwnForms: wrapGqlAsyncFunc(isGqlAuthenticated(isGqlAuthorized(
     validateGqlRequest(listOwnForms)))),
@@ -64,6 +75,8 @@ export const Mutation = {
 export const references = {
   Form: {
     client: FormResolverHelper.getFormClient,
-    numResponses: FormResolverHelper.getFormNumResponses
+    numResponses: FormResolverHelper.getFormNumResponses,
+    questions: getFormQuestions,
+    numPages: FormResolverHelper.getFormNumPages
   }
 }
