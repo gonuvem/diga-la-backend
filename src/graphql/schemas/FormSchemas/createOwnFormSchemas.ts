@@ -59,6 +59,10 @@ type Form {
   style: FormStyle!
   "Número de respostas. OBS.: Apenas para listOwnForms no momento."
   numResponses: Int
+  "Questões da pesquisa"
+  questions: [Question]!
+  "Número de páginas de uma pesquisa. Se não houver nenhuma questão, retorna 0."
+  numPages: Int!
   "Data de criação"
   createdAt: Date!
   "Data de atualização"
