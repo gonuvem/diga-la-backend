@@ -54,6 +54,8 @@ export const formFieldsQuery = `{
   config ${formConfigFieldsQuery}
   style ${formStyleFieldsQuery}
   numResponses
+  questions { _id }
+  numPages
   createdAt
   updatedAt
 }`
