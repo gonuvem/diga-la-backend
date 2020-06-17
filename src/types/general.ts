@@ -7,7 +7,9 @@ import DataLoader from 'dataloader'
 import {
   UserDocument,
   ResponseDocument,
-  AnswerAndQuestion
+  AnswerAndQuestion,
+  FormDocument,
+  QuestionDocument
 } from '../interfaces'
 
 export type ID = Types.ObjectId | string
@@ -50,5 +52,8 @@ export type Fake<T> = {
   [key in keyof T]: () => T[key]
 }
 
-export type answersAndQuestionsDataLoader = DataLoader<ResponseDocument,
+export type AnswersAndQuestionsDataLoader = DataLoader<ResponseDocument,
  AnswerAndQuestion[], ResponseDocument[]>
+
+export type FormQuestionsDataLoader = DataLoader<FormDocument,
+ QuestionDocument[], FormDocument[]>

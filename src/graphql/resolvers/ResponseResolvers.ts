@@ -8,7 +8,7 @@ import {
   ListOwnResponsesParams,
   ListResponsesResponse,
   SubmitResponseInput,
-  answersAndQuestionsDataLoader
+  AnswersAndQuestionsDataLoader
 } from '../../types'
 import { ResponseDocument, AnswerAndQuestion } from '../../interfaces'
 
@@ -32,7 +32,7 @@ const submitResponse = (_parent: object, _args: object,
 }
 
 const getResponseAnswersAndQuestions = (response: ResponseDocument,
-  _args: object, context: MyContext<object, answersAndQuestionsDataLoader>)
+  _args: object, context: MyContext<object, AnswersAndQuestionsDataLoader>)
   : Promise<AnswerAndQuestion[]> => {
   const { loaders } = context
 

@@ -85,7 +85,10 @@ const createEnts = async (): Promise<Ents> => {
   await Promise.all([
     createResponse({ body: { form: o1._id }, size: 3 }),
     createResponse({ body: { form: o2._id }, size: 7 }),
-    createResponse({ body: { form: o3._id }, size: 1 })
+    createResponse({ body: { form: o3._id }, size: 1 }),
+    helpers.createQuestion({ body: { form: o1.id, formPage: 4 }, size: 5 }),
+    helpers.createQuestion({ body: { form: o2.id, formPage: 8 }, size: 9 }),
+    helpers.createQuestion({ body: { form: o3.id, formPage: 2 }, size: 3 })
   ])
 
   o1.numResponses = 3
@@ -106,8 +109,10 @@ const checkResponse = (expected: FormDocument, received: FormDocument)
     _id: expected._id.toString(),
     createdAt: expected.createdAt.toISOString(),
     updatedAt: expected.updatedAt.toISOString(),
-    numResponses: expected.numResponses
+    numResponses: expected.numResponses,
+    numPages: expected.numResponses + 1
   })
+  expect((received as any).questions.length).toBe(expected.numResponses + 2)
 }
 
 // eslint-disable-next-line max-lines-per-function
@@ -205,6 +210,8 @@ export default (): void => {
   })
 
   afterAll(async () => {
-    await helpers.dropCollections(['Form', 'Response', 'User', 'Client'])
+    await helpers.dropCollections(
+      ['Form', 'Response', 'User', 'Client', 'Question']
+    )
   })
 }

@@ -5,7 +5,7 @@ import {
   AnswerAndQuestion,
   QuestionDocument
 } from '../../../interfaces'
-import { answersAndQuestionsDataLoader, ID } from '../../../types'
+import { AnswersAndQuestionsDataLoader, ID } from '../../../types'
 import { fetchAllQuestions } from '../../../services/models/QuestionService'
 import { getProperty, isIDEqual } from '../../../utils/general'
 
@@ -40,6 +40,6 @@ async function getResponseAnswersAndQuestions (responses: ResponseDocument[])
 }
 
 export function getResponseAnswersAndQuestionsDataLoader ()
-: answersAndQuestionsDataLoader {
+: AnswersAndQuestionsDataLoader {
   return new Dataloader(getResponseAnswersAndQuestions)
 }

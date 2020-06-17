@@ -6,6 +6,9 @@ import { IS_NOT_PRODUCTION } from '../utils/constants'
 import {
   getResponseAnswersAndQuestionsDataLoader
 } from '../helpers/resolverHelpers/ResponseResolverHelper'
+import {
+  getFormQuestionsDataLoader
+} from '../helpers/resolverHelpers/FormResolverHelper'
 
 const gqlServer = new ApolloServer({
   typeDefs,
@@ -14,7 +17,8 @@ const gqlServer = new ApolloServer({
     req,
     res,
     loaders: {
-      answersAndQuestionsLoader: getResponseAnswersAndQuestionsDataLoader()
+      answersAndQuestionsLoader: getResponseAnswersAndQuestionsDataLoader(),
+      formQuestionsLoader: getFormQuestionsDataLoader()
     }
   }),
   playground: IS_NOT_PRODUCTION === true,
