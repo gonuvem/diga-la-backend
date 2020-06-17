@@ -3,7 +3,7 @@ import Dataloader from 'dataloader'
 import { QuestionDocument, FormDocument } from '../../../interfaces'
 import { FormQuestionsDataLoader } from '../../../types'
 import { fetchAllQuestions } from '../../../services/models/QuestionService'
-import { getProperty, groupBy, isEmptyArray } from '../../../utils/general'
+import { getProperty, groupBy } from '../../../utils/general'
 
 async function getFormQuestions (forms: FormDocument[])
 : Promise<QuestionDocument[][]> {
@@ -13,11 +13,9 @@ async function getFormQuestions (forms: FormDocument[])
     conditions: { form: { $in: formsIds } }
   })
 
-  if (isEmptyArray(questions)) return []
-
   const questionsGroupedByForm = groupBy(questions, 'form')
 
-  return formsIds.map(formId => questionsGroupedByForm[formId])
+  return formsIds.map(formId => questionsGroupedByForm[formId] || [])
 }
 
 export function getFormQuestionsDataLoader (): FormQuestionsDataLoader {
