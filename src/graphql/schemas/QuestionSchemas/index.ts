@@ -1,9 +1,10 @@
 /* eslint-disable max-lines */
-import * as createOwnQuestionSchemas from './createOwnQuestionSchemas'
-import * as updateOwnQuestionSchemas from './updateOwnQuestionSchemas'
-import * as deleteOwnQuestionSchemas from './deleteOwnQuestionSchemas'
-import * as listOwnQuestionsSchemas from './listOwnQuestionsSchemas'
-import * as readOwnQuestionSchemas from './readOwnQuestionSchemas'
+import * as createOwnQuestionSchemas from './createOwnQuestionSchemas';
+import * as updateOwnQuestionSchemas from './updateOwnQuestionSchemas';
+import * as deleteOwnQuestionSchemas from './deleteOwnQuestionSchemas';
+import * as listOwnQuestionsSchemas from './listOwnQuestionsSchemas';
+import * as readOwnQuestionSchemas from './readOwnQuestionSchemas';
+import * as createOwnQuestionsSchemas from './createOwnQuestionsSchemas';
 
 const NumberConfigType = `
 "Número"
@@ -17,7 +18,7 @@ type NumberConfig {
   "Valor do incrementador"
   incValue: Int
 }
-`
+`;
 
 const AnswerOptionType = `
 "Opção de resposta"
@@ -28,7 +29,7 @@ type AnswerOption {
   "Link da imagem"
   image: String
 }
-`
+`;
 
 const CheckBoxConfigType = `
 "Checkbox - escolha múltipla"
@@ -40,7 +41,7 @@ type CheckBoxConfig {
   "Opções"
   answerOptions: [AnswerOption!]!
 }
-`
+`;
 
 const EmailConfigType = `
 "Email"
@@ -48,7 +49,7 @@ type EmailConfig {
   "Ativar validação de email"
   hasValidation: Boolean!
 }
-`
+`;
 
 const PhoneConfigType = `
 "Telefone"
@@ -56,7 +57,7 @@ type PhoneConfig {
   "Ativar validação de telefone"
   hasValidation: Boolean!
 }
-`
+`;
 
 const LinkConfigType = `
 "Link"
@@ -64,7 +65,7 @@ type LinkConfig {
   "Ativar validação de link"
   hasValidation: Boolean!
 }
-`
+`;
 
 const ImageChoiceConfigType = `
 "Escolha entre imagens"
@@ -78,7 +79,7 @@ type ImageChoiceConfig {
   "Opções"
   answerOptions: [AnswerOption!]!
 }
-`
+`;
 
 const ShortTextConfigType = `
 "Texto curto"
@@ -90,7 +91,7 @@ type ShortTextConfig {
   "Limite de caracteres"
   maxChars: Int
 }
-`
+`;
 
 const NPSConfigType = `
 "NPS"
@@ -106,7 +107,7 @@ type NPSConfig {
   "Escala"
   escale: String!
 }
-`
+`;
 
 const DateConfigType = `
 "Data e hora"
@@ -122,7 +123,7 @@ type DateConfig {
   "Capturar intervalo"
   canCaptureInterval: Boolean!
 }
-`
+`;
 
 const DropDownConfigType = `
 "Dropdown"
@@ -132,7 +133,7 @@ type DropDownConfig {
   "Opções"
   answerOptions: [AnswerOption!]!
 }
-`
+`;
 
 const MatrixConfigType = `
 "Matriz de escolhas"
@@ -146,7 +147,7 @@ type MatrixConfig {
   "Opções"
   answerOptions: [[AnswerOption!]!]!
 }
-`
+`;
 
 const SliderConfigType = `
 "Slider"
@@ -164,7 +165,7 @@ type SliderConfig {
   "Ocultar valor no seletor"
   canHideValue: Boolean!
 }
-`
+`;
 
 const LongTextConfigType = `
 "Texto longo"
@@ -176,7 +177,7 @@ type LongTextConfig {
   "Limite de caracteres"
   maxChars: Int
 }
-`
+`;
 
 const RadioButtonConfigType = `
 "Radiobutton - escolha única"
@@ -188,7 +189,7 @@ type RadioButtonConfig {
   "Opções"
   answerOptions: [AnswerOption!]!
 }
-`
+`;
 
 const SortListConfigType = `
 "Ordenar respostas"
@@ -198,7 +199,7 @@ type SortListConfig {
   "Opções"
   answerOptions: [AnswerOption!]!
 }
-`
+`;
 
 const QuestionConfigType = `
 "Configuração de Questão"
@@ -225,7 +226,7 @@ type QuestionConfig {
   slider: SliderConfig
   sortList: SortListConfig
 }
-`
+`;
 const QuestionType = `
 "Questão"
 type Question {
@@ -246,7 +247,7 @@ type Question {
   "Data de atualização"
   updatedAt: Date!
 }
-`
+`;
 
 export const types = `
 ${NumberConfigType}
@@ -272,20 +273,23 @@ ${updateOwnQuestionSchemas.types}
 ${deleteOwnQuestionSchemas.types}
 ${listOwnQuestionsSchemas.types}
 ${readOwnQuestionSchemas.types}
-`
+${createOwnQuestionsSchemas.types}
+`;
 
 export const inputs = `
 ${createOwnQuestionSchemas.inputs}
 ${updateOwnQuestionSchemas.inputs}
-`
+${createOwnQuestionsSchemas.inputs}
+`;
 
 export const Query = `
 ${listOwnQuestionsSchemas.Query}
 ${readOwnQuestionSchemas.Query}
-`
+`;
 
 export const Mutation = `
 ${createOwnQuestionSchemas.Mutation}
 ${updateOwnQuestionSchemas.Mutation}
 ${deleteOwnQuestionSchemas.Mutation}
-`
+${createOwnQuestionsSchemas.Mutation}
+`;
