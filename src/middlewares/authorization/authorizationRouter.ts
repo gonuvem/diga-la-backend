@@ -1,4 +1,4 @@
-import { Role } from '../../enums'
+import { Role } from '../../enums';
 
 /**
  * Determina os papéis que podem acessar uma operação grapqhl
@@ -29,7 +29,8 @@ export const gqlRouter: { [resolverName: string]: Role[] } = {
   deleteOwnQuestion: [Role.Client],
   listOwnQuestions: [Role.Client],
   readOwnQuestion: [Role.Client],
+  createOwnQuestions: [Role.Client],
 
   listOwnResponses: [Role.Client],
-  readOwnResponse: [Role.Client]
-}
+  readOwnResponse: [Role.Client],
+};
