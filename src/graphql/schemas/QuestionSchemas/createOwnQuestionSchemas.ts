@@ -145,8 +145,6 @@ input SliderConfigInput {
   maxValue: Int!
   "Mínimo: 1 caracter"
   maxLabel: String
-  "Mínimo: 1"
-  incValue: Int!
   "Valor booleano"
   canHideValue: Boolean!
 }

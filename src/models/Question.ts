@@ -254,11 +254,6 @@ const sliderDefinition: MongooseDefinition<SliderConfig> = {
     required: true,
   },
   maxLabel: String,
-  incValue: {
-    type: Number,
-    validate: Number.isInteger,
-    required: true,
-  },
   canHideValue: {
     type: Boolean,
     required: true,

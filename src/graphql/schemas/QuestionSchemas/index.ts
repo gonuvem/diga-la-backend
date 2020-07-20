@@ -158,8 +158,6 @@ type SliderConfig {
   maxValue: Int!
   "Legenda lado direito"
   maxLabel: String
-  "Intervalo"
-  incValue: Int!
   "Ocultar valor no seletor"
   canHideValue: Boolean!
 }

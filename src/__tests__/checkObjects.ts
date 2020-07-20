@@ -251,7 +251,6 @@ const checkQuestionSliderConfig = (
     minLabel: expected.minLabel,
     maxValue: expected.maxValue,
     maxLabel: expected.maxLabel,
-    incValue: expected.incValue,
     canHideValue: expected.canHideValue,
   });
 };

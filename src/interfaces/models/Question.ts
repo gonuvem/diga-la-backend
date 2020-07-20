@@ -81,7 +81,6 @@ export interface SliderConfig {
   minLabel?: string;
   maxValue: number;
   maxLabel?: string;
-  incValue: number;
   canHideValue: boolean;
 }
 

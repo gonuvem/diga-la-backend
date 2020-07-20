@@ -146,7 +146,6 @@ const questionSliderConfigFieldsQuery = `{
   minLabel
   maxValue
   maxLabel
-  incValue
   canHideValue
 }`;
 

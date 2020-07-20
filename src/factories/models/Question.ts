@@ -109,7 +109,6 @@ const fakeSliderConfig: SliderConfig = {
   minLabel: fakeWord(),
   maxValue: fakeRandomInt({ min: 5, max: 100 })(),
   maxLabel: fakeWord(),
-  incValue: fakeRandomInt({ min: 1, max: 100 })(),
   canHideValue: fakeBoolean(),
 };
 

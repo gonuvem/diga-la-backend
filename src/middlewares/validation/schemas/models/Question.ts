@@ -110,7 +110,6 @@ export const SliderConfigSchema: JoiSchemaMap<SliderConfig> = {
   minLabel: basicStringSchema,
   maxValue: integerSchema,
   maxLabel: basicStringSchema,
-  incValue: integerSchema.min(1),
   canHideValue: booleanSchema,
 };
 

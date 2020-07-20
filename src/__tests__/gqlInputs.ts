@@ -225,7 +225,6 @@ const createInputSliderConfig = (
   minLabel: "${input.minLabel}",
   maxValue: ${input.maxValue},
   maxLabel: "${input.maxLabel}",
-  incValue: ${input.incValue},
   canHideValue: ${input.canHideValue},
 }`;
 
