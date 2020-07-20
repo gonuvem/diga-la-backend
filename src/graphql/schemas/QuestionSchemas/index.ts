@@ -144,8 +144,6 @@ type MatrixConfig {
   rowsLabels: [String]!
   "Rótulos das colunas"
   colsLabels: [String]!
-  "Opções"
-  answerOptions: [[AnswerOption!]!]!
 }
 `;
 

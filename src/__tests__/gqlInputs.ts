@@ -171,9 +171,6 @@ const createInputMatrixConfig = (
     isMultipleChoice: ${input.isMultipleChoice},
     rowsLabels: ${createArrayInput(input.rowsLabels, createStringValue)},
     colsLabels: ${createArrayInput(input.colsLabels, createStringValue)},
-    answerOptions: ${input.answerOptions
-      .map(v => createArrayInput(v, createInputAnswerOption))
-      .slice(1, -1)}
   }`;
 };
 

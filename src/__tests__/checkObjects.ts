@@ -240,11 +240,6 @@ const checkQuestionMatrixConfig = (
   received.colsLabels.forEach((v, i): void =>
     expect(expected.colsLabels[i]).toBe(v)
   );
-  received.answerOptions.forEach((v, i): void => {
-    v.forEach((vv, j): void => {
-      checkQuestionAnswerOption(expected.answerOptions[i][j], vv);
-    });
-  });
 };
 
 const checkQuestionSliderConfig = (

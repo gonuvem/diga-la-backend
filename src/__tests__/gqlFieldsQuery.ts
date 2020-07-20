@@ -8,21 +8,21 @@ export const errorFieldsQuery = `{
     message
     stack
   }
-}`
+}`;
 
 export const userFieldsQuery = `{
   _id
   name
   email
   roles
-}`
+}`;
 
 export const clientFieldsQuery = `{
   _id
   user ${userFieldsQuery}
   createdAt
   updatedAt
-}`
+}`;
 
 const formConfigFieldsQuery = `{
   name
@@ -35,7 +35,7 @@ const formConfigFieldsQuery = `{
   canDisplayProgressBar
   progressBarType
   canAllowMultipleSubmissions
-}`
+}`;
 
 const formStyleFieldsQuery = `{
   background
@@ -45,7 +45,7 @@ const formStyleFieldsQuery = `{
   headerBackground
   footerText
   footerBackground
-}`
+}`;
 
 export const formFieldsQuery = `{
   _id
@@ -58,7 +58,7 @@ export const formFieldsQuery = `{
   numPages
   createdAt
   updatedAt
-}`
+}`;
 
 export const questionTypeFieldsQuery = `{
   _id
@@ -69,50 +69,50 @@ export const questionTypeFieldsQuery = `{
   description
   createdAt
   updatedAt
-}`
+}`;
 
 const questionNumberConfigFieldsQuery = `{
   hasMaxMinLimit
   maxValue
   minValue
   incValue
-}`
+}`;
 
 const questionAnswerOptionFieldsQuery = `{
   text
   image
-}`
+}`;
 
 const questionCheckBoxConfigFieldsQuery = `{
   hasHorizontalAlignment
   hasRandomResponsesOrder
   answerOptions ${questionAnswerOptionFieldsQuery}
-}`
+}`;
 
 const questionEmailConfigFieldsQuery = `{
   hasValidation
-}`
+}`;
 
 const questionPhoneConfigFieldsQuery = `{
   hasValidation
-}`
+}`;
 
 const questionLinkConfigFieldsQuery = `{
   hasValidation
-}`
+}`;
 
 const questionImageChoiceConfigFieldsQuery = `{
   isMultipleChoice
   maxChoices
   hasRandomResponsesOrder
   answerOptions ${questionAnswerOptionFieldsQuery}
-}`
+}`;
 
 const questionShortTextConfigFieldsQuery = `{
   placeholder
   hasLimitedChars
   maxChars
-}`
+}`;
 
 const questionNPSConfigFieldsQuery = `{
   canDisplayLabels
@@ -120,7 +120,7 @@ const questionNPSConfigFieldsQuery = `{
   rightLabel
   canStartAtZero
   escale
-}`
+}`;
 
 const questionDateConfigFieldsQuery = `{
   isDateRequired
@@ -128,19 +128,18 @@ const questionDateConfigFieldsQuery = `{
   isTimeRequired
   timeFormat
   canCaptureInterval
-}`
+}`;
 
 const questionDropDownConfigFieldsQuery = `{
   hasRandomResponsesOrder
   answerOptions ${questionAnswerOptionFieldsQuery}
-}`
+}`;
 
 const questionMatrixConfigFieldsQuery = `{
   isMultipleChoice
   rowsLabels
   colsLabels
-  answerOptions ${questionAnswerOptionFieldsQuery}
-}`
+}`;
 
 const questionSliderConfigFieldsQuery = `{
   minValue
@@ -149,24 +148,24 @@ const questionSliderConfigFieldsQuery = `{
   maxLabel
   incValue
   canHideValue
-}`
+}`;
 
 const questionLongTextConfigFieldsQuery = `{
   placeholder
   hasLimitedChars
   maxChars
-}`
+}`;
 
 const questionRadioButtonConfigFieldsQuery = `{
   hasHorizontalAlignment
   hasRandomResponsesOrder
   answerOptions ${questionAnswerOptionFieldsQuery}
-}`
+}`;
 
 const questionSortListConfigFieldsQuery = `{
   hasRandomResponsesOrder
   answerOptions ${questionAnswerOptionFieldsQuery}
-}`
+}`;
 
 const questionConfigFieldsQuery = `{
   name
@@ -187,7 +186,7 @@ const questionConfigFieldsQuery = `{
   shortText ${questionShortTextConfigFieldsQuery}
   slider ${questionSliderConfigFieldsQuery}
   sortList ${questionSortListConfigFieldsQuery}
-}`
+}`;
 
 export const questionFieldsQuery = `{
   _id
@@ -198,7 +197,7 @@ export const questionFieldsQuery = `{
   config ${questionConfigFieldsQuery}
   createdAt
   updatedAt
-}`
+}`;
 
 const answerFieldsQuery = `{
   checkBox
@@ -216,7 +215,7 @@ const answerFieldsQuery = `{
   shortText
   slider
   sortList
-}`
+}`;
 
 const answerAndQuestionFieldsQuery = `{
   question {
@@ -229,7 +228,7 @@ const answerAndQuestionFieldsQuery = `{
     updatedAt
   }
   answer ${answerFieldsQuery}
-}`
+}`;
 
 export const responseFieldsQuery = `{
   _id
@@ -237,4 +236,4 @@ export const responseFieldsQuery = `{
   answersAndQuestions ${answerAndQuestionFieldsQuery}
   createdAt
   updatedAt
-}`
+}`;
