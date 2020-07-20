@@ -106,6 +106,8 @@ const createInputCheckBoxConfig = (
 ): string => `{
   hasHorizontalAlignment: ${input.hasHorizontalAlignment},
   hasRandomResponsesOrder: ${input.hasRandomResponsesOrder},
+  hasLimitedChoices: ${input.hasLimitedChoices},
+  maxChoices: ${input.maxChoices},
   answerOptions: ${createArrayInput(
     input.answerOptions,
     createInputAnswerOption
@@ -171,9 +173,6 @@ const createInputMatrixConfig = (
     isMultipleChoice: ${input.isMultipleChoice},
     rowsLabels: ${createArrayInput(input.rowsLabels, createStringValue)},
     colsLabels: ${createArrayInput(input.colsLabels, createStringValue)},
-    answerOptions: ${input.answerOptions
-      .map(v => createArrayInput(v, createInputAnswerOption))
-      .slice(1, -1)}
   }`;
 };
 
@@ -228,7 +227,6 @@ const createInputSliderConfig = (
   minLabel: "${input.minLabel}",
   maxValue: ${input.maxValue},
   maxLabel: "${input.maxLabel}",
-  incValue: ${input.incValue},
   canHideValue: ${input.canHideValue},
 }`;
 

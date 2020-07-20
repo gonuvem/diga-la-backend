@@ -1,15 +1,15 @@
-import Joi from '@hapi/joi'
+import Joi from '@hapi/joi';
 
-import { QuestionTypeAlias } from '../../../../enums'
+import { QuestionTypeAlias } from '../../../../enums';
 import {
   arraySchema,
   idSchema,
   basicStringSchema,
   booleanSchema,
   integerSchema,
-  urlSchema
-} from '../baseSchemas'
-import { JoiSchemaMap } from '../../../../types'
+  urlSchema,
+} from '../baseSchemas';
+import { JoiSchemaMap } from '../../../../types';
 import {
   NumberConfig,
   CheckBoxConfig,
@@ -28,108 +28,109 @@ import {
   QuestionConfig,
   QuestionInterface,
   AnswerOption,
-  SortListConfig
-} from '../../../../interfaces'
+  SortListConfig,
+} from '../../../../interfaces';
 
 export const NumberConfigSchema: JoiSchemaMap<NumberConfig> = {
   hasMaxMinLimit: booleanSchema,
   maxValue: integerSchema,
   minValue: integerSchema,
-  incValue: integerSchema.min(1)
-}
+  incValue: integerSchema.min(1),
+};
 
 export const AnswerOptionSchema: JoiSchemaMap<AnswerOption> = {
   text: basicStringSchema,
-  image: urlSchema
-}
+  image: urlSchema,
+};
 
-const answerOptionsSchema = arraySchema(Joi.object(AnswerOptionSchema)
-  .required())
+const answerOptionsSchema = arraySchema(
+  Joi.object(AnswerOptionSchema).required()
+);
 
 export const CheckBoxConfigSchema: JoiSchemaMap<CheckBoxConfig> = {
   hasHorizontalAlignment: booleanSchema,
   hasRandomResponsesOrder: booleanSchema,
-  answerOptions: answerOptionsSchema
-}
+  hasLimitedChoices: booleanSchema,
+  maxChoices: integerSchema.min(1),
+  answerOptions: answerOptionsSchema,
+};
 
 export const EmailConfigSchema: JoiSchemaMap<EmailConfig> = {
-  hasValidation: booleanSchema
-}
+  hasValidation: booleanSchema,
+};
 
 export const PhoneConfigSchema: JoiSchemaMap<PhoneConfig> = {
-  hasValidation: booleanSchema
-}
+  hasValidation: booleanSchema,
+};
 
 export const LinkConfigSchema: JoiSchemaMap<LinkConfig> = {
-  hasValidation: booleanSchema
-}
+  hasValidation: booleanSchema,
+};
 
 export const ImageChoiceConfigSchema: JoiSchemaMap<ImageChoiceConfig> = {
   isMultipleChoice: booleanSchema,
   maxChoices: integerSchema.min(1),
   hasRandomResponsesOrder: booleanSchema,
-  answerOptions: answerOptionsSchema
-}
+  answerOptions: answerOptionsSchema,
+};
 
 export const ShortTextConfigSchema: JoiSchemaMap<ShortTextConfig> = {
   placeholder: basicStringSchema,
   hasLimitedChars: booleanSchema,
-  maxChars: integerSchema.min(1)
-}
+  maxChars: integerSchema.min(1),
+};
 
 export const NPSConfigSchema: JoiSchemaMap<NPSConfig> = {
   canDisplayLabels: booleanSchema,
   leftLabel: basicStringSchema,
   rightLabel: basicStringSchema,
   canStartAtZero: booleanSchema,
-  escale: basicStringSchema
-}
+  escale: basicStringSchema,
+};
 
 export const DateConfigSchema: JoiSchemaMap<DateConfig> = {
   isDateRequired: booleanSchema,
   dateFormat: basicStringSchema,
   isTimeRequired: booleanSchema,
   timeFormat: basicStringSchema,
-  canCaptureInterval: booleanSchema
-}
+  canCaptureInterval: booleanSchema,
+};
 
 export const DropDownConfigSchema: JoiSchemaMap<DropDownConfig> = {
   hasRandomResponsesOrder: booleanSchema,
-  answerOptions: answerOptionsSchema
-}
+  answerOptions: answerOptionsSchema,
+};
 
 export const MatrixConfigSchema: JoiSchemaMap<MatrixConfig> = {
   isMultipleChoice: booleanSchema,
   rowsLabels: arraySchema(basicStringSchema.required()),
   colsLabels: arraySchema(basicStringSchema.required()),
-  answerOptions: arraySchema(answerOptionsSchema.required())
-}
+};
 
 export const SliderConfigSchema: JoiSchemaMap<SliderConfig> = {
   minValue: integerSchema,
   minLabel: basicStringSchema,
   maxValue: integerSchema,
   maxLabel: basicStringSchema,
-  incValue: integerSchema.min(1),
-  canHideValue: booleanSchema
-}
+  canHideValue: booleanSchema,
+};
 
 export const LongTextConfigSchema: JoiSchemaMap<LongTextConfig> = {
   placeholder: basicStringSchema,
   hasLimitedChars: booleanSchema,
-  maxChars: integerSchema.min(1)
-}
+  maxChars: integerSchema.min(1),
+};
 
 export const RadioButtonConfigSchema: JoiSchemaMap<RadioButtonConfig> = {
   hasHorizontalAlignment: booleanSchema,
   hasRandomResponsesOrder: booleanSchema,
-  answerOptions: answerOptionsSchema
-}
+  answerOptions: answerOptionsSchema,
+};
 
 export const SortListConfigSchema: JoiSchemaMap<SortListConfig> = {
   hasRandomResponsesOrder: booleanSchema,
-  answerOptions: answerOptionsSchema
-}
+  answerOptions: answerOptionsSchema,
+};
 
 export const QuestionConfigSchema: JoiSchemaMap<QuestionConfig> = {
   name: basicStringSchema,
@@ -149,13 +150,13 @@ export const QuestionConfigSchema: JoiSchemaMap<QuestionConfig> = {
   [QuestionTypeAlias.RadioButton]: Joi.object(RadioButtonConfigSchema),
   [QuestionTypeAlias.ShortText]: Joi.object(ShortTextConfigSchema),
   [QuestionTypeAlias.Slider]: Joi.object(SliderConfigSchema),
-  [QuestionTypeAlias.SortList]: Joi.object(SortListConfigSchema)
-}
+  [QuestionTypeAlias.SortList]: Joi.object(SortListConfigSchema),
+};
 
 export const Question: JoiSchemaMap<QuestionInterface> = {
   form: idSchema,
   type: idSchema,
   formPage: integerSchema.min(1),
   position: integerSchema.min(0),
-  config: Joi.object(QuestionConfigSchema)
-}
+  config: Joi.object(QuestionConfigSchema),
+};

@@ -9,7 +9,7 @@ input NumberConfigInput {
   "Mínimo: 1"
   incValue: Int
 }
-`
+`;
 
 const AnswerOptionType = `
 "Opção de resposta"
@@ -19,7 +19,7 @@ input AnswerOptionInput {
   "Formato de url válido"
   image: String
 }
-`
+`;
 
 const CheckBoxConfigType = `
 "Checkbox - escolha múltipla"
@@ -28,9 +28,13 @@ input CheckBoxConfigInput {
   hasHorizontalAlignment: Boolean!
   "Valor booleano"
   hasRandomResponsesOrder: Boolean!
+  "Valor booleano"
+  hasLimitedChoices: Boolean!
+  "Mínimo: 1"
+  maxChoices: Int
   answerOptions: [AnswerOptionInput!]!
 }
-`
+`;
 
 const EmailConfigType = `
 "Email"
@@ -38,7 +42,7 @@ input EmailConfigInput {
   "Valor booleano"
   hasValidation: Boolean!
 }
-`
+`;
 
 const PhoneConfigType = `
 "Telefone"
@@ -46,7 +50,7 @@ input PhoneConfigInput {
   "Valor booleano"
   hasValidation: Boolean!
 }
-`
+`;
 
 const LinkConfigType = `
 "Link"
@@ -54,7 +58,7 @@ input LinkConfigInput {
   "Valor booleano"
   hasValidation: Boolean!
 }
-`
+`;
 
 const ImageChoiceConfigType = `
 "Escolha entre imagens"
@@ -67,7 +71,7 @@ input ImageChoiceConfigInput {
   hasRandomResponsesOrder: Boolean!
   answerOptions: [AnswerOptionInput!]!
 }
-`
+`;
 
 const ShortTextConfigType = `
 "Texto curto"
@@ -79,7 +83,7 @@ input ShortTextConfigInput {
   "Mínimo: 1"
   maxChars: Int
 }
-`
+`;
 
 const NPSConfigType = `
 "NPS"
@@ -95,7 +99,7 @@ input NPSConfigInput {
   "Mínimo: 1 caracter"
   escale: String!
 }
-`
+`;
 
 const DateConfigType = `
 "Data e hora"
@@ -111,7 +115,7 @@ input DateConfigInput {
   "Valor booleano"
   canCaptureInterval: Boolean!
 }
-`
+`;
 
 const DropDownConfigType = `
 "Dropdown"
@@ -120,7 +124,7 @@ input DropDownConfigInput {
   hasRandomResponsesOrder: Boolean!
   answerOptions: [AnswerOptionInput!]!
 }
-`
+`;
 
 const MatrixConfigType = `
 "Matriz de escolhas"
@@ -131,10 +135,8 @@ input MatrixConfigInput {
   rowsLabels: [String]!
   "Mínimo: 1 caracter"
   colsLabels: [String]!
-  "Opções"
-  answerOptions: [[AnswerOptionInput!]!]!
 }
-`
+`;
 
 const SliderConfigType = `
 "Slider"
@@ -147,12 +149,10 @@ input SliderConfigInput {
   maxValue: Int!
   "Mínimo: 1 caracter"
   maxLabel: String
-  "Mínimo: 1"
-  incValue: Int!
   "Valor booleano"
   canHideValue: Boolean!
 }
-`
+`;
 
 const LongTextConfigType = `
 "Texto longo"
@@ -164,7 +164,7 @@ input LongTextConfigInput {
   "Mínimo: 1"
   maxChars: Int
 }
-`
+`;
 
 const RadioButtonConfigType = `
 "Radiobutton - escolha única"
@@ -175,7 +175,7 @@ input RadioButtonConfigInput {
   hasRandomResponsesOrder: Boolean!
   answerOptions: [AnswerOptionInput!]!
 }
-`
+`;
 
 const SortListConfigType = `
 "Ordenar respostas"
@@ -184,7 +184,7 @@ input SortListConfigInput {
   hasRandomResponsesOrder: Boolean!
   answerOptions: [AnswerOptionInput!]!
 }
-`
+`;
 
 const QuestionConfigInput = `
 "Parâmetros das configurações de uma questão"
@@ -211,7 +211,7 @@ input QuestionConfigInput {
   slider: SliderConfigInput
   sortList: SortListConfigInput
 }
-`
+`;
 
 const CreateOwnQuestionInput = `
 "Parâmetros para criar uma questão do cliente logado."
@@ -224,7 +224,7 @@ input CreateOwnQuestionInput {
   formPage: Int!
   config: QuestionConfigInput!
 }
-`
+`;
 
 const CreateOwnQuestionType = `
 "Resposta da mutation que cria uma questão do cliente logado"
@@ -246,16 +246,16 @@ type CreateOwnQuestion {
   """
   error: MyError
 }
-`
+`;
 
 const createOwnQuestionMutation = `
 "Cria uma questão do cliente logado. APENAS PARA ('client')"
 createOwnQuestion(input: CreateOwnQuestionInput!): CreateOwnQuestion!
-`
+`;
 
 export const types = `
 ${CreateOwnQuestionType}
-`
+`;
 
 export const inputs = `
 ${NumberConfigType}
@@ -276,6 +276,6 @@ ${RadioButtonConfigType}
 ${SortListConfigType}
 ${QuestionConfigInput}
 ${CreateOwnQuestionInput}
-`
+`;
 
-export const Mutation = createOwnQuestionMutation
+export const Mutation = createOwnQuestionMutation;

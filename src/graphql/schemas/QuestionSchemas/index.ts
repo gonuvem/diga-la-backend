@@ -38,6 +38,10 @@ type CheckBoxConfig {
   hasHorizontalAlignment: Boolean!
   "Ordem das respostas aleatória"
   hasRandomResponsesOrder: Boolean!
+  "Limite de escolhas"
+  hasLimitedChoices: Boolean!
+  "Quantidade de opções selecionáveis"
+  maxChoices: Int
   "Opções"
   answerOptions: [AnswerOption!]!
 }
@@ -144,8 +148,6 @@ type MatrixConfig {
   rowsLabels: [String]!
   "Rótulos das colunas"
   colsLabels: [String]!
-  "Opções"
-  answerOptions: [[AnswerOption!]!]!
 }
 `;
 
@@ -160,8 +162,6 @@ type SliderConfig {
   maxValue: Int!
   "Legenda lado direito"
   maxLabel: String
-  "Intervalo"
-  incValue: Int!
   "Ocultar valor no seletor"
   canHideValue: Boolean!
 }

@@ -130,6 +130,8 @@ const checkQuestionCheckBoxConfig = (
   expect(received).toMatchObject({
     hasHorizontalAlignment: expected.hasHorizontalAlignment,
     hasRandomResponsesOrder: expected.hasRandomResponsesOrder,
+    hasLimitedChoices: expected.hasLimitedChoices,
+    maxChoices: expected.maxChoices,
   });
 
   received.answerOptions.forEach((v, i): void =>
@@ -240,11 +242,6 @@ const checkQuestionMatrixConfig = (
   received.colsLabels.forEach((v, i): void =>
     expect(expected.colsLabels[i]).toBe(v)
   );
-  received.answerOptions.forEach((v, i): void => {
-    v.forEach((vv, j): void => {
-      checkQuestionAnswerOption(expected.answerOptions[i][j], vv);
-    });
-  });
 };
 
 const checkQuestionSliderConfig = (
@@ -256,7 +253,6 @@ const checkQuestionSliderConfig = (
     minLabel: expected.minLabel,
     maxValue: expected.maxValue,
     maxLabel: expected.maxLabel,
-    incValue: expected.incValue,
     canHideValue: expected.canHideValue,
   });
 };
