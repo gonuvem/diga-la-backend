@@ -49,6 +49,8 @@ const fakeAnswerOptions = (): AnswerOption[] =>
 const fakeCheckBoxConfig: CheckBoxConfig = {
   hasHorizontalAlignment: fakeBoolean(),
   hasRandomResponsesOrder: fakeBoolean(),
+  hasLimitedChoices: fakeBoolean(),
+  maxChoices: fakeRandomInt({ min: 1, max: 3 })(),
   answerOptions: fakeAnswerOptions(),
 };
 

@@ -106,6 +106,8 @@ const createInputCheckBoxConfig = (
 ): string => `{
   hasHorizontalAlignment: ${input.hasHorizontalAlignment},
   hasRandomResponsesOrder: ${input.hasRandomResponsesOrder},
+  hasLimitedChoices: ${input.hasLimitedChoices},
+  maxChoices: ${input.maxChoices},
   answerOptions: ${createArrayInput(
     input.answerOptions,
     createInputAnswerOption

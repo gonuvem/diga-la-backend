@@ -38,6 +38,10 @@ type CheckBoxConfig {
   hasHorizontalAlignment: Boolean!
   "Ordem das respostas aleatória"
   hasRandomResponsesOrder: Boolean!
+  "Limite de escolhas"
+  hasLimitedChoices: Boolean!
+  "Quantidade de opções selecionáveis"
+  maxChoices: Int
   "Opções"
   answerOptions: [AnswerOption!]!
 }

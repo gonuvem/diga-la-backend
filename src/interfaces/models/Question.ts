@@ -21,6 +21,8 @@ export interface AnswerOption {
 export interface CheckBoxConfig {
   hasHorizontalAlignment: boolean;
   hasRandomResponsesOrder: boolean;
+  hasLimitedChoices: boolean;
+  maxChoices?: number;
   answerOptions: AnswerOption[];
 }
 

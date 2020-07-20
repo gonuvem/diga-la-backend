@@ -86,6 +86,8 @@ const questionAnswerOptionFieldsQuery = `{
 const questionCheckBoxConfigFieldsQuery = `{
   hasHorizontalAlignment
   hasRandomResponsesOrder
+  hasLimitedChoices
+  maxChoices
   answerOptions ${questionAnswerOptionFieldsQuery}
 }`;
 

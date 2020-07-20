@@ -71,6 +71,15 @@ const checkBoxDefinition: MongooseDefinition<CheckBoxConfig> = {
     required: true,
     default: false,
   },
+  hasLimitedChoices: {
+    type: Boolean,
+    required: true,
+    default: false,
+  },
+  maxChoices: {
+    type: Number,
+    validate: Number.isInteger,
+  },
   answerOptions: [
     {
       type: AnswerOptionSchema,

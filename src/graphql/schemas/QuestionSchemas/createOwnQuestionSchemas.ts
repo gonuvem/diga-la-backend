@@ -28,6 +28,10 @@ input CheckBoxConfigInput {
   hasHorizontalAlignment: Boolean!
   "Valor booleano"
   hasRandomResponsesOrder: Boolean!
+  "Valor booleano"
+  hasLimitedChoices: Boolean!
+  "Mínimo: 1"
+  maxChoices: Int
   answerOptions: [AnswerOptionInput!]!
 }
 `;

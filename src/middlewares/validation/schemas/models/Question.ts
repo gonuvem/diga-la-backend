@@ -50,6 +50,8 @@ const answerOptionsSchema = arraySchema(
 export const CheckBoxConfigSchema: JoiSchemaMap<CheckBoxConfig> = {
   hasHorizontalAlignment: booleanSchema,
   hasRandomResponsesOrder: booleanSchema,
+  hasLimitedChoices: booleanSchema,
+  maxChoices: integerSchema.min(1),
   answerOptions: answerOptionsSchema,
 };
 

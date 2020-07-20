@@ -130,6 +130,8 @@ const checkQuestionCheckBoxConfig = (
   expect(received).toMatchObject({
     hasHorizontalAlignment: expected.hasHorizontalAlignment,
     hasRandomResponsesOrder: expected.hasRandomResponsesOrder,
+    hasLimitedChoices: expected.hasLimitedChoices,
+    maxChoices: expected.maxChoices,
   });
 
   received.answerOptions.forEach((v, i): void =>
