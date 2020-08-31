@@ -14,7 +14,11 @@ import {
   QuestionInput,
   CreateOwnQuestionsInput,
 } from '../types';
-import { createArrayInput, createStringValue } from './gqlTestHelper';
+import {
+  createArrayInput,
+  createStringValue,
+  createNonStringValue,
+} from './gqlTestHelper';
 import { AnswerOption } from '../interfaces';
 
 export const createInputUpdateOwnProfile = (
@@ -292,7 +296,9 @@ const createInputAnswer = (
     imageChoice: ${createArrayInput(input.imageChoice, createStringValue)}
     link: "${input.link}"
     longText: "${input.longText}"
-    matrix: ${createArrayInput(input.matrix, createStringValue)}
+    matrix: ${`[${input.matrix
+    .map(tuple => createArrayInput(tuple, createNonStringValue))
+    .join(',')}]`}
     nps: ${input.nps}
     number: ${input.number}
     phone: "${input.phone}"

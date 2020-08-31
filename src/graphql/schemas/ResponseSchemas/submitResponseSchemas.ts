@@ -14,8 +14,8 @@ input AnswerInput {
   link: String
   "Mínimo: 1 caracter"
   longText: String
-  "Array de IDs de opções de resposta (AnswerOption._id)"
-  matrix: [ID!]
+  "Array de arrays com posições de linha e coluna. Ex.: [[0,1],[1,2],[2,2]]"
+  matrix: [[Int!]!]
   "Número escolhido. Obs.: Por enquanto está inteiro."
   nps: Int
   "Número escolhido. Obs.: Por enquanto está inteiro."
@@ -31,21 +31,21 @@ input AnswerInput {
   "Array de IDs de opções de resposta (AnswerOption._id)"
   sortList: [ID!]
 }
-`
+`;
 
 const AnswerAndQuestionInput = `
 input AnswerAndQuestionInput {
   question: ID!
   answer: AnswerInput!
 }
-`
+`;
 const SubmitResponseInput = `
 "Parâmetros para envio de resposta"
 input SubmitResponseInput {
   form: ID!
   answersAndQuestions: [AnswerAndQuestionInput!]!
 }
-`
+`;
 
 const SubmitResponseType = `
 "Resposta da mutation que envia resposta"
@@ -62,19 +62,19 @@ type SubmitResponse {
   """
   error: MyError
 }
-`
+`;
 
 const submitResponseMutation = `
 "Envia resposta."
 submitResponse(input: SubmitResponseInput!): SubmitResponse!
-`
+`;
 
-export const types = SubmitResponseType
+export const types = SubmitResponseType;
 
 export const inputs = `
 ${AnswerInput}
 ${AnswerAndQuestionInput}
 ${SubmitResponseInput}
-`
+`;
 
-export const Mutation = submitResponseMutation
+export const Mutation = submitResponseMutation;

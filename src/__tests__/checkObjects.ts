@@ -362,6 +362,12 @@ const checkAnswer = (
       expect(expectedIds[i].toISOString()).toBe(id.toISOString())
     );
   };
+  const checkMatrix = (expected: number[][], received: number[][]): void => {
+    received.forEach((tuple, i) => {
+      expect(expected[i][0]).toBe(tuple[0]);
+      expect(expected[i][1]).toBe(tuple[1]);
+    });
+  };
   if (received.checkBox) checkArrayOfIds(expected.checkBox, received.checkBox);
   if (received.date) checkArrayOfDates(expected.date, received.date);
   if (received.dropDown) checkArrayOfIds(expected.dropDown, received.dropDown);
@@ -370,7 +376,7 @@ const checkAnswer = (
     checkArrayOfIds(expected.imageChoice, received.imageChoice);
   if (received.link) expect(expected.link).toBe(received.link);
   if (received.longText) expect(expected.longText).toBe(received.longText);
-  if (received.matrix) checkArrayOfIds(expected.matrix, received.matrix);
+  if (received.matrix) checkMatrix(expected.matrix, received.matrix);
   if (received.nps) expect(expected.nps).toBe(received.nps);
   if (received.number) expect(expected.number).toBe(received.number);
   if (received.phone) expect(expected.phone).toBe(received.phone);

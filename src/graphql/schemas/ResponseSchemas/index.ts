@@ -1,6 +1,6 @@
-import * as listOwnResponsesSchemas from './listOwnResponsesSchemas'
-import * as readOwnResponseSchemas from './readOwnResponseSchemas'
-import * as submitResponseSchemas from './submitResponseSchemas'
+import * as listOwnResponsesSchemas from './listOwnResponsesSchemas';
+import * as readOwnResponseSchemas from './readOwnResponseSchemas';
+import * as submitResponseSchemas from './submitResponseSchemas';
 
 const AnswerType = `
 "Conteúdo da resposta de acordo com tipo de questão"
@@ -19,8 +19,8 @@ type Answer {
   link: String
   "Input do texto longo"
   longText: String
-  "Array de IDs de opções de resposta (AnswerOption._id)"
-  matrix: [ID!]
+  "Array de arrays com posições de linha e coluna. Ex.: [[0,1],[1,2],[2,2]]"
+  matrix: [[Int!]!]
   "Número escolhido. Obs.: Por enquanto está inteiro."
   nps: Int
   "Número escolhido. Obs.: Por enquanto está inteiro."
@@ -36,7 +36,7 @@ type Answer {
   "Array de IDs de opções de resposta (AnswerOption._id)"
   sortList: [ID!]
 }
-`
+`;
 const AnswerAndQuestionType = `
 "Resposta e questão associada"
 type AnswerAndQuestion {
@@ -45,7 +45,7 @@ type AnswerAndQuestion {
   "Conteúdo da resposta"
   answer: Answer!
 }
-`
+`;
 
 const ResponseType = `
 "Tipo de Resposta"
@@ -61,10 +61,10 @@ type Response {
   "Data de atualização"
   updatedAt: Date!
 }
-`
+`;
 
 export const enums = `
-`
+`;
 
 export const types = `
 ${AnswerType}
@@ -73,17 +73,17 @@ ${ResponseType}
 ${listOwnResponsesSchemas.types}
 ${readOwnResponseSchemas.types}
 ${submitResponseSchemas.types}
-`
+`;
 
 export const inputs = `
 ${submitResponseSchemas.inputs}
-`
+`;
 
 export const Query = `
 ${listOwnResponsesSchemas.Query}
 ${readOwnResponseSchemas.Query}
-`
+`;
 
 export const Mutation = `
 ${submitResponseSchemas.Mutation}
-`
+`;
