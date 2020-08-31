@@ -85,7 +85,7 @@ export const NPSConfigSchema: JoiSchemaMap<NPSConfig> = {
   leftLabel: basicStringSchema,
   rightLabel: basicStringSchema,
   canStartAtZero: booleanSchema,
-  escale: basicStringSchema,
+  escale: integerSchema.min(1),
 };
 
 export const DateConfigSchema: JoiSchemaMap<DateConfig> = {
