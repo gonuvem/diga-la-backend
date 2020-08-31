@@ -179,7 +179,7 @@ const NPSDefinition: MongooseDefinition<NPSConfig> = {
     default: false,
   },
   escale: {
-    type: String,
+    type: Number,
     required: true,
   },
 };

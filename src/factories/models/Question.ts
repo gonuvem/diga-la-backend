@@ -84,7 +84,7 @@ const fakeNPSConfig: NPSConfig = {
   leftLabel: fakeWord(),
   rightLabel: fakeWord(),
   canStartAtZero: fakeBoolean(),
-  escale: fakeWord(),
+  escale: fakeRandomInt({ min: 1, max: 10 })(),
 };
 
 const fakeDateConfig: DateConfig = {

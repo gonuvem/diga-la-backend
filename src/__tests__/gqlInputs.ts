@@ -14,7 +14,11 @@ import {
   QuestionInput,
   CreateOwnQuestionsInput,
 } from '../types';
-import { createArrayInput, createStringValue } from './gqlTestHelper';
+import {
+  createArrayInput,
+  createStringValue,
+  createNonStringValue,
+} from './gqlTestHelper';
 import { AnswerOption } from '../interfaces';
 
 export const createInputUpdateOwnProfile = (
@@ -109,9 +113,9 @@ const createInputCheckBoxConfig = (
   hasLimitedChoices: ${input.hasLimitedChoices},
   maxChoices: ${input.maxChoices},
   answerOptions: ${createArrayInput(
-    input.answerOptions,
-    createInputAnswerOption
-  )},
+  input.answerOptions,
+  createInputAnswerOption
+)},
 }`;
 
 const createInputDateConfig = (
@@ -129,9 +133,9 @@ const createInputDropDownConfig = (
 ): string => `{
   hasRandomResponsesOrder: ${input.hasRandomResponsesOrder},
   answerOptions: ${createArrayInput(
-    input.answerOptions,
-    createInputAnswerOption
-  )},
+  input.answerOptions,
+  createInputAnswerOption
+)},
 }`;
 
 const createInputEmailConfig = (
@@ -147,9 +151,9 @@ const createInputImageChoiceConfig = (
   maxChoices: ${input.maxChoices},
   hasRandomResponsesOrder: ${input.hasRandomResponsesOrder},
   answerOptions: ${createArrayInput(
-    input.answerOptions,
-    createInputAnswerOption
-  )},
+  input.answerOptions,
+  createInputAnswerOption
+)},
 }`;
 
 const createInputLinkConfig = (
@@ -183,7 +187,7 @@ const createInputNPSConfig = (
   leftLabel: "${input.leftLabel}",
   rightLabel: "${input.rightLabel}",
   canStartAtZero: ${input.canStartAtZero},
-  escale: "${input.escale}",
+  escale: ${input.escale},
 }`;
 
 const createInputNumberConfig = (
@@ -207,9 +211,9 @@ const createInputRadioButtonConfig = (
   hasHorizontalAlignment: ${input.hasHorizontalAlignment},
   hasRandomResponsesOrder: ${input.hasRandomResponsesOrder},
   answerOptions: ${createArrayInput(
-    input.answerOptions,
-    createInputAnswerOption
-  )},
+  input.answerOptions,
+  createInputAnswerOption
+)},
 }`;
 
 const createInputShortTextConfig = (
@@ -235,9 +239,9 @@ const createInputSortListConfig = (
 ): string => `{
   hasRandomResponsesOrder: ${input.hasRandomResponsesOrder},
   answerOptions: ${createArrayInput(
-    input.answerOptions,
-    createInputAnswerOption
-  )},
+  input.answerOptions,
+  createInputAnswerOption
+)},
 }`;
 
 const createInputQuestionConfig = (
@@ -284,15 +288,17 @@ const createInputAnswer = (
 ): string => `{
     checkBox: ${createArrayInput(input.checkBox, createStringValue)}
     date: ${createArrayInput(
-      input.date,
-      (date: Date) => `"${date.toISOString()}"`
-    )}
+  input.date,
+  (date: Date) => `"${date.toISOString()}"`
+)}
     dropDown: ${createArrayInput(input.dropDown, createStringValue)}
     email: "${input.email}"
     imageChoice: ${createArrayInput(input.imageChoice, createStringValue)}
     link: "${input.link}"
     longText: "${input.longText}"
-    matrix: ${createArrayInput(input.matrix, createStringValue)}
+    matrix: ${`[${input.matrix
+    .map(tuple => createArrayInput(tuple, createNonStringValue))
+    .join(',')}]`}
     nps: ${input.nps}
     number: ${input.number}
     phone: "${input.phone}"
@@ -314,9 +320,9 @@ export const createInputSubmitResponse = (
 ): string => `{
   form: "${input.form}",
   answersAndQuestions: ${createArrayInput(
-    input.answersAndQuestions,
-    createInputAnswerAndQuestion
-  )}
+  input.answersAndQuestions,
+  createInputAnswerAndQuestion
+)}
 }`;
 
 export const createInputQuestion = (input: QuestionInput): string => `{

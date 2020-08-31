@@ -56,7 +56,7 @@ export interface NPSConfig {
   leftLabel?: string;
   rightLabel?: string;
   canStartAtZero: boolean;
-  escale: string;
+  escale: number;
 }
 
 export interface DateConfig {
@@ -134,5 +134,5 @@ export interface QuestionInterface {
 
 export interface QuestionDocument
   extends QuestionInterface,
-    Document,
-    Timestamps {}
+  Document,
+  Timestamps { }

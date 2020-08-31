@@ -109,7 +109,7 @@ type NPSConfig {
   "Começar no zero"
   canStartAtZero: Boolean!
   "Escala"
-  escale: String!
+  escale: Int!
 }
 `;
 

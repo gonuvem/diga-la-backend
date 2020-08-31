@@ -96,8 +96,8 @@ input NPSConfigInput {
   rightLabel: String
   "Valor booleano"
   canStartAtZero: Boolean!
-  "Mínimo: 1 caracter"
-  escale: String!
+  "Mínimo: 1"
+  escale: Int!
 }
 `;
 
