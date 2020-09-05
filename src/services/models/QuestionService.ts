@@ -11,6 +11,8 @@ import {
   fetchAll,
   fetchOneWithoutError,
   createMany,
+  bulkWrite,
+  checkIfExists,
 } from '../../utils/mongoose';
 import {
   QUESTIONS_EMPTY_LIST,
@@ -43,3 +45,10 @@ export const countQuestionsTotal = countTotal(Question);
 export const fetchAllQuestions = fetchAll(Question);
 
 export const fetchOneQuestionWithoutError = fetchOneWithoutError(Question);
+
+export const checkIfQuestionExists = checkIfExists(
+  Question,
+  QUESTION_NOT_FOUND
+);
+
+export const bulkWriteQuestions = bulkWrite(Question);

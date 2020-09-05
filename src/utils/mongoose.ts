@@ -2,6 +2,7 @@
 /* eslint-disable max-lines-per-function */
 import mongoose, { Query, Document, QueryPopulateOptions } from 'mongoose';
 import { Boom } from '@hapi/boom';
+import { BulkWriteOpResultObject } from 'mongodb';
 
 import {
   FetchParams,
@@ -232,6 +233,12 @@ export function checkIfExists<T extends Document>(
     });
 
     if (total !== uniqueIds.length) throw notFoundError;
+  };
+}
+
+export function bulkWrite<T extends Document>(Model: mongoose.Model<T>) {
+  return async function (writes: object[]): Promise<BulkWriteOpResultObject> {
+    return await Model.bulkWrite(writes);
   };
 }
 

@@ -6,3 +6,4 @@ export * from './readOwnQuestion';
 export * from './getQuestionForm';
 export * from './getQuestionType';
 export * from './createOwnQuestions';
+export * from './updateOwnQuestions';

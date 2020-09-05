@@ -30,6 +30,7 @@ export const gqlRouter: { [resolverName: string]: Role[] } = {
   listOwnQuestions: [Role.Client],
   readOwnQuestion: [Role.Client],
   createOwnQuestions: [Role.Client],
+  updateOwnQuestions: [Role.Client],
 
   listOwnResponses: [Role.Client],
   readOwnResponse: [Role.Client],

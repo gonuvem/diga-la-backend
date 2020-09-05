@@ -10,6 +10,7 @@ import {
   ListOwnQuestionsParams,
   ListQuestionsResponse,
   CreateOwnQuestionsInput,
+  UpdateOwnQuestionsInput,
 } from '../../types';
 import { QuestionDocument } from '../../interfaces';
 
@@ -79,6 +80,17 @@ const createOwnQuestions = (
   );
 };
 
+const updateOwnQuestions = (
+  _parent: object,
+  _args: object,
+  context: MyContext<{ input: UpdateOwnQuestionsInput }>
+): Promise<{}> => {
+  return QuestionResolverHelper.updateOwnQuestions(
+    context.user,
+    context.validData.input
+  );
+};
+
 export const Query = {
   listOwnQuestions: wrapGqlAsyncFunc(
     isGqlAuthenticated(isGqlAuthorized(validateGqlRequest(listOwnQuestions)))
@@ -100,6 +112,9 @@ export const Mutation = {
   ),
   createOwnQuestions: wrapGqlAsyncFunc(
     isGqlAuthenticated(isGqlAuthorized(validateGqlRequest(createOwnQuestions)))
+  ),
+  updateOwnQuestions: wrapGqlAsyncFunc(
+    isGqlAuthenticated(isGqlAuthorized(validateGqlRequest(updateOwnQuestions)))
   ),
 };
 
