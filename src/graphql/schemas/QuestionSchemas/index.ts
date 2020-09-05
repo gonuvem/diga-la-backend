@@ -5,6 +5,7 @@ import * as deleteOwnQuestionSchemas from './deleteOwnQuestionSchemas';
 import * as listOwnQuestionsSchemas from './listOwnQuestionsSchemas';
 import * as readOwnQuestionSchemas from './readOwnQuestionSchemas';
 import * as createOwnQuestionsSchemas from './createOwnQuestionsSchemas';
+import * as updateOwnQuestionsSchemas from './updateOwnQuestionsSchemas';
 
 const NumberConfigType = `
 "Número"
@@ -274,12 +275,14 @@ ${deleteOwnQuestionSchemas.types}
 ${listOwnQuestionsSchemas.types}
 ${readOwnQuestionSchemas.types}
 ${createOwnQuestionsSchemas.types}
+${updateOwnQuestionsSchemas.types}
 `;
 
 export const inputs = `
 ${createOwnQuestionSchemas.inputs}
 ${updateOwnQuestionSchemas.inputs}
 ${createOwnQuestionsSchemas.inputs}
+${updateOwnQuestionsSchemas.inputs}
 `;
 
 export const Query = `
@@ -292,4 +295,5 @@ ${createOwnQuestionSchemas.Mutation}
 ${updateOwnQuestionSchemas.Mutation}
 ${deleteOwnQuestionSchemas.Mutation}
 ${createOwnQuestionsSchemas.Mutation}
+${updateOwnQuestionsSchemas.Mutation}
 `;
