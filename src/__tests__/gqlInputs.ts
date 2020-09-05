@@ -13,6 +13,8 @@ import {
   SubmitResponseInput,
   QuestionInput,
   CreateOwnQuestionsInput,
+  UpdateOwnQuestionsInput,
+  QuestionUpdateInput,
 } from '../types';
 import {
   createArrayInput,
@@ -337,4 +339,21 @@ export const createInputCreateOwnQuestions = (
 ): string => `{
   form: "${input.form}",
   questions: ${createArrayInput(input.questions, createInputQuestion)}
+}`;
+
+export const createInputQuestionUpdate = (
+  input: QuestionUpdateInput
+): string => `{
+  _id: "${input._id}",
+  type: "${input.type}",
+  formPage: ${input.formPage},
+  position: ${input.position},
+  config: ${createInputQuestionConfig(input.config)}
+}`;
+
+export const createInputUpdateOwnQuestions = (
+  input: UpdateOwnQuestionsInput
+): string => `{
+  form: "${input.form}",
+  questions: ${createArrayInput(input.questions, createInputQuestionUpdate)}
 }`;
