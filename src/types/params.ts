@@ -134,3 +134,10 @@ export type CreateOwnQuestionsInput = {
   form: ID;
   questions: QuestionInput[];
 };
+
+export type QuestionUpdateInput = QuestionInput & { _id: ID };
+
+export type UpdateOwnQuestionsInput = {
+  form: ID;
+  questions: QuestionUpdateInput[];
+};
