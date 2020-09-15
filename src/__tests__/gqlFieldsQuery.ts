@@ -238,3 +238,15 @@ export const responseFieldsQuery = `{
   createdAt
   updatedAt
 }`;
+
+export const chartsDataFieldsQuery = `{
+  type
+  name
+  data {
+    id
+    day
+    label
+    respostas
+    value
+  }
+}`;
