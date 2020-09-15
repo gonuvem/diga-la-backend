@@ -14,6 +14,7 @@ export interface NumberConfig {
 }
 
 export interface AnswerOption {
+  _id?: ID;
   text: string;
   image?: string;
 }
