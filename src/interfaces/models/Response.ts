@@ -6,7 +6,7 @@ import { QuestionTypeAlias } from '../../enums';
 import { ID } from '../../types';
 import { Timestamps } from '../general';
 
-interface Answer {
+export interface Answer {
   [QuestionTypeAlias.CheckBox]?: ID[] | string[];
   [QuestionTypeAlias.Date]?: Date[];
   [QuestionTypeAlias.DropDown]?: ID[] | string[];
@@ -38,3 +38,17 @@ export interface ResponseDocument
   extends ResponseInterface,
   Document,
   Timestamps { }
+
+export interface ResponseData {
+  id?: string;
+  day?: string;
+  label?: string;
+  respostas?: number;
+  value?: number;
+}
+
+export interface ChartData {
+  type: string;
+  name: string;
+  data: ResponseData[];
+}
