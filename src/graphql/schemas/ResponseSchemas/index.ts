@@ -1,6 +1,7 @@
 import * as listOwnResponsesSchemas from './listOwnResponsesSchemas';
 import * as readOwnResponseSchemas from './readOwnResponseSchemas';
 import * as submitResponseSchemas from './submitResponseSchemas';
+import * as getChartsDataSchemas from './getChartsDataSchemas';
 
 const AnswerType = `
 "Conteúdo da resposta de acordo com tipo de questão"
@@ -73,6 +74,7 @@ ${ResponseType}
 ${listOwnResponsesSchemas.types}
 ${readOwnResponseSchemas.types}
 ${submitResponseSchemas.types}
+${getChartsDataSchemas.types}
 `;
 
 export const inputs = `
@@ -82,6 +84,7 @@ ${submitResponseSchemas.inputs}
 export const Query = `
 ${listOwnResponsesSchemas.Query}
 ${readOwnResponseSchemas.Query}
+${getChartsDataSchemas.Query}
 `;
 
 export const Mutation = `
