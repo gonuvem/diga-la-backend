@@ -34,4 +34,5 @@ export const gqlRouter: { [resolverName: string]: Role[] } = {
 
   listOwnResponses: [Role.Client],
   readOwnResponse: [Role.Client],
+  getChartsData: [Role.Client],
 };
