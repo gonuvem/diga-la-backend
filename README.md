@@ -7,14 +7,17 @@
 </h1>
 
 <h3 align="center">
-    <a href="https://dig-api-staging.herokuapp.com/voyager">Visualize uma demonstração da API em GraphQL com o Voyager</a>
+    <a href="https://dig-api-staging.herokuapp.com/voyager">Visualize a API em GraphQL com o Voyager</a>
+    <br/>
+    <br/>
+    <a href="https://dig-api-staging.herokuapp.com/graphql">Teste a API em GraphQL com o Playground</a>
 <h3 >
 
 ---
 
 ## 🔖&nbsp; Sobre
 
-O projeto **Diga Lá** é uma plataforma para construção de formulários. Esse repositório contém a API que serve o [front end](https://github.com/gonuvem/digala-front).
+O projeto **Diga Lá** é uma plataforma para construção de formulários. Esse repositório contém a API que serve o [front end](https://github.com/gonuvem/digala-front). Existe um usuário de teste para a nossa demonstração online: email `teste@gonuvem.com` e senha `digala`.
 
 ---
 
